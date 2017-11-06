@@ -23,6 +23,7 @@
 		FBED18CA1FAFF52200D810BF /* ARVideoKitLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBED18C31FAFF52200D810BF /* ARVideoKitLib.framework */; };
 		FBED18CB1FAFF52200D810BF /* ARVideoKitLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FBED18C31FAFF52200D810BF /* ARVideoKitLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FBED18D11FAFF54300D810BF /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBED18CF1FAFF53100D810BF /* ARVideoKit.framework */; };
+		FBED18F91FAFF72000D810BF /* ARVideoKit.framework in Sources */ = {isa = PBXBuildFile; fileRef = FBED18CF1FAFF53100D810BF /* ARVideoKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBED18F91FAFF72000D810BF /* ARVideoKit.framework in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
