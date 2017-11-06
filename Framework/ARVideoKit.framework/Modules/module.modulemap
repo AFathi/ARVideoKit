@@ -1,0 +1,11 @@
+framework module ARVideoKit {
+  umbrella header "ARVideoKit.h"
+
+  export *
+  module * { export * }
+}
+
+module ARVideoKit.Swift {
+    header "ARVideoKit-Swift.h"
+    requires objc
+}
