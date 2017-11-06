@@ -1,7 +1,7 @@
 # ARVideoKit
 An iOS Framework that enables developers to capture videos 📹, photos 🌄, Live Photos 🎇, and GIFs 🎆 with ARKit content.
 
-In other words, you NO LONGER have to use screen recording/screenshots to capture videos and photos!
+In other words, you **NO LONGER** have to use *screen recording*/*screenshots* to capture ARKit videos 📹 and photos 🌄!
 
 | Table of Contents  |  Description       |
 | ------------------ |:------------------:|
