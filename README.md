@@ -8,7 +8,7 @@ An iOS Framework that enables developers to capture videos 📹, photos 🌄, Li
 | [Key Features](#key-features) | Lists the key features `ARVideoKit` offers     |
 | [Compatibility](#compatibility) | Describes the `ARVideoKit` device and iOS compatibality |
 | [Example Project](#example-project) | Explains how to run the example project provided in this repository |
-| [Installation](#installation) | Describes the [CocoaPods](#cocoapods) and [Manual](#manual) options to install `ARVideoKit`   |
+| [Installation](#installation) | Describes the [Manual](#manual) option to install `ARVideoKit`   |
 | [Implementation](#implementation) | Lists the [steps needed](#implementation), [notes](#note), and [reference](#youre-all-set-) for more options  |
 | [License](#license) | Describes `ARVideoKit` license |
 
@@ -40,15 +40,8 @@ An iOS Framework that enables developers to capture videos 📹, photos 🌄, Li
 To try the example project, simply clone this repository and open `ARVideoKit-Example.xcodeproj` project file.
 
 ## Installation
-### CocoaPods
-Add this line to your `Podfile`
-```
-pod 'ARVideoKit'
-```
-_To install CocoaPods on your machine follow the [installation guide on their website](https://guides.cocoapods.org/using/getting-started.html)._
-
 ### Manual
-Drag the `ARVideoKit.framework` file into your project then add ARVideoKit as an embedded binary of your targets.
+Drag the `ARVideoKit.framework` file into your project then add `ARVideoKit` as an embedded binary of your targets. `ARVideoKit.framework` can be found in `/Framework/` folder in this repository.
 
 ## Implementation
 1. `import ARVideoKit` in the application delegate `AppDelegate.swift` and a `UIViewController` with an `ARKit` scene.
