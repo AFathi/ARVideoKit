@@ -41,7 +41,8 @@ To try the example project, simply clone this repository and open `ARVideoKit-Ex
 
 ## Installation
 ### Manual
-Drag the `ARVideoKit.framework` file into your project then add `ARVideoKit` as an embedded binary of your targets. `ARVideoKit.framework` can be found in `/Framework/` folder in this repository.
+Drag the `ARVideoKit.framework` file as an embedded binary of your project targets. `ARVideoKit.framework` can be found in `/Framework/` folder in this repository.
+![Tutorial](http://www.ahmedbekhit.com/arvideokit_install_new.gif)
 
 ## Implementation
 1. `import ARVideoKit` in the application delegate `AppDelegate.swift` and a `UIViewController` with an `ARKit` scene.
