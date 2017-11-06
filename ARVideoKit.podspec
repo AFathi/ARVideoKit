@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "11.0"
 
   s.source = { :http => "http://ahmedbekhit.com/ARVideoKit.zip" }
+  s.module_map = "ARVideoKit.framework/Modules/module.modulemap"
   s.vendored_frameworks = "ARVideoKit.framework"
 
 end
