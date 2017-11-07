@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FB2E368C1FAE2A510035B8D6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FB2E368B1FAE2A510035B8D6 /* LICENSE */; };
-		FBD3F1E11FB233CE00327054 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD3F1E01FB233CE00327054 /* ARVideoKit.framework */; };
-		FBD3F1E21FB233CE00327054 /* ARVideoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FBD3F1E01FB233CE00327054 /* ARVideoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FBD3F1E61FB260B000327054 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD3F1E51FB260B000327054 /* ARVideoKit.framework */; };
+		FBD3F1E71FB260B000327054 /* ARVideoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FBD3F1E51FB260B000327054 /* ARVideoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FBDCC5E71FABDFC600E3184D /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FBDCC5E51FABDFC500E3184D /* Scene.sks */; };
 		FBDCC5E81FABDFC600E3184D /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDCC5E61FABDFC500E3184D /* Scene.swift */; };
 		FBDCC60D1FABFE6A00E3184D /* SKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDCC60C1FABFE6A00E3184D /* SKViewController.swift */; };
@@ -28,7 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FBD3F1E21FB233CE00327054 /* ARVideoKit.framework in Embed Frameworks */,
+				FBD3F1E71FB260B000327054 /* ARVideoKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,7 +37,7 @@
 
 /* Begin PBXFileReference section */
 		FB2E368B1FAE2A510035B8D6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		FBD3F1E01FB233CE00327054 /* ARVideoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARVideoKit.framework; path = Framework/ARVideoKit.framework; sourceTree = "<group>"; };
+		FBD3F1E51FB260B000327054 /* ARVideoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARVideoKit.framework; path = Framework/ARVideoKit.framework; sourceTree = "<group>"; };
 		FBDCC5E51FABDFC500E3184D /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
 		FBDCC5E61FABDFC500E3184D /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		FBDCC60C1FABFE6A00E3184D /* SKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBD3F1E11FB233CE00327054 /* ARVideoKit.framework in Frameworks */,
+				FBD3F1E61FB260B000327054 /* ARVideoKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,7 +66,7 @@
 		FB2E37781FAFD5C20035B8D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FBD3F1E01FB233CE00327054 /* ARVideoKit.framework */,
+				FBD3F1E51FB260B000327054 /* ARVideoKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -371,7 +371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TB37P94YA8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -392,7 +392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TB37P94YA8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
