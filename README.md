@@ -43,7 +43,7 @@ To try the example project, simply clone this repository and open `ARVideoKit-Ex
 
 ## Installation
 ### Manual
-Drag the `ARVideoKit.framework` file as an embedded binary of your project targets. `ARVideoKit.framework` can be found in `/Framework/` folder in this repository.
+Drag the `ARVideoKit.framework` file as an embedded binary of your project targets. `ARVideoKit.framework` can be found in the `/Framework/` folder of this repository.
 ![Tutorial](http://www.ahmedbekhit.com/arvideokit_install_new.gif)
 
 ## Implementation
