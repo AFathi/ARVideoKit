@@ -15,7 +15,7 @@ In other words, you **NO LONGER** have to use *screen recording*/*screenshots* t
 | [License](#license) | Describes `ARVideoKit` license |
 
 ## Preview
-|[Initialized with SpriteKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arspritekitarskview)👇 ‍‍‍‍‍‍ ‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍|[Initialized with SceneKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arscenekitarscnview) 👇 ‍‍‍‍‍‍ ‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍|
+|👾 [Initialized with SpriteKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arspritekitarskview)👇 ‍‍‍‍‍‍ ‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍|🚀 [Initialized with SceneKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arscenekitarscnview) 👇 ‍‍‍‍‍‍ ‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍|
 |--------------|--------------|
 
 ![SpriteKit Preview](http://www.ahmedbekhit.com/SK_PREV.gif) ![SceneKit Preview](http://www.ahmedbekhit.com/SCN_PREVIEW.gif)
@@ -113,7 +113,7 @@ Make sure you add the usage description of the `camera`, `microphone`, and `phot
 ### You're all set. 🤓
 Check [`RecordAR`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR) documentation for more options!
 
-## [License](#)
+## [License](LICENSE)
 Copyright 2017 Ahmed Fathi Bekhit
 
 `ARVideoKit` is licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
