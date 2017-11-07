@@ -41,6 +41,8 @@ In other words, you **NO LONGER** have to use *screen recording*/*screenshots* t
 ## Example Project
 To try the example project, simply clone this repository and open `ARVideoKit-Example.xcodeproj` project file.
 
+It's **recommended** to test `SKViewController` by assigning it as the initial view controller.
+![is initial VC](http://ahmedbekhit.com/isinitialVC.png)
 ## Installation
 ### Manual
 Drag the `ARVideoKit.framework` file as an embedded binary of your project targets. `ARVideoKit.framework` can be found in the `/Framework/` folder of this repository.
@@ -110,6 +112,7 @@ Make sure you add the usage description of the `camera`, `microphone`, and `phot
 <string>Audiovisual Recording</string>
 ```
 ![Info Plist Screenshot](http://www.ahmedbekhit.com/infoPlistUsage.png)
+
 ### You're all set. 🤓
 Check [`RecordAR`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR) documentation for more options!
 
