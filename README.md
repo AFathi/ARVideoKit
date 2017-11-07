@@ -32,7 +32,7 @@ In other words, you **NO LONGER** have to use *screen recording*/*screenshots* t
 
 ✅ [Returns](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#var-onlyrenderwhilerecordingbool) rendered and raw buffers in a [protocol](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#var-renderarrenderardelegate) [method](https://github.com/AFathi/ARVideoKit/wiki/RenderARDelegate#func-framedidrender-buffercvpixelbuffer-with-timecmtime-using-rawbuffercvpixelbuffer) for additional Image & Video processing
 ## Compatibility
-`ARVideoKit` is compatible on iOS devices that support both [`ARKit`](https://developer.apple.com/documentation/arkit) and [`Metal`](https://developer.apple.com/documentation/metal). Check Apple's [iOS Device Compatibility Reference](#) for more information.
+`ARVideoKit` is compatible on iOS devices that support both [`ARKit`](https://developer.apple.com/documentation/arkit) and [`Metal`](https://developer.apple.com/documentation/metal). Check Apple's [iOS Device Compatibility Reference](https://developer.apple.com/library/content/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html#//apple_ref/doc/uid/TP40013599-CH17-SW1) for more information.
 
 `ARVideoKit` requires:
 - iOS 11
