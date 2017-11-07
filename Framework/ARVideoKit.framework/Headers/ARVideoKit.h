@@ -2,7 +2,7 @@
 //  ARVideoKit.h
 //  ARVideoKit
 //
-//  Created by Ahmed Bekhit on 11/5/17.
+//  Created by Ahmed Bekhit on 10/31/17.
 //  Copyright © 2017 Ahmed Fathi Bekhit. All rights reserved.
 //
 

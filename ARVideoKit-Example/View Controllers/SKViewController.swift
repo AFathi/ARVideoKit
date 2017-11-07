@@ -45,6 +45,9 @@ class SKViewController: UIViewController, ARSKViewDelegate, RenderARDelegate, Re
         // Set the renderer's delegate
         recorder?.renderAR = self
         
+        // Configure the renderer to perform additional image & video processing 👁
+        recorder?.onlyRenderWhileRecording = false
+        
         // Set the UIViewController orientations
         recorder?.inputViewOrientations = [.landscapeLeft, .landscapeRight, .portrait]
         
