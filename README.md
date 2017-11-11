@@ -85,14 +85,14 @@ recorder?.prepare(configuration)
 recorder?.rest()
 ```
 
-7. Call the [`record()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-record) method in an appropriate method.
+7. Call the [`record()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-record) method in the proper method to start recording.
 ```
 @IBAction func startRecording(_ sender: UIButton) {
 recorder?.record()
 }
 ```
 
-8. Call the [`stopAndExport()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-stopandexport_-finished-_-videopath-url-_-permissionstatusphauthorizationstatus-_-exportedbool---swiftvoid--nil) method in an appropriate method.
+8. Call the [`stopAndExport()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-stopandexport_-finished-_-videopath-url-_-permissionstatusphauthorizationstatus-_-exportedbool---swiftvoid--nil) method in the proper method to stop recording.
 ```
 @IBAction func stopRecording(_ sender: UIButton) {
 recorder?.stopAndExport()
