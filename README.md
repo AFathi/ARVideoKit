@@ -126,6 +126,7 @@ To do so, follow those steps:
 
 1. Install Carthage
 > Download `Carthage.pkg` [from here](https://github.com/Carthage/Carthage/releases)
+
 > Or install with Homebrew using this command `brew install carthage` 
 2. Go to your project target's `Build Phase`
 <img width="684" alt="screen shot 2017-11-14 at 8 21 44 pm" src="https://user-images.githubusercontent.com/4106695/32813978-e70ae5a0-c97a-11e7-9d19-3ef434e4c4f1.png">
