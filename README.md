@@ -118,7 +118,7 @@ Make sure you add the usage description of the `camera`, `microphone`, and `phot
 Check [`RecordAR`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR) documentation for more options!
 
 ## Publishing to the App Store
-Before publishing to the App Store make sure to add the [ARVideoKit License](LICENSE) to your app licences list.
+Before publishing to the App Store make sure to add the [ARVideoKit License](#license) to your app licences list.
 
 Additionally, you MUST **strip out the simulator architectures** from the framework before pushing an application to the App Store.
 
