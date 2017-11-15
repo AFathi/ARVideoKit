@@ -12,7 +12,7 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [Example Project](#example-project) | Explains how to run the example project provided in this repository |
 | [Installation](#installation) | Describes the [Manual](#manual) option to install `ARVideoKit`   |
 | [Implementation](#implementation) | Lists the [steps needed](#implementation), [notes](#note), and [reference](#youre-all-set-) for more options  |
-| [Publishing to the App Store](#publishing-to-the-spp-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
+| [Publishing to the App Store](#publishing-to-the-app-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
 | [License](#license) | Describes `ARVideoKit` license |
 
 ## Preview
