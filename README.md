@@ -12,6 +12,7 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [Example Project](#example-project) | Explains how to run the example project provided in this repository |
 | [Installation](#installation) | Describes the [Manual](#manual) option to install `ARVideoKit`   |
 | [Implementation](#implementation) | Lists the [steps needed](#implementation), [notes](#note), and [reference](#youre-all-set-) for more options  |
+| [Publishing to the App Store](#publishing-to-the-spp-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
 | [License](#license) | Describes `ARVideoKit` license |
 
 ## Preview
@@ -115,6 +116,31 @@ Make sure you add the usage description of the `camera`, `microphone`, and `phot
 
 ### You're all set. 🤓
 Check [`RecordAR`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR) documentation for more options!
+
+## Publishing to the App Store
+Before publishing to the App Store make sure to add the [ARVideoKit License](LICENSE) to your app licences list.
+
+Additionally, you MUST **strip out the simulator architectures** from the framework before pushing an application to the App Store.
+
+To do so, follow those steps:
+
+1. Install Carthage
+> Download `Carthage.pkg` [from here](https://github.com/Carthage/Carthage/releases)
+> Or install with Homebrew using this command `brew install carthage` 
+2. Go to your project target's `Build Phase`
+<img width="684" alt="screen shot 2017-11-14 at 8 21 44 pm" src="https://user-images.githubusercontent.com/4106695/32813978-e70ae5a0-c97a-11e7-9d19-3ef434e4c4f1.png">
+
+3. Add a new `Run Script Phase`
+<img width="686" alt="screen shot 2017-11-14 at 8 22 14 pm" src="https://user-images.githubusercontent.com/4106695/32814003-0ab4cffc-c97b-11e7-97d0-cf3143afec6d.png">
+
+4. Add the following command to the `Run Script Phase`
+```
+/usr/local/bin/carthage copy-frameworks
+```
+<img width="676" alt="screen shot 2017-11-14 at 8 30 12 pm" src="https://user-images.githubusercontent.com/4106695/32814033-3302bece-c97b-11e7-867c-e8707ac7dd6b.png">
+
+5. Finally, add `ARVideoKit.framework` file path as an `Input File`. In my case, I have it in a folder named `Frameworks` inside my project folder
+<img width="672" alt="screen shot 2017-11-14 at 8 41 06 pm" src="https://user-images.githubusercontent.com/4106695/32814258-327bd048-c97c-11e7-8148-8d606d545214.png">
 
 ## [License](LICENSE)
 Copyright 2017 Ahmed Fathi Bekhit
