@@ -204,11 +204,13 @@ SWIFT_MODULE_NAMESPACE_PUSH("ARVideoKit")
 ///     <a href="mailto:me@ahmedbekhit.com">Email</a>
 ///   </li>
 /// </ul>
-SWIFT_CLASS("_TtC10ARVideoKit15PHLivePhotoPlus")
+SWIFT_CLASS("_TtC10ARVideoKit15PHLivePhotoPlus") SWIFT_AVAILABILITY(ios,introduced=9.1)
 @interface PHLivePhotoPlus : PHLivePhoto
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
 
 
 

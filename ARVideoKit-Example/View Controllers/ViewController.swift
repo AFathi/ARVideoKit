@@ -41,12 +41,15 @@ class ViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, Rec
         
         // Set the recorder's delegate
         recorder?.delegate = self
-        
+
         // Set the renderer's delegate
         recorder?.renderAR = self
 
         // Configure the renderer to perform additional image & video processing 👁
         //recorder?.onlyRenderWhileRecording = false
+        
+        // Configure ARKit content mode. Default is .auto
+        //recorder?.contentMode = .aspectFit
         
         // Set the UIViewController orientations
         recorder?.inputViewOrientations = [.landscapeLeft, .landscapeRight, .portrait]
