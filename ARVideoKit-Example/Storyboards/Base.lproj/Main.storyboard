@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N8h-YD-r0X">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,11 +8,79 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Black</string>
+            <string>Avenir-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="wdx-bS-4nS">
+            <objects>
+                <viewController storyboardIdentifier="mainView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N8h-YD-r0X" customClass="MainViewController" customModule="ARVideoKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lKA-5t-IIG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Try" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khu-YU-VZr">
+                                <rect key="frame" x="8" y="63" width="359" height="60"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Framework features on" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEa-da-nmU">
+                                <rect key="frame" x="8" y="183" width="359" height="42"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="27"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ARVideoKit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUS-U8-CBt">
+                                <rect key="frame" x="8" y="131" width="359" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="41"/>
+                                <color key="textColor" red="0.97052964239999995" green="0.37927614589999997" blue="0.45678941579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQf-dN-lB4">
+                                <rect key="frame" x="8" y="268" width="359" height="60"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="  AR SpriteKit App"/>
+                                <connections>
+                                    <segue destination="7Ze-pj-Xqd" kind="show" id="93E-6x-10b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21A-pg-4R6">
+                                <rect key="frame" x="8" y="359" width="359" height="60"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="  AR SceneKit App"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="aHU-mz-b0b"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <viewLayoutGuide key="safeArea" id="2zo-8C-5Jz"/>
+                    </view>
+                    <connections>
+                        <outlet property="scnBtn" destination="21A-pg-4R6" id="TOp-ks-rLN"/>
+                        <outlet property="skBtn" destination="tQf-dN-lB4" id="Zfs-NO-PMo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bSs-NK-rzw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-724" y="454"/>
+        </scene>
         <!--SCNViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="scnView" title="SCNViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="ARVideoKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scnView" title="SCNViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SCNViewController" customModule="ARVideoKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,23 +189,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69u-dy-9On">
-                                <rect key="frame" x="294" y="20" width="65" height="65"/>
+                                <rect key="frame" x="7" y="20" width="65" height="65"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="3Xy-JT-6ZT"/>
-                                    <constraint firstAttribute="height" constant="65" id="Q5O-CD-1T4"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="IPA-eO-hiu"/>
+                                    <constraint firstAttribute="height" constant="65" id="jVv-es-uhg"/>
                                 </constraints>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
-                                <state key="normal" title="Go to SK">
+                                <state key="normal" title="Go Back">
                                     <color key="titleShadowColor" white="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="7Ze-pj-Xqd" kind="show" id="x6e-M6-jfv"/>
+                                    <action selector="goBack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="93X-Zy-W33"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="69u-dy-9On" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="28v-Xd-AVo"/>
+                            <constraint firstItem="69u-dy-9On" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="7" id="0m6-4F-0Fh"/>
                             <constraint firstItem="IMN-9B-haO" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="4lt-V9-t2E"/>
                             <constraint firstItem="VIM-JP-UzO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="55A-z8-Ex1"/>
                             <constraint firstItem="DJd-jZ-eqw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="8OL-Px-2eA"/>
@@ -154,14 +222,14 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sdu-XX-UpW" secondAttribute="trailing" constant="16" id="a7G-NE-FuY"/>
                             <constraint firstItem="1R6-Xa-VsB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aDC-0U-rEb"/>
                             <constraint firstItem="IMN-9B-haO" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="awb-Ub-ogs"/>
+                            <constraint firstItem="69u-dy-9On" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bIZ-at-yZb"/>
                             <constraint firstItem="p4z-aP-wTO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="eIW-wL-nut"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="69u-dy-9On" secondAttribute="trailing" constant="16" id="fGZ-LP-ClO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1R6-Xa-VsB" secondAttribute="bottom" constant="20" id="g6C-dt-mSp"/>
                             <constraint firstItem="1R6-Xa-VsB" firstAttribute="top" secondItem="p4z-aP-wTO" secondAttribute="bottom" constant="8" id="gd7-UD-shK"/>
                             <constraint firstItem="DJd-jZ-eqw" firstAttribute="bottom" secondItem="VIM-JP-UzO" secondAttribute="bottom" constant="73" id="oes-gl-dgB"/>
-                            <constraint firstItem="69u-dy-9On" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="puT-8M-YHI"/>
                             <constraint firstAttribute="trailing" secondItem="VIM-JP-UzO" secondAttribute="trailing" constant="294" id="shb-pG-gjl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pCi-Bx-pwj" secondAttribute="trailing" constant="16" id="shk-Bc-iV7"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="69u-dy-9On" secondAttribute="trailing" constant="20" symbolic="YES" id="veA-fi-fX6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -174,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53.600000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="54" y="866"/>
         </scene>
         <!--SKViewController-->
         <scene sceneID="emy-Ex-RPU">
@@ -341,7 +409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9if-am-XF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730" y="134"/>
+            <point key="canvasLocation" x="54" y="134"/>
         </scene>
     </scenes>
 </document>

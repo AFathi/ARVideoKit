@@ -17,6 +17,9 @@ class SKViewController: UIViewController, ARSKViewDelegate, RenderARDelegate, Re
     @IBOutlet var recordBtn: UIButton!
     @IBOutlet var pauseBtn: UIButton!
     
+    let recordingQueue = DispatchQueue(label: "recordingThread")
+    let caprturingQueue = DispatchQueue(label: "capturingThread", attributes: .concurrent)
+    
     var recorder:RecordAR?
 
     override func viewDidLoad() {
@@ -46,7 +49,7 @@ class SKViewController: UIViewController, ARSKViewDelegate, RenderARDelegate, Re
         recorder?.renderAR = self
         
         // Configure the renderer to perform additional image & video processing 👁
-        //recorder?.onlyRenderWhileRecording = false
+        recorder?.onlyRenderWhileRecording = false
         
         // Set the UIViewController orientations
         recorder?.inputViewOrientations = [.landscapeLeft, .landscapeRight, .portrait]
@@ -73,6 +76,12 @@ class SKViewController: UIViewController, ARSKViewDelegate, RenderARDelegate, Re
         
         // Pause the view's session
         SKSceneView.session.pause()
+        
+        if recorder?.status == .recording {
+            recorder?.stopAndExport()
+        }
+        recorder?.onlyRenderWhileRecording = true
+        recorder?.prepare(ARWorldTrackingConfiguration())
         
         // Switch off the orientation lock for UIViewControllers with AR Scenes
         recorder?.rest()
@@ -132,8 +141,8 @@ extension SKViewController {
         if sender.tag == 0 {
             //Photo
             if recorder?.status == .readyToRecord {
-                let image = recorder?.photo()
-                recorder?.export(UIImage: image) { saved, status in
+                let image = self.recorder?.photo()
+                self.recorder?.export(UIImage: image) { saved, status in
                     if saved {
                         // Inform user photo has exported successfully
                         self.exportMessage(success: saved, status: status)
@@ -143,16 +152,18 @@ extension SKViewController {
         }else if sender.tag == 1 {
             //Live Photo
             if recorder?.status == .readyToRecord {
-                recorder?.livePhoto(export: true) { ready, photo, status, saved in
-                    /*
-                     if ready {
-                     // Do something with the `photo` (PHLivePhotoPlus)
-                     }
-                     */
-                    
-                    if saved {
-                        // Inform user Live Photo has exported successfully
-                        self.exportMessage(success: saved, status: status!)
+                caprturingQueue.async {
+                    self.recorder?.livePhoto(export: true) { ready, photo, status, saved in
+                        /*
+                         if ready {
+                         // Do something with the `photo` (PHLivePhotoPlus)
+                         }
+                         */
+                        
+                        if saved {
+                            // Inform user Live Photo has exported successfully
+                            self.exportMessage(success: saved, status: status!)
+                        }
                     }
                 }
             }
@@ -182,7 +193,9 @@ extension SKViewController {
                 sender.setTitle("Stop", for: .normal)
                 pauseBtn.setTitle("Pause", for: .normal)
                 pauseBtn.isEnabled = true
-                recorder?.record()
+                recordingQueue.async {
+                    self.recorder?.record()
+                }
             }else if recorder?.status == .recording {
                 sender.setTitle("Record", for: .normal)
                 pauseBtn.setTitle("Pause", for: .normal)
@@ -202,14 +215,16 @@ extension SKViewController {
                 pauseBtn.setTitle("Pause", for: .normal)
                 pauseBtn.isEnabled = false
                 recordBtn.isEnabled = false
-                recorder?.record(forDuration: 10) { path in
-                    self.recorder?.export(video: path) { saved, status in
-                        DispatchQueue.main.sync {
-                            sender.setTitle("w/Duration", for: .normal)
-                            self.pauseBtn.setTitle("Pause", for: .normal)
-                            self.pauseBtn.isEnabled = false
-                            self.recordBtn.isEnabled = true
-                            self.exportMessage(success: saved, status: status)
+                recordingQueue.async {
+                    self.recorder?.record(forDuration: 10) { path in
+                        self.recorder?.export(video: path) { saved, status in
+                            DispatchQueue.main.sync {
+                                sender.setTitle("w/Duration", for: .normal)
+                                self.pauseBtn.setTitle("Pause", for: .normal)
+                                self.pauseBtn.isEnabled = false
+                                self.recordBtn.isEnabled = true
+                                self.exportMessage(success: saved, status: status)
+                            }
                         }
                     }
                 }

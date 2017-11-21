@@ -11,12 +11,15 @@ import ARKit
 import ARVideoKit
 import Photos
 
-class ViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, RecordARDelegate  {
+class SCNViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, RecordARDelegate  {
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var recordBtn: UIButton!
     @IBOutlet var pauseBtn: UIButton!
     
+    let recordingQueue = DispatchQueue(label: "recordingThread", attributes: .concurrent)
+    let caprturingQueue = DispatchQueue(label: "capturingThread", attributes: .concurrent)
+
     var recorder:RecordAR?
     
     override func viewDidLoad() {
@@ -46,7 +49,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, Rec
         recorder?.renderAR = self
 
         // Configure the renderer to perform additional image & video processing 👁
-        //recorder?.onlyRenderWhileRecording = false
+        recorder?.onlyRenderWhileRecording = false
         
         // Configure ARKit content mode. Default is .auto
         //recorder?.contentMode = .aspectFit
@@ -75,6 +78,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, Rec
         // Pause the view's session
         sceneView.session.pause()
         
+        if recorder?.status == .recording {
+            recorder?.stopAndExport()
+        }
+        recorder?.onlyRenderWhileRecording = true
+        recorder?.prepare(ARWorldTrackingConfiguration())
+        
         // Switch off the orientation lock for UIViewControllers with AR Scenes
         recorder?.rest()
     }
@@ -89,7 +98,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, Rec
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
+
     // MARK: - Exported UIAlert present method
     func exportMessage(success: Bool, status:PHAuthorizationStatus) {
         if success {
@@ -125,13 +134,17 @@ class ViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, Rec
 }
 
 //MARK: - Button Action Methods
-extension ViewController {
+extension SCNViewController {
+    @IBAction func goBack(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func capture(_ sender: UIButton) {
         if sender.tag == 0 {
             //Photo
             if recorder?.status == .readyToRecord {
-                let image = recorder?.photo()
-                recorder?.export(UIImage: image) { saved, status in
+                let image = self.recorder?.photo()
+                self.recorder?.export(UIImage: image) { saved, status in
                     if saved {
                         // Inform user photo has exported successfully
                         self.exportMessage(success: saved, status: status)
@@ -141,16 +154,18 @@ extension ViewController {
         }else if sender.tag == 1 {
             //Live Photo
             if recorder?.status == .readyToRecord {
-                recorder?.livePhoto(export: true) { ready, photo, status, saved in
-                    /*
-                     if ready {
-                     // Do something with the `photo` (PHLivePhotoPlus)
-                     }
-                     */
-                    
-                    if saved {
-                        // Inform user Live Photo has exported successfully
-                        self.exportMessage(success: saved, status: status!)
+                caprturingQueue.async {
+                    self.recorder?.livePhoto(export: true) { ready, photo, status, saved in
+                        /*
+                         if ready {
+                         // Do something with the `photo` (PHLivePhotoPlus)
+                         }
+                         */
+                        
+                        if saved {
+                            // Inform user Live Photo has exported successfully
+                            self.exportMessage(success: saved, status: status!)
+                        }
                     }
                 }
             }
@@ -180,7 +195,9 @@ extension ViewController {
                 sender.setTitle("Stop", for: .normal)
                 pauseBtn.setTitle("Pause", for: .normal)
                 pauseBtn.isEnabled = true
-                recorder?.record()
+                recordingQueue.async {
+                    self.recorder?.record()
+                }
             }else if recorder?.status == .recording {
                 sender.setTitle("Record", for: .normal)
                 pauseBtn.setTitle("Pause", for: .normal)
@@ -200,14 +217,16 @@ extension ViewController {
                 pauseBtn.setTitle("Pause", for: .normal)
                 pauseBtn.isEnabled = false
                 recordBtn.isEnabled = false
-                recorder?.record(forDuration: 10) { path in
-                    self.recorder?.export(video: path) { saved, status in
-                        DispatchQueue.main.sync {
-                            sender.setTitle("w/Duration", for: .normal)
-                            self.pauseBtn.setTitle("Pause", for: .normal)
-                            self.pauseBtn.isEnabled = false
-                            self.recordBtn.isEnabled = true
-                            self.exportMessage(success: saved, status: status)
+                recordingQueue.async {
+                    self.recorder?.record(forDuration: 10) { path in
+                        self.recorder?.export(video: path) { saved, status in
+                            DispatchQueue.main.sync {
+                                sender.setTitle("w/Duration", for: .normal)
+                                self.pauseBtn.setTitle("Pause", for: .normal)
+                                self.pauseBtn.isEnabled = false
+                                self.recordBtn.isEnabled = true
+                                self.exportMessage(success: saved, status: status)
+                            }
                         }
                     }
                 }
@@ -238,7 +257,7 @@ extension ViewController {
 }
 
 //MARK: - ARVideoKit Delegate Methods
-extension ViewController {
+extension SCNViewController {
     func frame(didRender buffer: CVPixelBuffer, with time: CMTime, using rawBuffer: CVPixelBuffer) {
         // Do some image/video processing.
     }
