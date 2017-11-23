@@ -144,7 +144,7 @@ To do so, follow those steps:
 <img width="672" alt="screen shot 2017-11-14 at 8 41 06 pm" src="https://user-images.githubusercontent.com/4106695/32814258-327bd048-c97c-11e7-8148-8d606d545214.png">
 
 ## [License](LICENSE)
-Copyright 2017 Ahmed Fathi Bekhit
+Copyright 2017 Ahmed Fathi Bekhit, www.ahmedbekhit.com, me@ahmedbekhit.com
 
 `ARVideoKit` is licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
