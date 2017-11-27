@@ -13,7 +13,7 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [Installation](#installation) | Describes the [Manual](#manual) option to install `ARVideoKit`   |
 | [Implementation](#implementation) | Lists the [steps needed](#implementation), [notes](#note), and [reference](#youre-all-set-) for more options  |
 | [Publishing to the App Store](#publishing-to-the-app-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
-|[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD) | [Donations](#donate) will help me to keep maintaining `ARVideoKit` and open source it to everyone soon!|
+|[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD) | [Donations](#donate) will help me to keep maintaining `ARVideoKit` and open source it to everyone soon ❤️|
 | [License](#license) | Describes `ARVideoKit` license |
 
 ## Preview
@@ -145,7 +145,7 @@ To do so, follow those steps:
 <img width="672" alt="screen shot 2017-11-14 at 8 41 06 pm" src="https://user-images.githubusercontent.com/4106695/32814258-327bd048-c97c-11e7-8148-8d606d545214.png">
 
 ## Donate
-Donations will help me to keep maintining **ARVideoKit Framework** & open source this project to everyone soon!
+Donations will help me to keep maintining **ARVideoKit Framework** & open source this project to everyone soon ❤️
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD)
 
