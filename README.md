@@ -3,6 +3,10 @@ An iOS Framework that enables developers to capture videos 📹, photos 🌄, Li
 
 In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to capture videos 📹 and photos 🌄 of your awesome ARKit apps!
 
+#### Countdown
+[![Open Sourcing Countdown](http://www.ahmedbekhit.com/arvideokitCountdown.png)](http://www.webcountdown.net/?a=ydb2A87)
+
+
 | Table of Contents  |  Description       |
 | ------------------ |:------------------:|
 | [Documentation](https://github.com/AFathi/ARVideoKit/wiki) | Describes the configuration options `ARVideoKit` offers |
