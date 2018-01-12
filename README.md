@@ -50,9 +50,10 @@ To try the example project, simply clone this repository and open the `Examples`
 Drag the `ARVideoKit.framework` file as an embedded binary of your project targets. `ARVideoKit.framework` can be found in the `/Framework Build/` folder of this repository.
 ![Tutorial](http://www.ahmedbekhit.com/arvideokit_install_new.gif)
 
-Or you may drag the `ARVideoKit.xcodeproj` into your project and click the **+** button in the embedded binaries section of your project's target.
+Or you may drag `ARVideoKit.xcodeproj` into your project and click the **+** button in the embedded binaries section of your project's target.
 ![example embed framework](http://www.ahmedbekhit.com/embeddedBinary.png)
 ## Implementation
+### Swift
 1. `import ARVideoKit` in the application delegate `AppDelegate.swift` and a `UIViewController` with an `ARKit` scene.
 
 2. In the application delegate `AppDelegate.swift`, add this 👇 in order to allow the framework access and identify the supported device orientations. **Recommended** if the application supports landscape orientations.
@@ -123,7 +124,7 @@ Check [`RecordAR`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR) documenta
 ## Publishing to the App Store
 Before publishing to the App Store make sure to add the [ARVideoKit License](#license) to your app licences list.
 
-Additionally, you MUST **strip out the simulator architectures** from the framework before pushing an application to the App Store.
+Additionally, if you are using the binary build from `Framework Build` or the latest release, you MUST **strip out the simulator architectures** from the framework before pushing an application to the App Store.
 
 To do so, follow those steps:
 
