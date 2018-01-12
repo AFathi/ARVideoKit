@@ -3,9 +3,6 @@ An iOS Framework that enables developers to capture videos 📹, photos 🌄, Li
 
 In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to capture videos 📹 and photos 🌄 of your awesome ARKit apps!
 
-#### Countdown
-[![Open Sourcing Countdown](http://www.ahmedbekhit.com/arvideokitCountdown.png)](http://www.webcountdown.net/?a=ydb2A87)
-
 
 | Table of Contents  |  Description       |
 | ------------------ |:------------------:|
@@ -17,7 +14,7 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [Installation](#installation) | Describes the [Manual](#manual) option to install `ARVideoKit`   |
 | [Implementation](#implementation) | Lists the [steps needed](#implementation), [notes](#note), and [reference](#youre-all-set-) for more options  |
 | [Publishing to the App Store](#publishing-to-the-app-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
-|[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD) | [Donations](#donate) will help me to keep maintaining `ARVideoKit` and open source it to everyone soon ❤️|
+|[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD) | [Donations](#donate) will support me to keep maintaining `ARVideoKit` ❤️|
 | [License](#license) | Describes `ARVideoKit` license |
 | [AppCoda Tutorial](https://www.appcoda.com/record-arkit-video/) | Check out the detailed tutorial about implementing `ARVideoKit` with SpriteKit ☺️ |
 
@@ -150,7 +147,7 @@ To do so, follow those steps:
 <img width="672" alt="screen shot 2017-11-14 at 8 41 06 pm" src="https://user-images.githubusercontent.com/4106695/32814258-327bd048-c97c-11e7-8148-8d606d545214.png">
 
 ## Donate
-Donations will help me to keep maintining **ARVideoKit Framework** & open source this project to everyone soon ❤️
+Donations will support me to keep maintining **ARVideoKit Framework** ❤️
 
 [![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD)
 
