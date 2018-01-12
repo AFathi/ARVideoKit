@@ -54,9 +54,9 @@ Or you may drag `ARVideoKit.xcodeproj` into your project and click the **+** but
 ![example embed framework](http://www.ahmedbekhit.com/embeddedBinary.png)
 ## Implementation
 ### Swift
-Check the `README` file of the `/Examples/Swift` folder. [Click here to check the implementation steps.](https://github.com/AFathi/ARVideoKit/tree/master/Examples/Swift)
+[Click here to check the Swift implementation steps.](https://github.com/AFathi/ARVideoKit/tree/master/Examples/Swift)
 ### Objective-C
-Check the `README` file of the `/Examples/Objective-C` folder. [Click here to check the implementation steps.](https://github.com/AFathi/ARVideoKit/tree/master/Examples/Objective-C)
+[Click here to check the Objective-C implementation steps.](https://github.com/AFathi/ARVideoKit/tree/master/Examples/Objective-C)
 
 ### NOTE
 Make sure you add the usage description of the `camera`, `microphone`, and `photo library` in the app's `Info.plist`.
