@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FB36BD412008166700002808 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36BD402008166700002808 /* AppDelegate.m */; };
+		FB36BD432008166700002808 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = FB36BD422008166700002808 /* art.scnassets */; };
+		FB36BD462008166700002808 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36BD452008166700002808 /* MainViewController.m */; };
+		FB36BD492008166700002808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB36BD472008166700002808 /* Main.storyboard */; };
+		FB36BD4B2008166700002808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB36BD4A2008166700002808 /* Assets.xcassets */; };
+		FB36BD4E2008166700002808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB36BD4C2008166700002808 /* LaunchScreen.storyboard */; };
+		FB36BD512008166700002808 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36BD502008166700002808 /* main.m */; };
+		FB36BD66200849AA00002808 /* SCNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36BD65200849A900002808 /* SCNViewController.m */; };
+		FB36BD69200856A800002808 /* SKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36BD68200856A800002808 /* SKViewController.m */; };
+		FB36BD9420085C7B00002808 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36BD9120085C7B00002808 /* Scene.m */; };
+		FB36BD9520085C7B00002808 /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FB36BD9320085C7B00002808 /* Scene.sks */; };
+		FB36BD98200869D200002808 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FB36BD97200869D200002808 /* LICENSE */; };
+		FB36BD9F20086A1600002808 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB36BD9E20086A0B00002808 /* ARVideoKit.framework */; };
+		FB36BDA020086A1600002808 /* ARVideoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB36BD9E20086A0B00002808 /* ARVideoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FB36BD9D20086A0B00002808 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB36BD9920086A0A00002808 /* ARVideoKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FBD604DA1FA969DD00EC9804;
+			remoteInfo = ARVideoKit;
+		};
+		FB36BDA120086A1600002808 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB36BD9920086A0A00002808 /* ARVideoKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = FBD604D91FA969DD00EC9804;
+			remoteInfo = ARVideoKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FB36BD61200816E400002808 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FB36BDA020086A1600002808 /* ARVideoKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FB36BD3C2008166700002808 /* ARKit-Video.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARKit-Video.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB36BD3F2008166700002808 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FB36BD402008166700002808 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FB36BD422008166700002808 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		FB36BD442008166700002808 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		FB36BD452008166700002808 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		FB36BD482008166700002808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FB36BD4A2008166700002808 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FB36BD4D2008166700002808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FB36BD4F2008166700002808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB36BD502008166700002808 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FB36BD64200849A900002808 /* SCNViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCNViewController.h; sourceTree = "<group>"; };
+		FB36BD65200849A900002808 /* SCNViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCNViewController.m; sourceTree = "<group>"; };
+		FB36BD67200856A800002808 /* SKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKViewController.h; sourceTree = "<group>"; };
+		FB36BD68200856A800002808 /* SKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKViewController.m; sourceTree = "<group>"; };
+		FB36BD9120085C7B00002808 /* Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
+		FB36BD9220085C7B00002808 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
+		FB36BD9320085C7B00002808 /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
+		FB36BD97200869D200002808 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		FB36BD9920086A0A00002808 /* ARVideoKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ARVideoKit.xcodeproj; path = ../../ARVideoKit.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FB36BD392008166700002808 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB36BD9F20086A1600002808 /* ARVideoKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FB36BD332008166700002808 = {
+			isa = PBXGroup;
+			children = (
+				FB36BD97200869D200002808 /* LICENSE */,
+				FB36BD9920086A0A00002808 /* ARVideoKit.xcodeproj */,
+				FB36BD3E2008166700002808 /* ARKit-Video */,
+				FB36BD3D2008166700002808 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FB36BD3D2008166700002808 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB36BD3C2008166700002808 /* ARKit-Video.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB36BD3E2008166700002808 /* ARKit-Video */ = {
+			isa = PBXGroup;
+			children = (
+				FB36BD3F2008166700002808 /* AppDelegate.h */,
+				FB36BD402008166700002808 /* AppDelegate.m */,
+				FB36BDA320086A8C00002808 /* View Controllers */,
+				FB36BDA520086ACB00002808 /* Storyboards */,
+				FB36BDA620086AF100002808 /* Assets */,
+				FB36BD4F2008166700002808 /* Info.plist */,
+				FB36BD502008166700002808 /* main.m */,
+			);
+			path = "ARKit-Video";
+			sourceTree = "<group>";
+		};
+		FB36BD9A20086A0A00002808 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB36BD9E20086A0B00002808 /* ARVideoKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB36BDA320086A8C00002808 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FB36BDA420086AA300002808 /* Headers */,
+				FB36BD452008166700002808 /* MainViewController.m */,
+				FB36BD68200856A800002808 /* SKViewController.m */,
+				FB36BD65200849A900002808 /* SCNViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FB36BDA420086AA300002808 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				FB36BD442008166700002808 /* MainViewController.h */,
+				FB36BD67200856A800002808 /* SKViewController.h */,
+				FB36BD64200849A900002808 /* SCNViewController.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		FB36BDA520086ACB00002808 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				FB36BD472008166700002808 /* Main.storyboard */,
+				FB36BD4C2008166700002808 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FB36BDA620086AF100002808 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				FB36BDA720086B0600002808 /* AR Assets */,
+				FB36BD4A2008166700002808 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		FB36BDA720086B0600002808 /* AR Assets */ = {
+			isa = PBXGroup;
+			children = (
+				FB36BDA820086B1300002808 /* SCN */,
+				FB36BDA920086B1800002808 /* SK */,
+			);
+			path = "AR Assets";
+			sourceTree = "<group>";
+		};
+		FB36BDA820086B1300002808 /* SCN */ = {
+			isa = PBXGroup;
+			children = (
+				FB36BD422008166700002808 /* art.scnassets */,
+			);
+			path = SCN;
+			sourceTree = "<group>";
+		};
+		FB36BDA920086B1800002808 /* SK */ = {
+			isa = PBXGroup;
+			children = (
+				FB36BD9220085C7B00002808 /* Scene.h */,
+				FB36BD9120085C7B00002808 /* Scene.m */,
+				FB36BD9320085C7B00002808 /* Scene.sks */,
+			);
+			path = SK;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FB36BD3B2008166700002808 /* ARKit-Video */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB36BD542008166700002808 /* Build configuration list for PBXNativeTarget "ARKit-Video" */;
+			buildPhases = (
+				FB36BD382008166700002808 /* Sources */,
+				FB36BD392008166700002808 /* Frameworks */,
+				FB36BD3A2008166700002808 /* Resources */,
+				FB36BD61200816E400002808 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB36BDA220086A1600002808 /* PBXTargetDependency */,
+			);
+			name = "ARKit-Video";
+			productName = "ARKit-Video";
+			productReference = FB36BD3C2008166700002808 /* ARKit-Video.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FB36BD342008166700002808 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Ahmed Fathi Bekhit";
+				TargetAttributes = {
+					FB36BD3B2008166700002808 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FB36BD372008166700002808 /* Build configuration list for PBXProject "ARKit-Video" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FB36BD332008166700002808;
+			productRefGroup = FB36BD3D2008166700002808 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FB36BD9A20086A0A00002808 /* Products */;
+					ProjectRef = FB36BD9920086A0A00002808 /* ARVideoKit.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				FB36BD3B2008166700002808 /* ARKit-Video */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FB36BD9E20086A0B00002808 /* ARVideoKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ARVideoKit.framework;
+			remoteRef = FB36BD9D20086A0B00002808 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FB36BD3A2008166700002808 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB36BD98200869D200002808 /* LICENSE in Resources */,
+				FB36BD432008166700002808 /* art.scnassets in Resources */,
+				FB36BD4E2008166700002808 /* LaunchScreen.storyboard in Resources */,
+				FB36BD4B2008166700002808 /* Assets.xcassets in Resources */,
+				FB36BD492008166700002808 /* Main.storyboard in Resources */,
+				FB36BD9520085C7B00002808 /* Scene.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FB36BD382008166700002808 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB36BD9420085C7B00002808 /* Scene.m in Sources */,
+				FB36BD462008166700002808 /* MainViewController.m in Sources */,
+				FB36BD66200849AA00002808 /* SCNViewController.m in Sources */,
+				FB36BD512008166700002808 /* main.m in Sources */,
+				FB36BD69200856A800002808 /* SKViewController.m in Sources */,
+				FB36BD412008166700002808 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FB36BDA220086A1600002808 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ARVideoKit;
+			targetProxy = FB36BDA120086A1600002808 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FB36BD472008166700002808 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB36BD482008166700002808 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FB36BD4C2008166700002808 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB36BD4D2008166700002808 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FB36BD522008166700002808 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FB36BD532008166700002808 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FB36BD552008166700002808 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "ARKit-Video/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ahmedbekhit.ARKit-Video";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FB36BD562008166700002808 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "ARKit-Video/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ahmedbekhit.ARKit-Video";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FB36BD372008166700002808 /* Build configuration list for PBXProject "ARKit-Video" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB36BD522008166700002808 /* Debug */,
+				FB36BD532008166700002808 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB36BD542008166700002808 /* Build configuration list for PBXNativeTarget "ARKit-Video" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB36BD552008166700002808 /* Debug */,
+				FB36BD562008166700002808 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FB36BD342008166700002808 /* Project object */;
+}
