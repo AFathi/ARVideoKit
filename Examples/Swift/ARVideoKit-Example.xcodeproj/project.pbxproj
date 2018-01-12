@@ -144,20 +144,12 @@
 			path = SK;
 			sourceTree = "<group>";
 		};
-		FBE12A4B20086C9400B0BB61 /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Framework;
-			sourceTree = "<group>";
-		};
 		FBE134AD1FAAD3DD00BEC469 = {
 			isa = PBXGroup;
 			children = (
 				FB2E368B1FAE2A510035B8D6 /* LICENSE */,
 				FB36BDAA20086BB000002808 /* ARVideoKit.xcodeproj */,
 				FBE134B81FAAD3DD00BEC469 /* ARVideoKit-Example */,
-				FBE12A4B20086C9400B0BB61 /* Framework */,
 				FBE134B71FAAD3DD00BEC469 /* Products */,
 			);
 			sourceTree = "<group>";

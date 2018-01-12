@@ -19,8 +19,8 @@
 		FB36BD9420085C7B00002808 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36BD9120085C7B00002808 /* Scene.m */; };
 		FB36BD9520085C7B00002808 /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FB36BD9320085C7B00002808 /* Scene.sks */; };
 		FB36BD98200869D200002808 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FB36BD97200869D200002808 /* LICENSE */; };
-		FB36BD9F20086A1600002808 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB36BD9E20086A0B00002808 /* ARVideoKit.framework */; };
-		FB36BDA020086A1600002808 /* ARVideoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB36BD9E20086A0B00002808 /* ARVideoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FBE12A5320093EF800B0BB61 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB36BD9E20086A0B00002808 /* ARVideoKit.framework */; };
+		FBE12A5420093EF800B0BB61 /* ARVideoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB36BD9E20086A0B00002808 /* ARVideoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +31,7 @@
 			remoteGlobalIDString = FBD604DA1FA969DD00EC9804;
 			remoteInfo = ARVideoKit;
 		};
-		FB36BDA120086A1600002808 /* PBXContainerItemProxy */ = {
+		FBE12A5520093EF800B0BB61 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FB36BD9920086A0A00002808 /* ARVideoKit.xcodeproj */;
 			proxyType = 1;
@@ -41,13 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FB36BD61200816E400002808 /* Embed Frameworks */ = {
+		FBE12A5720093EF800B0BB61 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FB36BDA020086A1600002808 /* ARVideoKit.framework in Embed Frameworks */,
+				FBE12A5420093EF800B0BB61 /* ARVideoKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB36BD9F20086A1600002808 /* ARVideoKit.framework in Frameworks */,
+				FBE12A5320093EF800B0BB61 /* ARVideoKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,12 +205,12 @@
 				FB36BD382008166700002808 /* Sources */,
 				FB36BD392008166700002808 /* Frameworks */,
 				FB36BD3A2008166700002808 /* Resources */,
-				FB36BD61200816E400002808 /* Embed Frameworks */,
+				FBE12A5720093EF800B0BB61 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FB36BDA220086A1600002808 /* PBXTargetDependency */,
+				FBE12A5620093EF800B0BB61 /* PBXTargetDependency */,
 			);
 			name = "ARKit-Video";
 			productName = "ARKit-Video";
@@ -299,10 +299,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FB36BDA220086A1600002808 /* PBXTargetDependency */ = {
+		FBE12A5620093EF800B0BB61 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ARVideoKit;
-			targetProxy = FB36BDA120086A1600002808 /* PBXContainerItemProxy */;
+			targetProxy = FBE12A5520093EF800B0BB61 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
