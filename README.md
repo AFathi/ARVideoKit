@@ -12,7 +12,7 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [Compatibility](#compatibility) | Describes the `ARVideoKit` device and iOS compatibality |
 | [Example Project](#example-project) | Explains how to run the example project provided in this repository |
 | [Installation](#installation) | Describes the [Manual](#manual) option to install `ARVideoKit`   |
-| [Implementation](#implementation) | Lists the [steps needed](#implementation), [notes](#note), and [reference](#youre-all-set-) for more options  |
+| [Implementation](#implementation) | Lists the [steps needed](#implementation) for Objective-C & Swift, [notes](#note), and [reference](#youre-all-set-) for more options  |
 | [Publishing to the App Store](#publishing-to-the-app-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
 |[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD) | [Donations](#donate) will support me to keep maintaining `ARVideoKit` ❤️|
 | [License](#license) | Describes `ARVideoKit` license |
@@ -54,55 +54,9 @@ Or you may drag `ARVideoKit.xcodeproj` into your project and click the **+** but
 ![example embed framework](http://www.ahmedbekhit.com/embeddedBinary.png)
 ## Implementation
 ### Swift
-1. `import ARVideoKit` in the application delegate `AppDelegate.swift` and a `UIViewController` with an `ARKit` scene.
-
-2. In the application delegate `AppDelegate.swift`, add this 👇 in order to allow the framework access and identify the supported device orientations. **Recommended** if the application supports landscape orientations.
-```
-func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-return ViewAR.orientation
-}
-```
-
-3. In the selected `UIViewController` class, create an optional type [`RecordAR`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR) global variable.
-```
-var recorder:RecordAR?
-```
-
-4. Initialize [`RecordAR`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR) with [`ARSCNView`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arscenekitarscnview) or [`ARSKView`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arspritekitarskview). **Recommended** to initialize in `viewDidLoad()`.
-
-Initializing RecordAR with `ARSCNView`
-```
-recorder = RecordAR(ARSceneKit: sceneView)
-```
-Initializing RecordAR with `ARSKView`
-```
-recorder = RecordAR(ARSpriteKit: SKSceneView)
-```
-
-5. Call the [`prepare()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-prepare_-configurationarconfiguration) method in `viewWillAppear(_ animated: Bool)`
-```
-let configuration = ARWorldTrackingConfiguration()
-recorder?.prepare(configuration)
-```
-
-6. Call the [`rest()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-rest) method in `viewWillDisappear(_ animated: Bool)`
-```
-recorder?.rest()
-```
-
-7. Call the [`record()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-record) method in the proper method to start recording.
-```
-@IBAction func startRecording(_ sender: UIButton) {
-recorder?.record()
-}
-```
-
-8. Call the [`stopAndExport()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-stopandexport_-finished-_-videopath-url-_-permissionstatusphauthorizationstatus-_-exportedbool---swiftvoid--nil) method in the proper method to stop recording.
-```
-@IBAction func stopRecording(_ sender: UIButton) {
-recorder?.stopAndExport()
-}
-```
+Check the `README` file of the `/Examples/Swift` folder. [Click here to check the implementation steps.](https://github.com/AFathi/ARVideoKit/tree/master/Examples/Swift)
+### Objective-C
+Check the `README` file of the `/Examples/Objective-C` folder. [Click here to check the implementation steps.](https://github.com/AFathi/ARVideoKit/tree/master/Examples/Objective-C)
 
 ### NOTE
 Make sure you add the usage description of the `camera`, `microphone`, and `photo library` in the app's `Info.plist`.
