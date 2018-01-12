@@ -42,16 +42,16 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 - iOS 11
 - Swift 3.2 or higher
 
-## Example Project
-To try the example project, simply clone this repository and open `ARVideoKit-Example.xcodeproj` project file.
+## Example Projects
+To try the example project, simply clone this repository and open the `Examples` folder to choose between the Objective-C and Swift project files.
 
-It's **recommended** to test `SKViewController` by assigning it as the initial view controller.
-![is initial VC](http://ahmedbekhit.com/isinitialVC.png)
 ## Installation
 ### Manual
-Drag the `ARVideoKit.framework` file as an embedded binary of your project targets. `ARVideoKit.framework` can be found in the `/Framework/` folder of this repository.
+Drag the `ARVideoKit.framework` file as an embedded binary of your project targets. `ARVideoKit.framework` can be found in the `/Framework Build/` folder of this repository.
 ![Tutorial](http://www.ahmedbekhit.com/arvideokit_install_new.gif)
 
+Or you may drag the `ARVideoKit.xcodeproj` into your project and click the **+** button in the embedded binaries section of your project's target.
+![example embed framework](http://www.ahmedbekhit.com/embeddedBinary.png)
 ## Implementation
 1. `import ARVideoKit` in the application delegate `AppDelegate.swift` and a `UIViewController` with an `ARKit` scene.
 
