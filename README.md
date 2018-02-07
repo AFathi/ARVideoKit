@@ -11,7 +11,7 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [Preview](#preview)                                        | Displays 2 GIF images captured using the supported [`gif`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-gifforduration-durationtimeinterval-exportbool-_-finished-_-statusbool-_-gifpath-url-_-permissionstatusphauthorizationstatus-_-exportedbool---swiftvoid--nil) method in `ARVideoKit`|
 | [Key Features](#key-features) | Lists the key features `ARVideoKit` offers     |
 | [Compatibility](#compatibility) | Describes the `ARVideoKit` device and iOS compatibality |
-| [Example Project](#example-project) | Explains how to run the example project provided in this repository |
+| [Example Projects](#example-projects) | Explains how to run the example project provided in this repository |
 | [Installation](#installation) | Describes the [Manual](#manual) option to install `ARVideoKit`   |
 | [Implementation](#implementation) | Lists the [steps needed](#implementation) for Objective-C & Swift, [notes](#note), and [reference](#youre-all-set-) for more options  |
 | [Publishing to the App Store](#publishing-to-the-app-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
