@@ -21,10 +21,10 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [AppCoda Tutorial](https://www.appcoda.com/record-arkit-video/) | Check out a detailed tutorial about implementing `ARVideoKit` with SpriteKit ☺️ |
 
 ## Preview
-|👾 [Initialized with SpriteKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arspritekitarskview)👇 ‍‍‍‍‍‍ ‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍|🚀 [Initialized with SceneKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arscenekitarscnview) 👇 ‍‍‍‍‍‍ ‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍|
+|👾 [Initialized with SpriteKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arspritekitarskview)👇|🚀 [Initialized with SceneKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arscenekitarscnview) 👇|
 |--------------|--------------|
-
-![SpriteKit Preview](http://www.ahmedbekhit.com/SK_PREV.gif) ![SceneKit Preview](http://www.ahmedbekhit.com/SCN_PREVIEW.gif)
+| ![SpriteKit Preview](http://www.ahmedbekhit.com/SK_PREV.gif) | ![SceneKit Preview](http://www.ahmedbekhit.com/SCN_PREVIEW.gif)|
+ 
 ## Key Features
 ✅ Capture [Photos](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-photo---uiimage) from [`ARSCNView`](https://developer.apple.com/documentation/arkit/arscnview) and [`ARSKView`](https://developer.apple.com/documentation/arkit/arskview)
 
