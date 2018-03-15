@@ -87,6 +87,17 @@ fileprivate var renderer:RenderAR!
      A boolean that enables or disables clearing cached media after exporting to Camera Roll. Default is `true`.
      */
     @objc public var deleteCacheWhenExported:Bool = true
+    /**
+     A boolean that enables or disables using envronment light rendering. Default is `false`.
+     */
+    @objc public var enableAdjsutEnvironmentLighting:Bool = false {
+        
+        didSet{
+            if (renderEngine != nil) {
+                renderEngine.autoenablesDefaultLighting = enableAdjsutEnvironmentLighting
+            }
+        }
+    }
     
     //MARK: - Public initialization methods
     /**
@@ -222,6 +233,8 @@ fileprivate var renderer:RenderAR!
 
         NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
     }
+    
+    
 
 
     //MARK: - Public methods for capturing videos, photos, Live Photos, and GIFs
