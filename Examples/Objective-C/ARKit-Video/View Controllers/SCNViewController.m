@@ -50,6 +50,9 @@
     
     // Configure RecordAR to store media files in local app directory
     recorder.deleteCacheWhenExported = NO;
+    
+    // Configure the envronment light rendering.
+    recorder.enableAdjsutEnvironmentLighting = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
