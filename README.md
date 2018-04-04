@@ -1,4 +1,5 @@
-# ARVideoKit
+![intro image](http://www.ahmedbekhit.com/tutorials/ARVideoKit_prev_1.png)
+
 An iOS Framework that enables developers to capture videos 📹, photos 🌄, Live Photos 🎇, and GIFs 🎆 with ARKit content.
 
 In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to capture videos 📹 and photos 🌄 of your awesome ARKit apps!
@@ -10,19 +11,20 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [Preview](#preview)                                        | Displays 2 GIF images captured using the supported [`gif`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-gifforduration-durationtimeinterval-exportbool-_-finished-_-statusbool-_-gifpath-url-_-permissionstatusphauthorizationstatus-_-exportedbool---swiftvoid--nil) method in `ARVideoKit`|
 | [Key Features](#key-features) | Lists the key features `ARVideoKit` offers     |
 | [Compatibility](#compatibility) | Describes the `ARVideoKit` device and iOS compatibality |
-| [Example Project](#example-project) | Explains how to run the example project provided in this repository |
+| [Example Projects](#example-projects) | Explains how to run the example project provided in this repository |
 | [Installation](#installation) | Describes the [Manual](#manual) option to install `ARVideoKit`   |
-| [Implementation](#implementation) | Lists the [steps needed](#implementation), [notes](#note), and [reference](#youre-all-set-) for more options  |
+| [Implementation](#implementation) | Lists the [steps needed](#implementation) for Objective-C & Swift, [notes](#note), and [reference](#youre-all-set-) for more options  |
 | [Publishing to the App Store](#publishing-to-the-app-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
 |[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD) | [Donations](#donate) will support me to keep maintaining `ARVideoKit` ❤️|
+| [Contributions](#contributions) | Describes how you can contribute to this project |
 | [License](#license) | Describes `ARVideoKit` license |
-| [AppCoda Tutorial](https://www.appcoda.com/record-arkit-video/) | Check out the detailed tutorial about implementing `ARVideoKit` with SpriteKit ☺️ |
+| [AppCoda Tutorial](https://www.appcoda.com/record-arkit-video/) | Check out a detailed tutorial about implementing `ARVideoKit` with SpriteKit ☺️ |
 
 ## Preview
-|👾 [Initialized with SpriteKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arspritekitarskview)👇 ‍‍‍‍‍‍ ‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍|🚀 [Initialized with SceneKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arscenekitarscnview) 👇 ‍‍‍‍‍‍ ‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍ ‍‍ ‍‍‍‍‍‍ ‍‍|
+|👾 [Initialized with SpriteKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arspritekitarskview)👇|🚀 [Initialized with SceneKit](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arscenekitarscnview) 👇|
 |--------------|--------------|
-
-![SpriteKit Preview](http://www.ahmedbekhit.com/SK_PREV.gif) ![SceneKit Preview](http://www.ahmedbekhit.com/SCN_PREVIEW.gif)
+| ![SpriteKit Preview](http://www.ahmedbekhit.com/SK_PREV.gif) | ![SceneKit Preview](http://www.ahmedbekhit.com/SCN_PREVIEW.gif)|
+ 
 ## Key Features
 ✅ Capture [Photos](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-photo---uiimage) from [`ARSCNView`](https://developer.apple.com/documentation/arkit/arscnview) and [`ARSKView`](https://developer.apple.com/documentation/arkit/arskview)
 
@@ -54,55 +56,9 @@ Or you may drag `ARVideoKit.xcodeproj` into your project and click the **+** but
 ![example embed framework](http://www.ahmedbekhit.com/embeddedBinary.png)
 ## Implementation
 ### Swift
-1. `import ARVideoKit` in the application delegate `AppDelegate.swift` and a `UIViewController` with an `ARKit` scene.
-
-2. In the application delegate `AppDelegate.swift`, add this 👇 in order to allow the framework access and identify the supported device orientations. **Recommended** if the application supports landscape orientations.
-```
-func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-return ViewAR.orientation
-}
-```
-
-3. In the selected `UIViewController` class, create an optional type [`RecordAR`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR) global variable.
-```
-var recorder:RecordAR?
-```
-
-4. Initialize [`RecordAR`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR) with [`ARSCNView`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arscenekitarscnview) or [`ARSKView`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#init-arspritekitarskview). **Recommended** to initialize in `viewDidLoad()`.
-
-Initializing RecordAR with `ARSCNView`
-```
-recorder = RecordAR(ARSceneKit: sceneView)
-```
-Initializing RecordAR with `ARSKView`
-```
-recorder = RecordAR(ARSpriteKit: SKSceneView)
-```
-
-5. Call the [`prepare()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-prepare_-configurationarconfiguration) method in `viewWillAppear(_ animated: Bool)`
-```
-let configuration = ARWorldTrackingConfiguration()
-recorder?.prepare(configuration)
-```
-
-6. Call the [`rest()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-rest) method in `viewWillDisappear(_ animated: Bool)`
-```
-recorder?.rest()
-```
-
-7. Call the [`record()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-record) method in the proper method to start recording.
-```
-@IBAction func startRecording(_ sender: UIButton) {
-recorder?.record()
-}
-```
-
-8. Call the [`stopAndExport()`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-stopandexport_-finished-_-videopath-url-_-permissionstatusphauthorizationstatus-_-exportedbool---swiftvoid--nil) method in the proper method to stop recording.
-```
-@IBAction func stopRecording(_ sender: UIButton) {
-recorder?.stopAndExport()
-}
-```
+[Click here to check the Swift implementation steps.](https://github.com/AFathi/ARVideoKit/tree/master/Examples/Swift)
+### Objective-C
+[Click here to check the Objective-C implementation steps.](https://github.com/AFathi/ARVideoKit/tree/master/Examples/Objective-C)
 
 ### NOTE
 Make sure you add the usage description of the `camera`, `microphone`, and `photo library` in the app's `Info.plist`.
@@ -151,6 +107,11 @@ To do so, follow those steps:
 Donations will support me to keep maintining **ARVideoKit Framework** ❤️
 
 [![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD)
+
+## Contributions
+If you have an idea for a new **ARVideoKit** feature/functionality and want to add it to this repository, feel free to fork the project and create a pull request!
+
+Also, feel free to create an issue if you have any suggestions or need any help ☺️
 
 ## [License](LICENSE)
 Copyright 2017 Ahmed Fathi Bekhit, www.ahmedbekhit.com, me@ahmedbekhit.com

@@ -37,6 +37,9 @@ class SCNViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, 
         // Set the scene to the view
         sceneView.scene = scene
         sceneView.scene.rootNode.scale = SCNVector3(0.2, 0.2, 0.2)
+        //
+        sceneView.automaticallyUpdatesLighting = true
+        sceneView.autoenablesDefaultLighting = true
         
         // Initialize ARVideoKit recorder
         recorder = RecordAR(ARSceneKit: sceneView)
@@ -54,6 +57,9 @@ class SCNViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, 
         
         // Configure ARKit content mode. Default is .auto
         recorder?.contentMode = .aspectFill
+        
+        //record or photo add environment light rendering, Default is false
+        recorder?.enableAdjsutEnvironmentLighting = true
         
         // Set the UIViewController orientations
         recorder?.inputViewOrientations = [.landscapeLeft, .landscapeRight, .portrait]
