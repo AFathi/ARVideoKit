@@ -120,7 +120,12 @@
             [sender setTitle:@"Record" forState: UIControlStateNormal];
             [self.pauseBtn setTitle:@"Pause" forState: UIControlStateNormal];
             self.pauseBtn.enabled = NO;
-            [recorder stopAndExport:NULL];
+            //URL, PHAuthorizationStatus, Bool
+            [recorder stopAndExport:^(NSURL*_Nonnull filePath, PHAuthorizationStatus status, BOOL ready) {
+                if (status == PHAuthorizationStatusAuthorized) {
+                    NSLog(@"Video Exported Successfully!");
+                }
+            }];
         }
     }else if (sender.tag == 1) {
         //Record with duration

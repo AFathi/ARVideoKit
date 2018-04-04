@@ -13,6 +13,7 @@ import Photos
 
 class SCNViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, RecordARDelegate  {
     
+    @IBOutlet weak var overlayImg: UIImageView!
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var recordBtn: UIButton!
     @IBOutlet var pauseBtn: UIButton!

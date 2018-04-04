@@ -70,7 +70,11 @@
     [self.sceneView.session pause];
     
     if(recorder.status == RecordARStatusRecording) {
-        [recorder stopAndExport:NULL];
+        [recorder stopAndExport:^(NSURL*_Nonnull filePath, PHAuthorizationStatus status, BOOL ready) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                NSLog(@"Video Exported Successfully!");
+            }
+        }];
     }
     recorder.onlyRenderWhileRecording = YES;
     
@@ -116,7 +120,11 @@
             [sender setTitle:@"Record" forState: UIControlStateNormal];
             [self.pauseBtn setTitle:@"Pause" forState: UIControlStateNormal];
             self.pauseBtn.enabled = NO;
-            [recorder stopAndExport:NULL];
+            [recorder stopAndExport:^(NSURL*_Nonnull filePath, PHAuthorizationStatus status, BOOL ready) {
+                if (status == PHAuthorizationStatusAuthorized) {
+                    NSLog(@"Video Exported Successfully!");
+                }
+            }];
         }
     }else if (sender.tag == 1) {
         //Record with duration
@@ -131,7 +139,11 @@
             [self.pauseBtn setTitle:@"Pause" forState: UIControlStateNormal];
             self.pauseBtn.enabled = NO;
             self.recordBtn.enabled = YES;
-            [recorder stopAndExport:NULL];
+            [recorder stopAndExport:^(NSURL*_Nonnull filePath, PHAuthorizationStatus status, BOOL ready) {
+                if (status == PHAuthorizationStatusAuthorized) {
+                    NSLog(@"Video Exported Successfully!");
+                }
+            }];
         }
     }else if (sender.tag == 2) {
         //Pause

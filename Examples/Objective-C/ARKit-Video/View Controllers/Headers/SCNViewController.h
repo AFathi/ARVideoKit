@@ -10,6 +10,7 @@
 #import <SceneKit/SceneKit.h>
 #import <ARKit/ARKit.h>
 #import <CoreMedia/CoreMedia.h>
+#import <Photos/Photos.h>
 @import ARVideoKit;
 
 @interface SCNViewController : UIViewController

@@ -37,7 +37,7 @@ internal class GIFGenerator {
             
             guard let path = self.currentGIFPath else{return}
             guard let destination = CGImageDestinationCreateWithURL(path as CFURL, kUTTypeGIF, images.count, nil) else{finished?(false, nil);return}
-            print(destination)
+            logAR.message("\(destination)")
             CGImageDestinationSetProperties(destination, gifSettings as CFDictionary)
             for image in images {
                 if let imageRef = image.cgImage {

@@ -10,6 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import <ARKit/ARKit.h>
 #import <CoreMedia/CoreMedia.h>
+#import <Photos/Photos.h>
 @import ARVideoKit;
 
 @interface SKViewController : UIViewController
