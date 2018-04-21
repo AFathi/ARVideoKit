@@ -128,6 +128,16 @@ fileprivate var renderer:RenderAR!
             logAR.message("Error occurred while loading SK Video Assets : \(error). Please download \"video.scnassets\" from\nwww.ahmedbekhit.com/ARVideoKitAssets")
         }
     }
+    
+    /**
+     Initialize 🌞🍳 `RecordAR` with an `SCNView` 🚀.
+     */
+    @objc override public init?(SceneKit: SCNView) {
+        super.init(SceneKit: SceneKit)
+        view = SceneKit
+        setup()
+    }
+    
     //MARK: - Internal threads
     internal let writerQueue = DispatchQueue(label:"com.ahmedbekhit.WriterQueue")
     internal let gifWriterQueue = DispatchQueue(label: "com.ahmedbekhit.GIFWriterQueue", attributes: .concurrent)
@@ -141,6 +151,8 @@ fileprivate var renderer:RenderAR!
         if let view = view as? ARSCNView {
             return view.parent!
         }else if let view = view as? ARSKView {
+            return view.parent!
+        }else if let view = view as? SCNView {
             return view.parent!
         }
         return nil
@@ -180,6 +192,7 @@ fileprivate var renderer:RenderAR!
         let vidPath = "\(documentsDirectory)/\(formatter.string(from: date))ARVideo.mp4"
         return URL(fileURLWithPath: vidPath, isDirectory: false)
     }
+    
     //MARK: - Internal Video Setup
     internal func setup() {
         if let view = view as? ARSCNView {
@@ -206,6 +219,16 @@ fileprivate var renderer:RenderAR!
             
             renderEngine = SCNRenderer(device: mtlDevice, options: nil)
             renderEngine.scene = scnView.scene
+            
+            gpuLoop = CADisplayLink(target: self, selector: #selector(renderFrame))
+            gpuLoop.preferredFramesPerSecond = fps.rawValue
+            gpuLoop.add(to: .main, forMode: .commonModes)
+            
+            status = .readyToRecord
+        }else if let view = view as? SCNView {
+            guard let mtlDevice = MTLCreateSystemDefaultDevice() else {logAR.message("ERROR:- This device does not support Metal");return}
+            renderEngine = SCNRenderer(device: mtlDevice, options: nil)
+            renderEngine.scene = view.scene
             
             gpuLoop = CADisplayLink(target: self, selector: #selector(renderFrame))
             gpuLoop.preferredFramesPerSecond = fps.rawValue
@@ -669,6 +692,10 @@ fileprivate var renderer:RenderAR!
             ViewAR.orientation = .portrait
 
             view.session.run(configuration)
+        }else if let _ = view as? SCNView {
+            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+            ViewAR.orientation = .portrait
+            
         }
         
         onlyRenderWhileRec = onlyRenderWhileRecording
@@ -689,12 +716,11 @@ internal extension RecordAR {
     @objc internal func renderFrame() {
         //frame rendering
         if self.onlyRenderWhileRec && !isRecording && !isRecordingGIF {return}
-        
         guard let buffer = renderer.buffer else{return}
         guard let rawBuffer = renderer.rawBuffer else{logAR.message("ERROR:- An error occurred while rendering the camera's main buffers.");return}
         guard let size = renderer.bufferSize else{logAR.message("ERROR:- An error occurred while rendering the camera buffer.");return}
         renderer.ARcontentMode = contentMode
-        
+
         self.writerQueue.sync {
             var time:CMTime {return CMTimeMakeWithSeconds(renderer.time, 1000000);}
             

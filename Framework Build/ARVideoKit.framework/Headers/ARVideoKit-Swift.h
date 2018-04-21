@@ -285,6 +285,7 @@ enum RecordARMicrophoneStatus : NSInteger;
 enum RecordARMicrophonePermission : NSInteger;
 @class ARSCNView;
 @class ARSKView;
+@class SCNView;
 @class UIImage;
 
 /// This class renders the <code>ARSCNView</code> or <code>ARSKView</code> content with the device’s camera stream to generate a video 📹, photo 🌄, live photo 🎇 or GIF 🎆.
@@ -334,10 +335,14 @@ SWIFT_CLASS("_TtC10ARVideoKit8RecordAR") SWIFT_AVAILABILITY(ios,introduced=11.0)
 @property (nonatomic) BOOL adjustGIFForSharing;
 /// A boolean that enables or disables clearing cached media after exporting to Camera Roll. Default is <code>true</code>.
 @property (nonatomic) BOOL deleteCacheWhenExported;
+/// A boolean that enables or disables using envronment light rendering. Default is <code>false</code>.
+@property (nonatomic) BOOL enableAdjsutEnvironmentLighting;
 /// Initialize 🌞🍳 <code>RecordAR</code> with an <code>ARSCNView</code> 🚀.
 - (nullable instancetype)initWithARSceneKit:(ARSCNView * _Nonnull)ARSceneKit OBJC_DESIGNATED_INITIALIZER;
 /// Initialize 🌞🍳 <code>RecordAR</code> with an <code>ARSKView</code> 👾.
 - (nullable instancetype)initWithARSpriteKit:(ARSKView * _Nonnull)ARSpriteKit OBJC_DESIGNATED_INITIALIZER;
+/// Initialize 🌞🍳 <code>RecordAR</code> with an <code>SCNView</code> 🚀.
+- (nullable instancetype)initWithSceneKit:(SCNView * _Nonnull)SceneKit OBJC_DESIGNATED_INITIALIZER;
 /// A method that renders a photo 🌄 and returns it as <code>UIImage</code>.
 - (UIImage * _Nonnull)photo SWIFT_WARN_UNUSED_RESULT;
 /// A method that renders a <code>PHLivePhoto</code> 🎇 and returns <code>PHLivePhotoPlus</code> in the completion handler.

@@ -27,6 +27,8 @@ internal struct RenderAR {
         }else if let view = view as? ARSKView {
             guard let rawBuffer = view.session.currentFrame?.capturedImage else{return nil}
             return rawBuffer
+        }else if let _ = view as? SCNView {
+            return buffer
         }
         return nil
     }
@@ -96,6 +98,18 @@ internal struct RenderAR {
             if let _ = renderedFrame {
             }else{
                 renderedFrame = renderEngine.snapshot(atTime: time, with: size, antialiasingMode: .none).rotate(by: 180);
+            }
+            guard let buffer = renderedFrame!.buffer else{return nil};
+            return buffer;
+        }else if let _ = view as? SCNView {
+            let size = UIScreen.main.bounds.size
+            var renderedFrame:UIImage?
+            pixelsQueue.sync {
+                renderedFrame = renderEngine.snapshot(atTime: self.time, with: size, antialiasingMode: .none);
+            }
+            if let _ = renderedFrame {
+            }else{
+                renderedFrame = renderEngine.snapshot(atTime: time, with: size, antialiasingMode: .none);
             }
             guard let buffer = renderedFrame!.buffer else{return nil};
             return buffer;

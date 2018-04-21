@@ -80,6 +80,22 @@ fileprivate var recentAngle = 0
         parentVC = vc
     }
     
+    @objc init?(SceneKit:SCNView) {
+        super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        
+        ViewAR.orientation = .portrait
+        
+        guard let vc = SceneKit.parent else {
+            return
+        }
+        
+        parentVC = vc
+    }
+    
     @objc fileprivate func deviceDidRotate() {
         guard var views = parentVC?.view.subviews else {
             return
