@@ -26,11 +26,11 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | ![SpriteKit Preview](http://www.ahmedbekhit.com/SK_PREV.gif) | ![SceneKit Preview](http://www.ahmedbekhit.com/SCN_PREVIEW.gif)|
  
 ## Key Features
-✅ Capture [Photos](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-photo---uiimage) from [`ARSCNView`](https://developer.apple.com/documentation/arkit/arscnview) and [`ARSKView`](https://developer.apple.com/documentation/arkit/arskview)
+✅ Capture [Photos](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-photo---uiimage) from [`ARSCNView`](https://developer.apple.com/documentation/arkit/arscnview), [`ARSKView`](https://developer.apple.com/documentation/arkit/arskview), and [`SCNView`](https://developer.apple.com/documentation/scenekit/scnview)
 
-✅ Capture [Live Photos](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-livephotoexportbool-_-finished-_-statusbool-_-livephotophlivephotoplus-_-permissionstatusphauthorizationstatus-_-exportedbool---swiftvoid--nil) & [GIFs](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-gifforduration-durationtimeinterval-exportbool-_-finished-_-statusbool-_-gifpath-url-_-permissionstatusphauthorizationstatus-_-exportedbool---swiftvoid--nil) from [`ARSCNView`](https://developer.apple.com/documentation/arkit/arscnview) and [`ARSKView`](https://developer.apple.com/documentation/arkit/arskview)
+✅ Capture [Live Photos](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-livephotoexportbool-_-finished-_-statusbool-_-livephotophlivephotoplus-_-permissionstatusphauthorizationstatus-_-exportedbool---swiftvoid--nil) & [GIFs](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-gifforduration-durationtimeinterval-exportbool-_-finished-_-statusbool-_-gifpath-url-_-permissionstatusphauthorizationstatus-_-exportedbool---swiftvoid--nil) from [`ARSCNView`](https://developer.apple.com/documentation/arkit/arscnview), [`ARSKView`](https://developer.apple.com/documentation/arkit/arskview), and [`SCNView`](https://developer.apple.com/documentation/scenekit/scnview)
 
-✅ [Record](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-record) Videos from [`ARSCNView`](https://developer.apple.com/documentation/arkit/arscnview) and [`ARSKView`](https://developer.apple.com/documentation/arkit/arskview)
+✅ [Record](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-record) Videos from [`ARSCNView`](https://developer.apple.com/documentation/arkit/arscnview), [`ARSKView`](https://developer.apple.com/documentation/arkit/arskview), and [`SCNView`](https://developer.apple.com/documentation/scenekit/scnview)
 
 ✅ [Pause/Resume](https://github.com/AFathi/ARVideoKit/wiki/RecordAR#func-pause) video
 
