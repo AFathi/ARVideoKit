@@ -678,27 +678,25 @@ fileprivate var renderer:RenderAR!
      Recommended to use in the `UIViewController`'s method `func viewWillAppear(_ animated: Bool)`
      - parameter configuration: An object that defines motion and scene tracking behaviors for the session.
     */
-    @objc public func prepare(_ configuration:ARConfiguration) {
+    @objc public func prepare(_ configuration:ARConfiguration?=nil) {
         ARcontentMode = contentMode
+        onlyRenderWhileRec = onlyRenderWhileRecording
         if let view = view as? ARSCNView {
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
             ViewAR.orientation = .portrait
-
-            //try resetting anchors for the initial landscape orientation issue.
             
-            view.session.run(configuration)
+            //try resetting anchors for the initial landscape orientation issue.
+            guard let config = configuration else {return}
+            view.session.run(config)
         }else if let view = view as? ARSKView {
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
             ViewAR.orientation = .portrait
-
-            view.session.run(configuration)
+            guard let config = configuration else {return}
+            view.session.run(config)
         }else if let _ = view as? SCNView {
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
             ViewAR.orientation = .portrait
-            
         }
-        
-        onlyRenderWhileRec = onlyRenderWhileRecording
     }
     /**
      A method that switches off the orientation lock used in a `UIViewController` with AR scenes 📐😴.
