@@ -17,6 +17,7 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [Publishing to the App Store](#publishing-to-the-app-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
 |[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD) | [Donations](#donate) will support me to keep maintaining `ARVideoKit` ❤️|
 | [Contributions](#contributions) | Describes how you can contribute to this project |
+| [Apps using ARVideoKit](#apps-using-arvideokit) | A list of published applications using ARVideoKit |
 | [License](#license) | Describes `ARVideoKit` license |
 | [AppCoda Tutorial](https://www.appcoda.com/record-arkit-video/) | Check out a detailed tutorial about implementing `ARVideoKit` with SpriteKit ☺️ |
 
@@ -113,6 +114,12 @@ If you have an idea for a new **ARVideoKit** feature/functionality and want to a
 
 Also, feel free to create an issue if you have any suggestions or need any help ☺️
 
+## Apps using ARVideoKit
+| App  |  Description   |
+| ------------------ |:------------------:|
+| [Our SolAR](https://itunes.apple.com/app/id1267675913) | An app that allows you to see our Solar System anywhere at all! |
+
+_Feel free to add your application to this list!_
 ## [License](LICENSE)
 Copyright 2017 Ahmed Fathi Bekhit, www.ahmedbekhit.com, me@ahmedbekhit.com
 
