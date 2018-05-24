@@ -120,7 +120,7 @@ Also, feel free to create an issue if you have any suggestions or need any help 
 | [Our SolAR](https://itunes.apple.com/app/id1267675913) | An app that allows you to see our Solar System anywhere at all! |
 
 _Feel free to add your application to this list!_
-## [License](LICENSE)
+## License
 Copyright 2017 Ahmed Fathi Bekhit, www.ahmedbekhit.com, me@ahmedbekhit.com
 
 `ARVideoKit` is licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
