@@ -83,9 +83,13 @@ Before publishing to the App Store make sure to add the [ARVideoKit License](#li
 
 1. Build ARVideoKit for release
 > Open ARVideoKit.xcodeproj
+
 > Select ARVideoKitRelease scheme with Generic iOS Device
+
 > Build the project (cmd + B)
+
 > Right click on Products/ARVideoKit.framework -> Show in finder
+
 > Copy and replace ARVideoKit.framework in your project 
 
 Additionally, if you are using the binary build from `Framework Build` or the latest release, you MUST **strip out the simulator architectures** from the framework before pushing an application to the App Store.
