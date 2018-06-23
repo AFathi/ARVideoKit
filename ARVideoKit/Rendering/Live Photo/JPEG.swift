@@ -30,7 +30,7 @@ internal class JPEG {
             else { return }
         defer { CGImageDestinationFinalize(dest) }
         guard let imageSource = self.imageSource() else { return }
-        guard let metadata = self.metadata()?.mutableCopy() as! NSMutableDictionary! else { return }
+        guard let metadata = self.metadata()?.mutableCopy() as? NSMutableDictionary else { return }
 
         let makerNote = NSMutableDictionary()
         makerNote.setObject(assetIdentifier, forKey: kFigAppleMakerNote_AssetIdentifier as NSCopying)

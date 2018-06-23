@@ -17,6 +17,7 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [Publishing to the App Store](#publishing-to-the-app-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
 |[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD) | [Donations](#donate) will support me to keep maintaining `ARVideoKit` ❤️|
 | [Contributions](#contributions) | Describes how you can contribute to this project |
+| [Apps using ARVideoKit](#apps-using-arvideokit) | A list of published applications using ARVideoKit |
 | [License](#license) | Describes `ARVideoKit` license |
 | [AppCoda Tutorial](https://www.appcoda.com/record-arkit-video/) | Check out a detailed tutorial about implementing `ARVideoKit` with SpriteKit ☺️ |
 
@@ -80,27 +81,38 @@ Check [`RecordAR`](https://github.com/AFathi/ARVideoKit/wiki/RecordAR) documenta
 ## Publishing to the App Store
 Before publishing to the App Store make sure to add the [ARVideoKit License](#license) to your app licences list.
 
+1. Build ARVideoKit for release
+> Open ARVideoKit.xcodeproj
+
+> Select ARVideoKitRelease scheme with Generic iOS Device
+
+> Build the project (cmd + B)
+
+> Right click on Products/ARVideoKit.framework -> Show in finder
+
+> Copy and replace ARVideoKit.framework in your project 
+
 Additionally, if you are using the binary build from `Framework Build` or the latest release, you MUST **strip out the simulator architectures** from the framework before pushing an application to the App Store.
 
 To do so, follow those steps:
 
-1. Install Carthage
+2. Install Carthage
 > Download `Carthage.pkg` [from here](https://github.com/Carthage/Carthage/releases)
 
 > Or install with Homebrew using this command `brew install carthage` 
-2. Go to your project target's `Build Phase`
+3. Go to your project target's `Build Phase`
 <img width="684" alt="screen shot 2017-11-14 at 8 21 44 pm" src="https://user-images.githubusercontent.com/4106695/32813978-e70ae5a0-c97a-11e7-9d19-3ef434e4c4f1.png">
 
-3. Add a new `Run Script Phase`
+4. Add a new `Run Script Phase`
 <img width="686" alt="screen shot 2017-11-14 at 8 22 14 pm" src="https://user-images.githubusercontent.com/4106695/32814003-0ab4cffc-c97b-11e7-97d0-cf3143afec6d.png">
 
-4. Add the following command to the `Run Script Phase`
+5. Add the following command to the `Run Script Phase`
 ```
 /usr/local/bin/carthage copy-frameworks
 ```
 <img width="676" alt="screen shot 2017-11-14 at 8 30 12 pm" src="https://user-images.githubusercontent.com/4106695/32814033-3302bece-c97b-11e7-867c-e8707ac7dd6b.png">
 
-5. Finally, add `ARVideoKit.framework` file path as an `Input File`. In my case, I have it in a folder named `Frameworks` inside my project folder
+6. Finally, add `ARVideoKit.framework` file path as an `Input File`. In my case, I have it in a folder named `Frameworks` inside my project folder
 <img width="672" alt="screen shot 2017-11-14 at 8 41 06 pm" src="https://user-images.githubusercontent.com/4106695/32814258-327bd048-c97c-11e7-8148-8d606d545214.png">
 
 ## Donate
@@ -113,7 +125,13 @@ If you have an idea for a new **ARVideoKit** feature/functionality and want to a
 
 Also, feel free to create an issue if you have any suggestions or need any help ☺️
 
-## [License](LICENSE)
+## Apps using ARVideoKit
+| App  |  Description   |
+| ------------------ |:------------------:|
+| [Our SolAR](https://itunes.apple.com/app/id1267675913) | An app that allows you to see our Solar System anywhere at all! |
+
+_Feel free to add your application to this list!_
+## License
 Copyright 2017 Ahmed Fathi Bekhit, www.ahmedbekhit.com, me@ahmedbekhit.com
 
 `ARVideoKit` is licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
