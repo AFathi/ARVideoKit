@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N8h-YD-r0X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N8h-YD-r0X">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Black</string>
-            <string>Avenir-Medium</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Main View Controller-->
         <scene sceneID="wdx-bS-4nS">
@@ -88,10 +82,6 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMN-9B-haO">
                                 <rect key="frame" x="0.0" y="10" width="375" height="667"/>
                             </arscnView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overlay_2d_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="fyP-vk-9kb">
-                                <rect key="frame" x="0.0" y="10" width="375" height="657"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR w/ SceneKit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCR-qg-FqO">
                                 <rect key="frame" x="97" y="20" width="181" height="65"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
@@ -239,7 +229,6 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="overlayImg" destination="fyP-vk-9kb" id="VJg-xp-ImM"/>
                         <outlet property="pauseBtn" destination="pCi-Bx-pwj" id="Vbx-Qf-GiU"/>
                         <outlet property="recordBtn" destination="1R6-Xa-VsB" id="xFW-bY-b3A"/>
                         <outlet property="sceneView" destination="IMN-9B-haO" id="6l9-yC-XES"/>
@@ -417,7 +406,4 @@
             <point key="canvasLocation" x="53.600000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="overlay_2d_img.png" width="1080" height="1920"/>
-    </resources>
 </document>
