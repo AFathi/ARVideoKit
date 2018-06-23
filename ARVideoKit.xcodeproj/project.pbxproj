@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FB2E36891FAE29C00035B8D6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FB2E36881FAE29BF0035B8D6 /* LICENSE */; };
+		FB404FFE20D72A190056EA1D /* JPEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB404FFD20D72A190056EA1D /* JPEG.swift */; };
 		FBD604DF1FA969DD00EC9804 /* ARVideoKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FBD604DD1FA969DD00EC9804 /* ARVideoKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FBD604EB1FA96B1C00EC9804 /* video.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD604EA1FA96B1C00EC9804 /* video.scnassets */; };
 		FBD604EE1FA96B2700EC9804 /* ARVideoOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD604EC1FA96B2700EC9804 /* ARVideoOptions.swift */; };
@@ -22,7 +23,6 @@
 		FBD605001FA96B5500EC9804 /* Generate+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD604FF1FA96B5500EC9804 /* Generate+GIF.swift */; };
 		FBD605071FA96B6B00EC9804 /* LoveLiver_LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FBD605021FA96B6B00EC9804 /* LoveLiver_LICENSE */; };
 		FBD605081FA96B6B00EC9804 /* Generate+LivePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD605031FA96B6B00EC9804 /* Generate+LivePhoto.swift */; };
-		FBD605091FA96B6B00EC9804 /* JPEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD605041FA96B6B00EC9804 /* JPEG.swift */; };
 		FBD6050A1FA96B6B00EC9804 /* QuickTimeMov.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD605051FA96B6B00EC9804 /* QuickTimeMov.swift */; };
 		FBD6050B1FA96B6B00EC9804 /* PHLivePhotoPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD605061FA96B6B00EC9804 /* PHLivePhotoPlus.swift */; };
 		FBD605111FA96BA100EC9804 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD6050D1FA96BA100EC9804 /* ARView.swift */; };
@@ -34,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		FB2E36881FAE29BF0035B8D6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		FB404FFD20D72A190056EA1D /* JPEG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEG.swift; sourceTree = "<group>"; };
 		FBD604DA1FA969DD00EC9804 /* ARVideoKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ARVideoKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBD604DD1FA969DD00EC9804 /* ARVideoKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARVideoKit.h; sourceTree = "<group>"; };
 		FBD604DE1FA969DD00EC9804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		FBD604FF1FA96B5500EC9804 /* Generate+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Generate+GIF.swift"; sourceTree = "<group>"; };
 		FBD605021FA96B6B00EC9804 /* LoveLiver_LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoveLiver_LICENSE; sourceTree = "<group>"; };
 		FBD605031FA96B6B00EC9804 /* Generate+LivePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Generate+LivePhoto.swift"; sourceTree = "<group>"; };
-		FBD605041FA96B6B00EC9804 /* JPEG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEG.swift; sourceTree = "<group>"; };
 		FBD605051FA96B6B00EC9804 /* QuickTimeMov.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickTimeMov.swift; sourceTree = "<group>"; };
 		FBD605061FA96B6B00EC9804 /* PHLivePhotoPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHLivePhotoPlus.swift; sourceTree = "<group>"; };
 		FBD6050D1FA96BA100EC9804 /* ARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
@@ -173,8 +173,8 @@
 			children = (
 				FBD605021FA96B6B00EC9804 /* LoveLiver_LICENSE */,
 				FBD605031FA96B6B00EC9804 /* Generate+LivePhoto.swift */,
-				FBD605041FA96B6B00EC9804 /* JPEG.swift */,
 				FBD605061FA96B6B00EC9804 /* PHLivePhotoPlus.swift */,
+				FB404FFD20D72A190056EA1D /* JPEG.swift */,
 				FBD605051FA96B6B00EC9804 /* QuickTimeMov.swift */,
 			);
 			path = "Live Photo";
@@ -276,6 +276,7 @@
 				FBD604F81FA96B3300EC9804 /* UIView+isType.swift in Sources */,
 				FBD604F71FA96B3300EC9804 /* RecordAR+PhotoRender.swift in Sources */,
 				FBD6050A1FA96B6B00EC9804 /* QuickTimeMov.swift in Sources */,
+				FB404FFE20D72A190056EA1D /* JPEG.swift in Sources */,
 				FBD604FD1FA96B3E00EC9804 /* RenderARDelegate.swift in Sources */,
 				FBD605131FA96BA100EC9804 /* WritAR.swift in Sources */,
 				FBD604F51FA96B3300EC9804 /* UIImage+VideoBuffer.swift in Sources */,
@@ -291,7 +292,6 @@
 				FBD604FC1FA96B3E00EC9804 /* RecordARDelegate.swift in Sources */,
 				FBD604EF1FA96B2700EC9804 /* ARInputViewOptions.swift in Sources */,
 				FBD6050B1FA96B6B00EC9804 /* PHLivePhotoPlus.swift in Sources */,
-				FBD605091FA96B6B00EC9804 /* JPEG.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
