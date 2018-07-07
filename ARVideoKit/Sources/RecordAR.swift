@@ -90,11 +90,10 @@ fileprivate var renderer:RenderAR!
     /**
      A boolean that enables or disables using envronment light rendering. Default is `false`.
      */
-    @objc public var enableAdjsutEnvironmentLighting:Bool = false {
-        
+    @objc public var enableAdjustEnvironmentLighting:Bool = false {
         didSet{
             if (renderEngine != nil) {
-                renderEngine.autoenablesDefaultLighting = enableAdjsutEnvironmentLighting
+                renderEngine.autoenablesDefaultLighting = enableAdjustEnvironmentLighting
             }
         }
     }
