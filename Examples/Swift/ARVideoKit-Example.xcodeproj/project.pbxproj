@@ -10,7 +10,6 @@
 		FB2E368C1FAE2A510035B8D6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FB2E368B1FAE2A510035B8D6 /* LICENSE */; };
 		FB36BDB020086BBB00002808 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB36BDAF20086BB000002808 /* ARVideoKit.framework */; };
 		FB36BDB120086BBB00002808 /* ARVideoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB36BDAF20086BB000002808 /* ARVideoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FB3B51A620489CBA000377AE /* overlay_2d_img.png in Resources */ = {isa = PBXBuildFile; fileRef = FB3B51A520489CB9000377AE /* overlay_2d_img.png */; };
 		FB9B5D2E1FC49E3E005DDD60 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B5D2D1FC49E3E005DDD60 /* MainViewController.swift */; };
 		FBDCC5E71FABDFC600E3184D /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FBDCC5E51FABDFC500E3184D /* Scene.sks */; };
 		FBDCC5E81FABDFC600E3184D /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDCC5E61FABDFC500E3184D /* Scene.swift */; };
@@ -57,7 +56,6 @@
 /* Begin PBXFileReference section */
 		FB2E368B1FAE2A510035B8D6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		FB36BDAA20086BB000002808 /* ARVideoKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ARVideoKit.xcodeproj; path = ../../ARVideoKit.xcodeproj; sourceTree = "<group>"; };
-		FB3B51A520489CB9000377AE /* overlay_2d_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay_2d_img.png; sourceTree = "<group>"; };
 		FB9B5D2D1FC49E3E005DDD60 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FBDCC5E51FABDFC500E3184D /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
 		FBDCC5E61FABDFC500E3184D /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 		FBE134B81FAAD3DD00BEC469 /* ARVideoKit-Example */ = {
 			isa = PBXGroup;
 			children = (
-				FB3B51A520489CB9000377AE /* overlay_2d_img.png */,
 				FBE134B91FAAD3DD00BEC469 /* AppDelegate.swift */,
 				FBA0AA0D1FAD9E4B006C481B /* View Controllers */,
 				FBA0AA0C1FAD9E2C006C481B /* Storyboards */,
@@ -259,7 +256,6 @@
 				FBE134C11FAAD3DD00BEC469 /* Assets.xcassets in Resources */,
 				FBDCC6401FAC2CD900E3184D /* art.scnassets in Resources */,
 				FBE134BF1FAAD3DD00BEC469 /* Main.storyboard in Resources */,
-				FB3B51A620489CBA000377AE /* overlay_2d_img.png in Resources */,
 				FBDCC5E71FABDFC600E3184D /* Scene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
