@@ -64,7 +64,7 @@ $ pod init
 ```
 4. Open Podfile in a text editor and add this line
 ```
-pod 'ARVideoKit', :git => 'https://github.com/AFathi/ARVideoKit.git'
+pod 'ARVideoKit'
 ```
 5. Go back to the `Terminal` and install the pod
 ```
