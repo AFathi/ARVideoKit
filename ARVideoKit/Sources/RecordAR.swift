@@ -90,11 +90,10 @@ fileprivate var renderer:RenderAR!
     /**
      A boolean that enables or disables using envronment light rendering. Default is `false`.
      */
-    @objc public var enableAdjsutEnvironmentLighting:Bool = false {
-        
+    @objc public var enableAdjustEnvironmentLighting:Bool = false {
         didSet{
             if (renderEngine != nil) {
-                renderEngine.autoenablesDefaultLighting = enableAdjsutEnvironmentLighting
+                renderEngine.autoenablesDefaultLighting = enableAdjustEnvironmentLighting
             }
         }
     }
@@ -492,35 +491,25 @@ fileprivate var renderer:RenderAR!
         `permissionStatus`
         A `PHAuthorizationStatus` object that returns the current application's status for exporting media to the Photo Library.
      */
-    @objc public func export(video path:URL, _ finished: ((_ exported:Bool, _ permissionStatus:PHAuthorizationStatus) -> Swift.Void)? = nil) {
+    @objc public func export(video path: URL, _ finished: ((_ exported: Bool, _ permissionStatus: PHAuthorizationStatus) -> Void)? = nil) {
         audioSessionQueue.async {
-            let photos = PHPhotoLibrary.authorizationStatus()
-            if photos == .notDetermined {
-                PHPhotoLibrary.requestAuthorization({ status in
-                    if status == .authorized {
-                        PHPhotoLibrary.shared().performChanges({
-                            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: path)
-                        }) { saved, _ in
-                            if saved && self.deleteCacheWhenExported {
-                                logAR.remove(from: path)
-                            }
-                            finished?(saved, status)
-                        }
-                    }else{
-                        finished?(false, status)
-                    }
-                })
-            }else if photos == .authorized {
+            let status = PHPhotoLibrary.authorizationStatus()
+            if status == .notDetermined {
+                PHPhotoLibrary.requestAuthorization() { status in
+                    // Recursive call after authorization request
+                    self.export(video: path, finished)
+                }
+            } else if status == .authorized {
                 PHPhotoLibrary.shared().performChanges({
                     PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: path)
                 }) { saved, error in
                     if saved && self.deleteCacheWhenExported {
                         logAR.remove(from: path)
                     }
-                    finished?(saved, photos)
+                    finished?(saved, status)
                 }
-            }else if photos == .denied || photos == .restricted {
-                finished?(false, photos)
+            } else if status == .denied || status == .restricted {
+                finished?(false, status)
             }
         }
     }
@@ -539,34 +528,18 @@ fileprivate var renderer:RenderAR!
         `permissionStatus`
         A `PHAuthorizationStatus` object that returns the current application's status for exporting media to the Photo Library.
      */
-    @objc public func export(image path:URL?=nil, UIImage:UIImage?=nil, _ finished: ((_ exported:Bool, _ permissionStatus:PHAuthorizationStatus) -> Swift.Void)? = nil) {
-        let photos = PHPhotoLibrary.authorizationStatus()
-        if photos == .notDetermined {
-            PHPhotoLibrary.requestAuthorization({ status in
-                if status == .authorized {
-                    PHPhotoLibrary.shared().performChanges({
-                        if let path = path {
-                            PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: path)
-                        }else if let image = UIImage {
-                            PHAssetChangeRequest.creationRequestForAsset(from: image)
-                        }
-                    }) { saved, error in
-                        if saved && self.deleteCacheWhenExported {
-                            if let path = path {
-                                logAR.remove(from: path)
-                            }
-                        }
-                        finished?(saved, status)
-                    }
-                }else{
-                    finished?(false, status)
-                }
-            })
-        }else if photos == .authorized {
+    @objc public func export(image path: URL? = nil, UIImage: UIImage? = nil, _ finished: ((_ exported: Bool, _ permissionStatus: PHAuthorizationStatus) -> Void)? = nil) {
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .notDetermined {
+            PHPhotoLibrary.requestAuthorization() { status in
+                // Recursive call after authorization request
+                self.export(image: path, UIImage: UIImage, finished)
+            }
+        } else if status == .authorized {
             PHPhotoLibrary.shared().performChanges({
                 if let path = path {
                     PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: path)
-                }else if let image = UIImage {
+                } else if let image = UIImage {
                     PHAssetChangeRequest.creationRequestForAsset(from: image)
                 }
             }) { saved, error in
@@ -575,10 +548,10 @@ fileprivate var renderer:RenderAR!
                         logAR.remove(from: path)
                     }
                 }
-                finished?(saved, photos)
+                finished?(saved, status)
             }
-        }else if photos == .denied || photos == .restricted {
-            finished?(false, photos)
+        } else if status == .denied || status == .restricted {
+            finished?(false, status)
         }
     }
     /**
@@ -596,55 +569,36 @@ fileprivate var renderer:RenderAR!
      `permissionStatus`
      A `PHAuthorizationStatus` object that returns the current application's status for exporting media to the Photo Library.
      */
-    @objc public func export(live photo:PHLivePhotoPlus, _ finished: ((_ exported:Bool, _ permissionStatus:PHAuthorizationStatus) -> Swift.Void)? = nil) {
+    @objc public func export(live photo: PHLivePhotoPlus, _ finished: ((_ exported: Bool, _ permissionStatus: PHAuthorizationStatus) -> Void)? = nil) {
         guard let keyPhotoPath = photo.keyPhotoPath else{logAR.message("An error occurred while exporting a live photo"); return}
         guard let videoPath = photo.pairedVideoPath else{logAR.message("An error occurred while exporting a live photo"); return}
         
-        let photos = PHPhotoLibrary.authorizationStatus()
-        if photos == .notDetermined {
-            PHPhotoLibrary.requestAuthorization({ status in
-                if status == .authorized {
-                    PHPhotoLibrary.shared().performChanges({
-                        let request = PHAssetCreationRequest.forAsset()
-                        let options = PHAssetResourceCreationOptions()
-                        request.addResource(with: .photo, fileURL: keyPhotoPath, options: options)
-                        request.addResource(with: .pairedVideo, fileURL: videoPath, options: options)
-                    }, completionHandler: { saved, error  in
-                        if saved {
-                            if self.deleteCacheWhenExported {
-                                logAR.remove(from: keyPhotoPath)
-                                logAR.remove(from: videoPath)
-                            }
-                            self.fileCount = 0
-                        }else{
-                            logAR.message("An error occurred while exporting a live photo: \(error!)")
-                        }
-                        finished?(saved, status)
-                    })
-                }else{
-                    finished?(false, status)
-                }
-            })
-        }else if photos == .authorized {
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .notDetermined {
+            PHPhotoLibrary.requestAuthorization() { status in
+                // Recursive call after authorization request
+                self.export(live: photo, finished)
+            }
+        } else if status == .authorized {
             PHPhotoLibrary.shared().performChanges({
                 let request = PHAssetCreationRequest.forAsset()
                 let options = PHAssetResourceCreationOptions()
                 request.addResource(with: .photo, fileURL: keyPhotoPath, options: options)
                 request.addResource(with: .pairedVideo, fileURL: videoPath, options: options)
-            }, completionHandler: { saved, error  in
+            }) { saved, error  in
                 if saved {
                     if self.deleteCacheWhenExported {
                         logAR.remove(from: keyPhotoPath)
                         logAR.remove(from: videoPath)
                     }
                     self.fileCount = 0
-                }else{
+                } else {
                     logAR.message("An error occurred while exporting a live photo: \(error!)")
                 }
-                finished?(saved, photos)
-            })
-        }else if photos == .denied || photos == .restricted {
-            finished?(false, photos)
+                finished?(saved, status)
+            }
+        } else if status == .denied || status == .restricted {
+            finished?(false, status)
         }
     }
     

@@ -52,7 +52,7 @@
     recorder.deleteCacheWhenExported = NO;
     
     // Configure the envronment light rendering.
-    recorder.enableAdjsutEnvironmentLighting = YES;
+    recorder.enableAdjustEnvironmentLighting = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
