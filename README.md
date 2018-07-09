@@ -12,7 +12,7 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [Key Features](#key-features) | Lists the key features `ARVideoKit` offers     |
 | [Compatibility](#compatibility) | Describes the `ARVideoKit` device and iOS compatibality |
 | [Example Projects](#example-projects) | Explains how to run the example project provided in this repository |
-| [Installation](#installation) | Describes the [Cocoapods](#cocoapods) & [Manual](#manual) options to install `ARVideoKit`   |
+| [Installation](#installation) | Describes the [Cocoapods](#cocoapods), [Carthage](#carthage) & [Manual](#manual) options to install `ARVideoKit`   |
 | [Implementation](#implementation) | Lists the [steps needed](#implementation) for Objective-C & Swift, [notes](#note), and [reference](#youre-all-set-) for more options  |
 | [Publishing to the App Store](#publishing-to-the-app-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
 |[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD) | [Donations](#donate) will support me to keep maintaining `ARVideoKit` ❤️|
@@ -50,25 +50,23 @@ To try the example project, simply clone this repository and open the `Examples`
 
 ## Installation
 ### Cocoapods
-1. Download [CocoaPods](http://cocoapods.org) using this command in `Terminal`
-```
-$ sudo gem install cocoapods
-```
-2. Redirect to your project folder in `Terminal`
-```
-$ cd YOUR_PROJECT_FILE_PATH
-```
-3. Initialize a pod in `Terminal`
-```
-$ pod init
-```
-4. Open Podfile in a text editor and add this line
+1. Add this line to your project's `Podfile`
 ```
 pod 'ARVideoKit'
 ```
-5. Go back to the `Terminal` and install the pod
+2. Install the pod
 ```
 $ pod install
+```
+
+### Carthage
+1. Add this line to your project's `Cartfile`
+```
+github "AFathi/NotchToolkit"
+```
+2.  Update your Carthage directory
+```
+$ carthage update
 ```
 
 ### Manual
