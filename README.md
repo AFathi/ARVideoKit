@@ -62,7 +62,7 @@ $ pod install
 ### Carthage
 1. Add this line to your project's `Cartfile`
 ```
-github "AFathi/NotchToolkit"
+github "AFathi/ARVideoKit" ~> 1.31
 ```
 2.  Update your Carthage directory
 ```
