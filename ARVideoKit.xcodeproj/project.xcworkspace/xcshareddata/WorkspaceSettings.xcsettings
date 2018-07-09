@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>IDEWorkspaceSharedSettings_AutocreateContextsIfNeeded</key>
-	<true/>
+	<false/>
 </dict>
 </plist>
