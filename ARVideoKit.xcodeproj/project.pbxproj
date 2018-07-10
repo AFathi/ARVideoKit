@@ -171,11 +171,9 @@
 		FBD605011FA96B5900EC9804 /* Live Photo */ = {
 			isa = PBXGroup;
 			children = (
-				FBD605021FA96B6B00EC9804 /* LoveLiver_LICENSE */,
+				FBDBF6BA20F3E009004E757D /* LoveLiver */,
 				FBD605031FA96B6B00EC9804 /* Generate+LivePhoto.swift */,
 				FBD605061FA96B6B00EC9804 /* PHLivePhotoPlus.swift */,
-				FB404FFD20D72A190056EA1D /* JPEG.swift */,
-				FBD605051FA96B6B00EC9804 /* QuickTimeMov.swift */,
 			);
 			path = "Live Photo";
 			sourceTree = "<group>";
@@ -188,6 +186,16 @@
 				FBD605101FA96BA100EC9804 /* ViewAR.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		FBDBF6BA20F3E009004E757D /* LoveLiver */ = {
+			isa = PBXGroup;
+			children = (
+				FBD605021FA96B6B00EC9804 /* LoveLiver_LICENSE */,
+				FB404FFD20D72A190056EA1D /* JPEG.swift */,
+				FBD605051FA96B6B00EC9804 /* QuickTimeMov.swift */,
+			);
+			path = LoveLiver;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

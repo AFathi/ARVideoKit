@@ -41,6 +41,8 @@ class SCNViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, 
         sceneView.autoenablesDefaultLighting = true
         
         // Initialize ARVideoKit recorder
+
+
         recorder = RecordAR(ARSceneKit: sceneView)
         
         /*----👇---- ARVideoKit Configuration ----👇----*/

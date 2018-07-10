@@ -48,9 +48,20 @@ fileprivate var renderer:RenderAR!
      */
     @objc public internal(set)var micStatus:RecordARMicrophoneStatus = .unknown
     /**
-     An object that allow customizing when to ask for Microphone permission, if needed. Default is `.auto`.
+     An object that allow customizing when to ask for Microphone permission, if needed. Default is `.manual`.
      */
-    @objc public var requestMicPermission:RecordARMicrophonePermission = .auto
+    @objc public var requestMicPermission:RecordARMicrophonePermission = .manual {
+        didSet {
+            switch self.requestMicPermission {
+            case .auto:
+                if self.enableAudio {
+                    self.requestMicrophonePermission()
+                }
+            case .manual:
+                break
+            }
+        }
+    }
     /**
      An object that allow customizing the video frame per second rate. Default is `.auto`.
      */
@@ -70,7 +81,11 @@ fileprivate var renderer:RenderAR!
     /**
      A boolean that enables or disables audio recording. Default is `true`.
      */
-    @objc public var enableAudio:Bool = true
+    @objc public var enableAudio:Bool = true {
+        didSet {
+            self.requestMicPermission = (self.requestMicPermission == .manual) ? .manual : .auto
+        }
+    }
     /**
      A boolean that enables or disables audio `mixWithOthers` if audio recording is enabled. This allows playing music and recording audio at the same time. Default is `true`.
      */
@@ -235,19 +250,6 @@ fileprivate var renderer:RenderAR!
             
             status = .readyToRecord
         }
-
-        switch requestMicPermission {
-        case .auto:
-            AVAudioSession.sharedInstance().requestRecordPermission({ permitted in
-                if permitted {
-                    self.micStatus = .enabled
-                }else{
-                    self.micStatus = .disabled
-                }
-            })
-        default:
-            break
-        }
         
         onlyRenderWhileRec = onlyRenderWhileRecording
         
@@ -355,8 +357,15 @@ fileprivate var renderer:RenderAR!
     ///A method that starts or resumes ⏯ recording a video 📹.
     @objc public func record() {
         writerQueue.sync {
-            self.isRecording = true
-            self.status = .recording
+            if self.enableAudio && micStatus == .unknown {
+                self.requestMicrophonePermission { _ in
+                    self.isRecording = true
+                    self.status = .recording
+                }
+            }else{
+                self.isRecording = true
+                self.status = .recording
+            }
         }
     }
     /**
@@ -375,14 +384,28 @@ fileprivate var renderer:RenderAR!
      */
     @objc public func record(forDuration duration:TimeInterval, _ finished: ((_ videoPath: URL) -> Swift.Void)? = nil) {
         writerQueue.sync {
-            self.recordingWithLimit = true
-            self.isRecording = true
-            self.status = .recording
-            DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-                self.stop { path in
-                    finished?(path)
+            if self.enableAudio && micStatus == .unknown {
+                self.requestMicrophonePermission { _ in
+                    self.recordingWithLimit = true
+                    self.isRecording = true
+                    self.status = .recording
+                    DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+                        self.stop { path in
+                            finished?(path)
+                        }
+                    }
+                }
+            }else{
+                self.recordingWithLimit = true
+                self.isRecording = true
+                self.status = .recording
+                DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+                    self.stop { path in
+                        finished?(path)
+                    }
                 }
             }
+
         }
     }
     /**
@@ -668,6 +691,7 @@ internal extension RecordAR {
     @objc internal func renderFrame() {
         //frame rendering
         if self.onlyRenderWhileRec && !isRecording && !isRecordingGIF {return}
+
         guard let buffer = renderer.buffer else{return}
         guard let rawBuffer = renderer.rawBuffer else{logAR.message("ERROR:- An error occurred while rendering the camera's main buffers.");return}
         guard let size = renderer.bufferSize else{logAR.message("ERROR:- An error occurred while rendering the camera buffer.");return}
