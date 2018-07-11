@@ -227,6 +227,7 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     func pause() {
         isRecording = false
     }
+    
     func end(writing finished: @escaping () -> Void){
         if let session = session {
             if session.isRunning {
