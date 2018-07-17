@@ -77,7 +77,11 @@ fileprivate var renderer:RenderAR!
     /**
      A boolean that enables or disables AR content rendering before recording for image & video processing. Default is `true`.
      */
-    @objc public var onlyRenderWhileRecording:Bool = true
+    @objc public var onlyRenderWhileRecording:Bool = true {
+        didSet {
+            self.onlyRenderWhileRec = self.onlyRenderWhileRecording
+        }
+    }
     /**
      A boolean that enables or disables audio recording. Default is `true`.
      */
@@ -181,7 +185,7 @@ fileprivate var renderer:RenderAR!
     internal var adjustPausedTime = false
     internal var backFromPause = false
     internal var recordingWithLimit = false
-    internal var onlyRenderWhileRec = false
+    internal var onlyRenderWhileRec = true
     //Used to modify video time when paused
     internal var pausedFrameTime:CMTime?
     internal var resumeFrameTime:CMTime?
