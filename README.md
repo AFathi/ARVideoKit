@@ -1,4 +1,4 @@
-![intro image](http://www.ahmedbekhit.com/tutorials/ARVideoKit_prev_1.png)
+![intro image](http://www.ahmedbekhit.com/projects/repo-header-arvideokit.png)
 
 An iOS Framework that enables developers to capture videos 📹, photos 🌄, Live Photos 🎇, and GIFs 🎆 with ARKit content.
 
@@ -152,10 +152,15 @@ Also, feel free to create an issue if you have any suggestions or need any help 
 
 _Feel free to add your application to this list!_
 ## License
-Copyright 2017 Ahmed Fathi Bekhit, www.ahmedbekhit.com, me@ahmedbekhit.com
+### ARVideoKit Framework
+Copyright 2018 Ahmed Fathi Bekhit, www.ahmedbekhit.com, me@ahmedbekhit.com
 
 `ARVideoKit` is licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
 [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+### ARVideoKit Logo & Header
+Designed by [**Gabriel Garcia**](https://github.com/ggabogarcia) and licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)
+![DERECHOS.jpg](https://cdn.steemitimages.com/DQmVSH7hxt3nuyDxNRdWUBUBtfR11TyvLxM1F1C4vYW5UzG/DERECHOS.jpg)
