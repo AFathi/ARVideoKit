@@ -35,25 +35,27 @@ internal struct RenderAR {
     
     internal var bufferSize:CGSize? {
         guard let raw = rawBuffer else{return nil};
-        var width = CVPixelBufferGetWidth(raw);
-        var height = CVPixelBufferGetHeight(raw);
+        var width = CVPixelBufferGetWidth(raw)
+        var height = CVPixelBufferGetHeight(raw)
         
-        switch ARcontentMode {
-        case .auto:
-            if UIScreen.main.isiPhone10 {
+        if let contentMode = ARcontentMode {
+            switch contentMode {
+            case .auto:
+                if UIScreen.main.isiPhone10 {
+                    width = Int(UIScreen.main.nativeBounds.width)
+                    height = Int(UIScreen.main.nativeBounds.height)
+                }
+            case .aspectFit:
+                width = CVPixelBufferGetWidth(raw)
+                height = CVPixelBufferGetHeight(raw)
+            case .aspectFill:
                 width = Int(UIScreen.main.nativeBounds.width)
                 height = Int(UIScreen.main.nativeBounds.height)
-            }
-        case .aspectFit:
-            width = CVPixelBufferGetWidth(raw);
-            height = CVPixelBufferGetHeight(raw);
-        case .aspectFill:
-            width = Int(UIScreen.main.nativeBounds.width)
-            height = Int(UIScreen.main.nativeBounds.height)
-        default:
-            if UIScreen.main.isiPhone10 {
-                width = Int(UIScreen.main.nativeBounds.width)
-                height = Int(UIScreen.main.nativeBounds.height)
+            default:
+                if UIScreen.main.isiPhone10 {
+                    width = Int(UIScreen.main.nativeBounds.width)
+                    height = Int(UIScreen.main.nativeBounds.height)
+                }
             }
         }
         
