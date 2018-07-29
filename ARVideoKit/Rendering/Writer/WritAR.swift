@@ -166,7 +166,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     func insert(pixel buffer: CVPixelBuffer, with intervals: CFTimeInterval) {
         let time: CMTime = CMTimeMakeWithSeconds(intervals, 1000000)
         if assetWriter.status == .unknown {
-            guard startingVideoTime != nil else {
+            guard startingVideoTime == nil else {
                 isWritingWithoutError = false
                 return
             }
@@ -194,7 +194,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     
     func insert(pixel buffer: CVPixelBuffer, with time: CMTime) {
         if assetWriter.status == .unknown {
-            guard startingVideoTime != nil else {
+            guard startingVideoTime == nil else {
                 isWritingWithoutError = false
                 return
             }
