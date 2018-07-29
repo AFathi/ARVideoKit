@@ -7,6 +7,7 @@
 //
 
 import Photos
+
 /**
  A `PHLivePhotoPlus` object is a `PHLivePhoto` sub-class that contains objects to allow manual exporting of a live photo.
  
@@ -18,17 +19,17 @@ import Photos
  */
 @available(iOS 9.1, *)
 @objc public class PHLivePhotoPlus: PHLivePhoto {
-    internal var pairedVideoPath:URL?
-    internal var keyPhotoPath:URL?
+    var pairedVideoPath: URL?
+    var keyPhotoPath: URL?
     
     /// A `PHLivePhoto` object that returns the Live Photo content from `PHLivePhotoPlus`.
-    @objc public var livePhoto:PHLivePhoto?
+    @objc public var livePhoto: PHLivePhoto?
     
     @objc public override init() {
         super.init()
     }
     
-    @objc public init(photo:PHLivePhoto) {
+    @objc public init(photo: PHLivePhoto) {
         super.init()
         livePhoto = photo
     }

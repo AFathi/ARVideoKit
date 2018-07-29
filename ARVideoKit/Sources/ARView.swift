@@ -9,9 +9,6 @@
 import UIKit
 import ARKit
 
-fileprivate var parentVC:UIViewController?
-fileprivate var recentAngle = 0
-
 /**
  A class that configures the Augmented Reality View orientations.
  
@@ -23,24 +20,27 @@ fileprivate var recentAngle = 0
  */
 @available(iOS 11.0, *)
 @objc public class ARView: NSObject {
-    fileprivate var ivo:[ARInputViewOrientation] = []
+    private var parentVC: UIViewController?
+    private var recentAngle = 0
+    private var inputViewOrientation:[ARInputViewOrientation] = []
+    
     /// An array of `ARInputViewOrientation` objects that allow customizing the accepted orientations in a `UIViewController` that contains Augmented Reality scenes.
-    public var inputViewOrientations:[ARInputViewOrientation] {
+    public var inputViewOrientations: [ARInputViewOrientation] {
         get{
-            return ivo
+            return inputViewOrientation
         }
         set{
             if newValue.count == 0 {
-                ivo = [.portrait]
-            }else{
-                ivo = newValue
+                inputViewOrientation = [.portrait]
+            } else {
+                inputViewOrientation = newValue
             }
         }
     }
     
-    fileprivate var ivom:ARInputViewOrientationMode = .auto
+    private var ivom: ARInputViewOrientationMode = .auto
     /// An object that allow customizing which subviews will rotate in a `UIViewController` that contains Augmented Reality scenes.
-    public var inputViewOrientationMode:ARInputViewOrientationMode {
+    public var inputViewOrientationMode: ARInputViewOrientationMode {
         get{
             return ivom
         }
@@ -50,7 +50,7 @@ fileprivate var recentAngle = 0
     }
     
     
-    @objc init?(ARSceneKit:ARSCNView) {
+    @objc init?(ARSceneKit: ARSCNView) {
         super.init()
         NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
@@ -66,7 +66,7 @@ fileprivate var recentAngle = 0
         parentVC = vc
     }
     
-    @objc init?(ARSpriteKit:ARSKView) {
+    @objc init?(ARSpriteKit: ARSKView) {
         super.init()
         NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
@@ -80,7 +80,7 @@ fileprivate var recentAngle = 0
         parentVC = vc
     }
     
-    @objc init?(SceneKit:SCNView) {
+    @objc init?(SceneKit: SCNView) {
         super.init()
         NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
@@ -96,7 +96,7 @@ fileprivate var recentAngle = 0
         parentVC = vc
     }
     
-    @objc fileprivate func deviceDidRotate() {
+    @objc private func deviceDidRotate() {
         guard var views = parentVC?.view.subviews else {
             return
         }
@@ -105,11 +105,11 @@ fileprivate var recentAngle = 0
         
         switch inputViewOrientationMode {
         case .auto:
-            views = views.filter{!$0.isARView && $0.isButton}
+            views = views.filter { !$0.isARView && $0.isButton }
         case .all:
-            views = views.filter{!$0.isARView}
+            views = views.filter { !$0.isARView }
         case .manual(let subviews):
-            views = subviews.filter{!$0.isARView}
+            views = subviews.filter { !$0.isARView }
         case .disabled:
             views = []
         }

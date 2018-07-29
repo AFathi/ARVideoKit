@@ -10,11 +10,11 @@ import Foundation
 import MobileCoreServices
 import ImageIO
 
-internal class JPEG {
-    fileprivate let kFigAppleMakerNote_AssetIdentifier = "17"
-    fileprivate let path : String
+class JPEG {
+    private let kFigAppleMakerNote_AssetIdentifier = "17"
+    private let path: String
 
-    init(path : String) {
+    init(path: String) {
         self.path = path
     }
 
@@ -25,7 +25,7 @@ internal class JPEG {
         return makerNote?.object(forKey: kFigAppleMakerNote_AssetIdentifier) as? String
     }
 
-    func write(_ dest : String, assetIdentifier : String) {
+    func write(_ dest: String, assetIdentifier: String) {
         guard let dest = CGImageDestinationCreateWithURL(URL(fileURLWithPath: dest) as CFURL, kUTTypeJPEG, 1, nil)
             else { return }
         defer { CGImageDestinationFinalize(dest) }
@@ -38,19 +38,19 @@ internal class JPEG {
         CGImageDestinationAddImageFromSource(dest, imageSource, 0, metadata)
     }
 
-    fileprivate func metadata() -> NSDictionary? {
+    private func metadata() -> NSDictionary? {
         return self.imageSource().flatMap {
             CGImageSourceCopyPropertiesAtIndex($0, 0, nil) as NSDictionary?
         }
     }
 
-    fileprivate func imageSource() ->  CGImageSource? {
+    private func imageSource() ->  CGImageSource? {
         return self.data().flatMap {
             CGImageSourceCreateWithData($0 as CFData, nil)
         }
     }
 
-    fileprivate func data() -> Data? {
+    private func data() -> Data? {
         return (try? Data(contentsOf: URL(fileURLWithPath: path)))
     }
 }

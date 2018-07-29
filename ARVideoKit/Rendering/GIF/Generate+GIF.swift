@@ -11,10 +11,10 @@ import AVFoundation
 import ImageIO
 import MobileCoreServices
 
-internal class GIFGenerator {
-    internal let gifQueue = DispatchQueue(label:"com.ahmedbekhit.GIFQueue", attributes: .concurrent)
-    fileprivate var currentGIFPath:URL?
-    fileprivate var newGIFPath:URL {
+class GIFGenerator {
+    let gifQueue = DispatchQueue(label:"com.ahmedbekhit.GIFQueue", attributes: .concurrent)
+    private var currentGIFPath: URL?
+    private var newGIFPath: URL {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
         
@@ -29,29 +29,32 @@ internal class GIFGenerator {
         return URL(fileURLWithPath: gifPath, isDirectory: false)
     }
     
-    internal func generate(gif images:[UIImage], with delay:Float, loop count:Int = 0, adjust:Bool, _ finished: ((_ status: Bool, _ path: URL?) -> Void)? = nil) {
+    func generate(gif images:[UIImage], with delay: Float, loop count: Int = 0, adjust: Bool, _ finished: ((_ status: Bool, _ path: URL?) -> Void)? = nil) {
         currentGIFPath = newGIFPath
         gifQueue.async {
             let gifSettings = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFLoopCount as String: count]]
             let imageSettings = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFDelayTime as String: delay]]
             
-            guard let path = self.currentGIFPath else{return}
-            guard let destination = CGImageDestinationCreateWithURL(path as CFURL, kUTTypeGIF, images.count, nil) else{finished?(false, nil);return}
+            guard let path = self.currentGIFPath else { return }
+            guard let destination = CGImageDestinationCreateWithURL(path as CFURL, kUTTypeGIF, images.count, nil) else {
+                finished?(false, nil)
+                return
+            }
             logAR.message("\(destination)")
             CGImageDestinationSetProperties(destination, gifSettings as CFDictionary)
             for image in images {
                 if let imageRef = image.cgImage {
-                    var ratio:Float = 0.0
-                    if adjust{ratio=0.5}else{ratio=1.0}
+                    var ratio: Float = 0.0
+                    if adjust { ratio = 0.5 } else { ratio = 1.0 }
                     CGImageDestinationAddImage(destination, imageRef.resize(with: ratio)!, imageSettings as CFDictionary)
                 }
             }
             
             if !CGImageDestinationFinalize(destination){
-                finished?(false, nil);
+                finished?(false, nil)
                 return
-            }else{
-                finished?(true, path);
+            } else {
+                finished?(true, path)
             }
         }
     }

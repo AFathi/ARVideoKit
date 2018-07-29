@@ -9,37 +9,38 @@
 import AVFoundation
 import CoreImage
 import UIKit
+
 @available(iOS 11.0, *)
-internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
-    fileprivate var assetWriter: AVAssetWriter!
-    fileprivate var videoInput: AVAssetWriterInput!
-    fileprivate var audioInput: AVAssetWriterInput!
-    fileprivate var session: AVCaptureSession!
+class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
+    private var assetWriter: AVAssetWriter!
+    private var videoInput: AVAssetWriterInput!
+    private var audioInput: AVAssetWriterInput!
+    private var session: AVCaptureSession!
     
-    fileprivate var pixelBufferInput: AVAssetWriterInputPixelBufferAdaptor!
-    fileprivate var videoOutputSettings: Dictionary<String, AnyObject>!
-    fileprivate var audioSettings: [String : Any]?
+    private var pixelBufferInput: AVAssetWriterInputPixelBufferAdaptor!
+    private var videoOutputSettings: Dictionary<String, AnyObject>!
+    private var audioSettings: [String: Any]?
 
-    internal let audioBufferQueue = DispatchQueue(label: "com.ahmedbekhit.AudioBufferQueue")
+    let audioBufferQueue = DispatchQueue(label: "com.ahmedbekhit.AudioBufferQueue")
 
-    fileprivate var isRecording:Bool = false
+    private var isRecording: Bool = false
     
-    internal var delegate:RecordARDelegate?
-    internal var videoInputOrientation:ARVideoOrientation = .auto
+    var delegate: RecordARDelegate?
+    var videoInputOrientation: ARVideoOrientation = .auto
 
-    init(output:URL, width:Int, height:Int, adjustForSharing:Bool, audioEnabled:Bool, orientaions:[ARInputViewOrientation], queue:DispatchQueue, allowMix:Bool){
+    init(output: URL, width: Int, height: Int, adjustForSharing: Bool, audioEnabled: Bool, orientaions:[ARInputViewOrientation], queue: DispatchQueue, allowMix: Bool) {
         super.init()
         do {
             assetWriter = try AVAssetWriter(outputURL: output, fileType: AVFileType.mp4)
-        }catch{
+        } catch {
+            // FIXME: handle when failed to allocate AVAssetWriter.
             return
         }
         if audioEnabled {
             if allowMix {
-                do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, with: [AVAudioSessionCategoryOptions.mixWithOthers , AVAudioSessionCategoryOptions.allowBluetooth, AVAudioSessionCategoryOptions.defaultToSpeaker, AVAudioSessionCategoryOptions.interruptSpokenAudioAndMixWithOthers])
-                    try AVAudioSession.sharedInstance().setActive(true)
-                }catch{}
+                let audioOptions: AVAudioSessionCategoryOptions = [.mixWithOthers , .allowBluetooth, .defaultToSpeaker, .interruptSpokenAudioAndMixWithOthers]
+                try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, with: audioOptions)
+                try? AVAudioSession.sharedInstance().setActive(true)
             }
             AVAudioSession.sharedInstance().requestRecordPermission({ permitted in
                 if permitted {
@@ -51,14 +52,14 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         //HEVC file format only supports A10 Fusion Chip or higher.
         //to support HEVC, make sure to check if the device is iPhone 7 or higher
         videoOutputSettings = [
-            AVVideoCodecKey : AVVideoCodecType.h264 as AnyObject,
-            AVVideoWidthKey : width as AnyObject,
-            AVVideoHeightKey : height as AnyObject
+            AVVideoCodecKey: AVVideoCodecType.h264 as AnyObject,
+            AVVideoWidthKey: width as AnyObject,
+            AVVideoHeightKey: height as AnyObject
         ]
         
-        let attributes : [String:Bool] = [
-            kCVPixelBufferCGImageCompatibilityKey as String : true,
-            kCVPixelBufferCGBitmapContextCompatibilityKey as String : true
+        let attributes: [String: Bool] = [
+            kCVPixelBufferCGImageCompatibilityKey as String: true,
+            kCVPixelBufferCGBitmapContextCompatibilityKey as String: true
         ]
         videoInput = AVAssetWriterInput(mediaType: .video, outputSettings: videoOutputSettings)
 
@@ -74,8 +75,8 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
             return false
         }
         
-        var recentAngle:CGFloat = 0
-        var rotationAngle:CGFloat = 0
+        var recentAngle: CGFloat = 0
+        var rotationAngle: CGFloat = 0
         switch UIDevice.current.orientation {
         case .landscapeLeft:
             rotationAngle = -90
@@ -98,14 +99,14 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 
         switch videoInputOrientation {
         case .auto:
-            t = t.rotated(by:((rotationAngle*CGFloat.pi)/180))
+            t = t.rotated(by: ((rotationAngle*CGFloat.pi) / 180))
         case .alwaysPortrait:
-            t = t.rotated(by:0)
+            t = t.rotated(by: 0)
         case .alwaysLandscape:
             if rotationAngle == 90 || rotationAngle == -90 {
-                t = t.rotated(by:((rotationAngle*CGFloat.pi)/180))
-            }else{
-                t = t.rotated(by:((-90*CGFloat.pi)/180))
+                t = t.rotated(by: ((rotationAngle * CGFloat.pi) / 180))
+            } else {
+                t = t.rotated(by: ((-90 * CGFloat.pi) / 180))
             }
         }
         
@@ -113,19 +114,19 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         
         if assetWriter.canAdd(videoInput) {
             assetWriter.add(videoInput)
-        }else{
+        } else {
             delegate?.recorder(didFailRecording: assetWriter.error, and: "An error occurred while adding video input.")
             isWritingWithoutError = false
         }
         assetWriter.shouldOptimizeForNetworkUse = adjustForSharing
     }
     
-    internal func prepareAudioDevice(with queue:DispatchQueue) {
+    func prepareAudioDevice(with queue: DispatchQueue) {
         let device: AVCaptureDevice = AVCaptureDevice.default(for: .audio)!
-        var audioDeviceInput:AVCaptureDeviceInput?
+        var audioDeviceInput: AVCaptureDeviceInput?
         do {
             audioDeviceInput = try AVCaptureDeviceInput(device: device)
-        }catch{
+        } catch {
             audioDeviceInput = nil
         }
         
@@ -145,7 +146,7 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         }
         
 
-        audioSettings = audioDataOutput.recommendedAudioSettingsForAssetWriter(writingTo: .m4v) as? [String : Any]
+        audioSettings = audioDataOutput.recommendedAudioSettingsForAssetWriter(writingTo: .m4v) as? [String: Any]
         
         audioInput = AVAssetWriterInput(mediaType: .audio, outputSettings: audioSettings)
         audioInput.expectsMediaDataInRealTime = true
@@ -159,23 +160,27 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         }
     }
     
-    internal var startingVideoTime:CMTime?
-    internal var isWritingWithoutError: Bool?
+    var startingVideoTime: CMTime?
+    var isWritingWithoutError: Bool?
     
-    internal func insert(pixel buffer:CVPixelBuffer, with intervals:CFTimeInterval) {
-        var time:CMTime {return CMTimeMakeWithSeconds(intervals, 1000000);}
+    func insert(pixel buffer: CVPixelBuffer, with intervals: CFTimeInterval) {
+        let time: CMTime = CMTimeMakeWithSeconds(intervals, 1000000)
         if assetWriter.status == .unknown {
-            if let _ = startingVideoTime {isWritingWithoutError = false; return}else{startingVideoTime = time}
+            guard startingVideoTime != nil else {
+                isWritingWithoutError = false
+                return
+            }
+            startingVideoTime = time
             if assetWriter.startWriting() {
                 assetWriter.startSession(atSourceTime: startingVideoTime!)
                 session.startRunning()
                 isRecording = true
                 isWritingWithoutError = true
-            }else{
+            } else {
                 delegate?.recorder(didFailRecording: assetWriter.error, and: "An error occurred while starting the video session.")
                 isWritingWithoutError = false
             }
-        }else if assetWriter.status == .failed {
+        } else if assetWriter.status == .failed {
             delegate?.recorder(didFailRecording: assetWriter.error, and: "Video session failed while recording.")
             logAR.message("An error occurred while recording the video, status: \(assetWriter.status.rawValue), error: \(assetWriter.error!.localizedDescription)")
             isWritingWithoutError = false
@@ -187,19 +192,23 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         }
     }
     
-    internal func insert(pixel buffer:CVPixelBuffer, with time:CMTime) {
+    func insert(pixel buffer: CVPixelBuffer, with time: CMTime) {
         if assetWriter.status == .unknown {
-            if let _ = startingVideoTime {isWritingWithoutError = false; return}else{startingVideoTime = time}
+            guard startingVideoTime != nil else {
+                isWritingWithoutError = false
+                return
+            }
+            startingVideoTime = time
             if assetWriter.startWriting() {
                 assetWriter.startSession(atSourceTime: startingVideoTime!)
                 isRecording = true
                 isWritingWithoutError = true
-            }else{
+            } else {
                 delegate?.recorder(didFailRecording: assetWriter.error, and: "An error occurred while starting the video session.")
                 isRecording = false
                 isWritingWithoutError = false
             }
-        }else if assetWriter.status == .failed {
+        } else if assetWriter.status == .failed {
             delegate?.recorder(didFailRecording: assetWriter.error, and: "Video session failed while recording.")
             logAR.message("An error occurred while recording the video, status: \(assetWriter.status.rawValue), error: \(assetWriter.error!.localizedDescription)")
             isRecording = false
@@ -237,21 +246,23 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         assetWriter.finishWriting(completionHandler: finished)
     }
 }
+
 @available(iOS 11.0, *)
-fileprivate extension WritAR {
-    func append(pixel buffer:CVPixelBuffer, with time: CMTime) {
+private extension WritAR {
+    func append(pixel buffer: CVPixelBuffer, with time: CMTime) {
         pixelBufferInput.append(buffer, withPresentationTime: time)
     }
 }
 
 //Simple Logging to show logs only while debugging.
-internal class logAR{
-    internal class func message(_ message: String) {
+class logAR {
+    class func message(_ message: String) {
         #if DEBUG
             print("ARVideoKit @ \(Date().timeIntervalSince1970):- \(message)")
         #endif
     }
-    internal class func remove(from path: URL?) {
+    
+    class func remove(from path: URL?) {
         if let file = path?.path {
             let manager = FileManager.default
             if manager.fileExists(atPath: file) {
