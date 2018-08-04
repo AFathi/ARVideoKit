@@ -10,6 +10,7 @@ import Foundation
 import CoreVideo
 import CoreMedia
 import ARKit
+
 /**
  The recorder protocol.
  
@@ -26,13 +27,13 @@ import ARKit
      - parameter path: A `URL` object that returns the video file path.
      - parameter noError: A boolean that returns true when the recorder ends without errors. Otherwise, it returns false.
      */
-    func recorder(didEndRecording path:URL, with noError:Bool)
+    func recorder(didEndRecording path: URL, with noError: Bool)
     /**
      A protocol method that is triggered when a recorder fails recording.
      - parameter error: An `Error` object that returns the error value.
      - parameter status: A string that returns the reason of the recorder failure in a string literal format.
      */
-    func recorder(didFailRecording error:Error?, and status:String)
+    func recorder(didFailRecording error: Error?, and status: String)
 
     /**
      A protocol method that is triggered when the application will resign active.
@@ -41,5 +42,5 @@ import ARKit
      
      - NOTE: Check [applicationWillResignActive(_:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622950-applicationwillresignactive) for more information.
      */
-    @objc func recorder(willEnterBackground status:RecordARStatus)
+    @objc func recorder(willEnterBackground status: RecordARStatus)
 }

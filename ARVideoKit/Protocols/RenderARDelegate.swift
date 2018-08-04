@@ -28,5 +28,5 @@ import ARKit
      - parameter time: A `CMTime` object that returns the time a buffer was rendered with.
      - parameter rawBuffer: A `CVPixelBuffer` object that returns the raw buffer.
      */
-    func frame(didRender buffer:CVPixelBuffer, with time:CMTime, using rawBuffer:CVPixelBuffer)
+    func frame(didRender buffer: CVPixelBuffer, with time: CMTime, using rawBuffer: CVPixelBuffer)
 }

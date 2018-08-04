@@ -12,13 +12,13 @@ import ARKit
 import Photos
 import PhotosUI
 
-fileprivate var view:Any?
-fileprivate var renderEngine:SCNRenderer!
-fileprivate var gpuLoop:CADisplayLink!
-fileprivate var isResting = false
-fileprivate var ARcontentMode:ARFrameMode!
+private var view: Any?
+private var renderEngine: SCNRenderer!
+private var gpuLoop: CADisplayLink!
+private var isResting = false
+private var ARcontentMode: ARFrameMode!
 @available(iOS 11.0, *)
-fileprivate var renderer:RenderAR!
+private var renderer: RenderAR!
 /**
  This class renders the `ARSCNView` or `ARSKView` content with the device's camera stream to generate a video 📹, photo 🌄, live photo 🎇 or GIF 🎆.
 
@@ -34,7 +34,7 @@ fileprivate var renderer:RenderAR!
     /**
      An object that passes the AR recorder errors and status in the protocol methods.
      */
-    @objc public var delegate:RecordARDelegate?
+    @objc public var delegate: RecordARDelegate?
     /**
      An object that passes the AR rendered content in the protocol method.
      */
@@ -42,15 +42,15 @@ fileprivate var renderer:RenderAR!
     /**
      An object that returns the AR recorder current status.
      */
-    @objc public internal(set)var status:RecordARStatus = .unknown
+    @objc public internal(set)var status: RecordARStatus = .unknown
     /**
      An object that returns the current Microphone status.
      */
-    @objc public internal(set)var micStatus:RecordARMicrophoneStatus = .unknown
+    @objc public internal(set)var micStatus: RecordARMicrophoneStatus = .unknown
     /**
      An object that allow customizing when to ask for Microphone permission, if needed. Default is `.manual`.
      */
-    @objc public var requestMicPermission:RecordARMicrophonePermission = .manual {
+    @objc public var requestMicPermission: RecordARMicrophonePermission = .manual {
         didSet {
             switch self.requestMicPermission {
             case .auto:
@@ -65,19 +65,19 @@ fileprivate var renderer:RenderAR!
     /**
      An object that allow customizing the video frame per second rate. Default is `.auto`.
      */
-    @objc public var fps:ARVideoFrameRate = .auto
+    @objc public var fps: ARVideoFrameRate = .auto
     /**
      An object that allow customizing the video orientation. Default is `.auto`.
      */
-    @objc public var videoOrientation:ARVideoOrientation = .auto
+    @objc public var videoOrientation: ARVideoOrientation = .auto
     /**
      An object that allow customizing the AR content mode. Default is `.auto`.
      */
-    @objc public var contentMode:ARFrameMode = .auto
+    @objc public var contentMode: ARFrameMode = .auto
     /**
      A boolean that enables or disables AR content rendering before recording for image & video processing. Default is `true`.
      */
-    @objc public var onlyRenderWhileRecording:Bool = true {
+    @objc public var onlyRenderWhileRecording: Bool = true {
         didSet {
             self.onlyRenderWhileRec = self.onlyRenderWhileRecording
         }
@@ -85,31 +85,31 @@ fileprivate var renderer:RenderAR!
     /**
      A boolean that enables or disables audio recording. Default is `true`.
      */
-    @objc public var enableAudio:Bool = true {
+    @objc public var enableAudio: Bool = true {
         didSet {
-            self.requestMicPermission = (self.requestMicPermission == .manual) ? .manual : .auto
+            self.requestMicPermission = (self.requestMicPermission == .manual) ? .manual: .auto
         }
     }
     /**
      A boolean that enables or disables audio `mixWithOthers` if audio recording is enabled. This allows playing music and recording audio at the same time. Default is `true`.
      */
-    @objc public var enableMixWithOthers:Bool = true
+    @objc public var enableMixWithOthers: Bool = true
     /**
      A boolean that enables or disables adjusting captured media for sharing online. Default is `true`.
      */
-    @objc public var adjustVideoForSharing:Bool = true
+    @objc public var adjustVideoForSharing: Bool = true
     /**
      A boolean that enables or disables adjusting captured GIFs for sharing online. Default is `true`.
      */
-    @objc public var adjustGIFForSharing:Bool = true
+    @objc public var adjustGIFForSharing: Bool = true
     /**
      A boolean that enables or disables clearing cached media after exporting to Camera Roll. Default is `true`.
      */
-    @objc public var deleteCacheWhenExported:Bool = true
+    @objc public var deleteCacheWhenExported: Bool = true
     /**
      A boolean that enables or disables using envronment light rendering. Default is `false`.
      */
-    @objc public var enableAdjustEnvironmentLighting:Bool = false {
+    @objc public var enableAdjustEnvironmentLighting: Bool = false {
         didSet{
             if (renderEngine != nil) {
                 renderEngine.autoenablesDefaultLighting = enableAdjustEnvironmentLighting
@@ -156,47 +156,47 @@ fileprivate var renderer:RenderAR!
         setup()
     }
     
-    //MARK: - Internal threads
-    internal let writerQueue = DispatchQueue(label:"com.ahmedbekhit.WriterQueue")
-    internal let gifWriterQueue = DispatchQueue(label: "com.ahmedbekhit.GIFWriterQueue", attributes: .concurrent)
-    internal let audioSessionQueue = DispatchQueue(label: "com.ahmedbekhit.AudioSessionQueue", attributes: .concurrent)
+    //MARK: - threads
+    let writerQueue = DispatchQueue(label:"com.ahmedbekhit.WriterQueue")
+    let gifWriterQueue = DispatchQueue(label: "com.ahmedbekhit.GIFWriterQueue", attributes: .concurrent)
+    let audioSessionQueue = DispatchQueue(label: "com.ahmedbekhit.AudioSessionQueue", attributes: .concurrent)
     
-    //MARK: - Internal Objects
-    fileprivate var scnView:SCNView!
-    fileprivate var fileCount = 0
+    //MARK: - Objects
+    private var scnView: SCNView!
+    private var fileCount = 0
     
-    internal var parent:UIViewController? {
+    var parent: UIViewController? {
         if let view = view as? ARSCNView {
             return view.parent!
-        }else if let view = view as? ARSKView {
+        } else if let view = view as? ARSKView {
             return view.parent!
-        }else if let view = view as? SCNView {
+        } else if let view = view as? SCNView {
             return view.parent!
         }
         return nil
     }
     
     //Used for gif capturing
-    internal var gifImages:[UIImage] = []
+    var gifImages:[UIImage] = []
     //Used for checking current recorder status
-    internal var isCapturingPhoto = false
-    internal var isRecordingGIF = false
-    internal var isRecording = false
-    internal var adjustPausedTime = false
-    internal var backFromPause = false
-    internal var recordingWithLimit = false
-    internal var onlyRenderWhileRec = true
+    var isCapturingPhoto = false
+    var isRecordingGIF = false
+    var isRecording = false
+    var adjustPausedTime = false
+    var backFromPause = false
+    var recordingWithLimit = false
+    var onlyRenderWhileRec = true
     //Used to modify video time when paused
-    internal var pausedFrameTime:CMTime?
-    internal var resumeFrameTime:CMTime?
+    var pausedFrameTime: CMTime?
+    var resumeFrameTime: CMTime?
     //Used to locate the path of the video recording
-    internal var currentVideoPath:URL?
+    var currentVideoPath: URL?
     //Used to locate the path of the audio recording
-    internal var currentAudioPath:URL?
+    var currentAudioPath: URL?
     //Used to initialize the video writer
-    internal var writer:WritAR?
+    var writer: WritAR?
     //Used to generate a new video path
-    internal var newVideoPath:URL {
+    var newVideoPath: URL {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
         
@@ -211,10 +211,13 @@ fileprivate var renderer:RenderAR!
         return URL(fileURLWithPath: vidPath, isDirectory: false)
     }
     
-    //MARK: - Internal Video Setup
-    internal func setup() {
+    //MARK: - Video Setup
+    func setup() {
         if let view = view as? ARSCNView {
-            guard let mtlDevice = MTLCreateSystemDefaultDevice() else {logAR.message("ERROR:- This device does not support Metal");return}
+            guard let mtlDevice = MTLCreateSystemDefaultDevice() else {
+                logAR.message("ERROR:- This device does not support Metal")
+                return
+            }
             renderEngine = SCNRenderer(device: mtlDevice, options: nil)
             renderEngine.scene = view.scene
             
@@ -223,8 +226,11 @@ fileprivate var renderer:RenderAR!
             gpuLoop.add(to: .main, forMode: .commonModes)
             
             status = .readyToRecord
-        }else if let view = view as? ARSKView {
-            guard let mtlDevice = MTLCreateSystemDefaultDevice() else {logAR.message("ERROR:- This device does not support Metal");return}
+        } else if let view = view as? ARSKView {
+            guard let mtlDevice = MTLCreateSystemDefaultDevice() else {
+                logAR.message("ERROR:- This device does not support Metal")
+                return
+            }
             let material = SCNMaterial()
             material.diffuse.contents = view.scene
             
@@ -243,8 +249,11 @@ fileprivate var renderer:RenderAR!
             gpuLoop.add(to: .main, forMode: .commonModes)
             
             status = .readyToRecord
-        }else if let view = view as? SCNView {
-            guard let mtlDevice = MTLCreateSystemDefaultDevice() else {logAR.message("ERROR:- This device does not support Metal");return}
+        } else if let view = view as? SCNView {
+            guard let mtlDevice = MTLCreateSystemDefaultDevice() else {
+                logAR.message("ERROR:- This device does not support Metal")
+                return
+            }
             renderEngine = SCNRenderer(device: mtlDevice, options: nil)
             renderEngine.scene = view.scene
             
@@ -277,7 +286,7 @@ fileprivate var renderer:RenderAR!
     /**
      A method that renders a `PHLivePhoto` 🎇 and returns `PHLivePhotoPlus` in the completion handler.
      
-     In order to manually export the `PHLivePhotoPlus`, use `export(live photo:PHLivePhotoPlus)` method.
+     In order to manually export the `PHLivePhotoPlus`, use `export(live photo: PHLivePhotoPlus)` method.
      - parameter export: A boolean that enables or disables automatically exporting the `PHLivePhotoPlus` when ready.
      - parameter finished: A block that will be called when Live Photo rendering is complete.
      
@@ -295,9 +304,9 @@ fileprivate var renderer:RenderAR!
         `exported`
         A boolean that returns `true` when a `PHLivePhotoPlus` is successfully exported to the Photo Library. Otherwise, it returns `false`.
      */
-    @objc public func livePhoto(export:Bool, _ finished: ((_ status:Bool, _ livePhoto:PHLivePhotoPlus, _ permissionStatus:PHAuthorizationStatus, _ exported:Bool) -> Swift.Void)? = nil) {
+    @objc public func livePhoto(export: Bool, _ finished: ((_ status: Bool, _ livePhoto: PHLivePhotoPlus, _ permissionStatus: PHAuthorizationStatus, _ exported: Bool) -> Swift.Void)? = nil) {
         self.record(forDuration: 3.0) { path in
-            let generator:LivePhotoGenerator? = LivePhotoGenerator()
+            let generator: LivePhotoGenerator? = LivePhotoGenerator()
             generator?.generate(livePhoto: path) { success, photo, frames, keyFrame in
                 if success && export {
                     if self.fileCount == 0 {
@@ -306,7 +315,7 @@ fileprivate var renderer:RenderAR!
                             finished?(true, photo!, status, done)
                         }
                     }
-                }else{
+                } else {
                     finished?(success, photo!, PHAuthorizationStatus.notDetermined, false)
                 }
             }
@@ -315,7 +324,7 @@ fileprivate var renderer:RenderAR!
     /**
      A method that generates a GIF 🎆 image and returns its local path (`URL`) in the completion handler.
      
-     In order to manually export the GIF image `URL`, use `func export(image path:URL)` method.
+     In order to manually export the GIF image `URL`, use `func export(image path: URL)` method.
      - parameter duration: A `TimeInterval` object that can be set to the duration specified in seconds.
      - parameter export: A boolean that enables or disables automatically exporting the GIF image `URL` when ready.
      - parameter finished: A block that will be called when GIF image rendering is complete.
@@ -334,23 +343,24 @@ fileprivate var renderer:RenderAR!
         `exported`
         A boolean that returns `true` when a GIF image `URL` is successfully exported to the Photo Library. Otherwise, it returns `false`.
      */
-    @objc public func gif(forDuration duration:TimeInterval, export:Bool, _ finished: ((_ status:Bool, _ gifPath: URL, _ permissionStatus:PHAuthorizationStatus, _ exported:Bool) -> Swift.Void)? = nil) {
+    @objc public func gif(forDuration duration: TimeInterval, export: Bool, _ finished: ((_ status: Bool, _ gifPath: URL, _ permissionStatus: PHAuthorizationStatus, _ exported: Bool) -> Swift.Void)? = nil) {
         writerQueue.sync {
             self.isRecordingGIF = true
             DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
                 self.isRecordingGIF = false
-                let generator:GIFGenerator? = GIFGenerator()
-                generator?.generate(gif: self.gifImages, with: 0.1, loop: 0, adjust: self.adjustGIFForSharing) {ready, path in
+                let generator: GIFGenerator? = GIFGenerator()
+                generator?.generate(gif: self.gifImages, with: 0.1, loop: 0, adjust: self.adjustGIFForSharing) { ready, path in
+                    // FIXME: `path` may be nil
                     if ready {
                         self.gifImages.removeAll()
                         if export {
                             self.export(image: path!) { done, status in
                                 finished?(ready, path!, status, done)
                             }
-                        }else{
+                        } else {
                             finished?(ready, path!, .notDetermined, false)
                         }
-                    }else{
+                    } else {
                         self.gifImages.removeAll()
                         finished?(ready, path!, .notDetermined, false)
                     }
@@ -366,7 +376,7 @@ fileprivate var renderer:RenderAR!
                     self.isRecording = true
                     self.status = .recording
                 }
-            }else{
+            } else {
                 self.isRecording = true
                 self.status = .recording
             }
@@ -377,7 +387,7 @@ fileprivate var renderer:RenderAR!
      
      In order to stop the recording before the specified duration, simply call `stop()` or `stopAndExport()` methods.
      
-     - WARNING : You CAN NOT `pause()` video recording when a duration is specified.
+     - WARNING: You CAN NOT `pause()` video recording when a duration is specified.
      - parameter duration: A `TimeInterval` object that can be set to the duration specified in seconds.
      - parameter finished: A block that will be called when the specified `duration` has ended.
      
@@ -386,7 +396,7 @@ fileprivate var renderer:RenderAR!
         `videoPath`
         A `URL` object that contains the local file path of the video to allow manual exporting or preview of the video.
      */
-    @objc public func record(forDuration duration:TimeInterval, _ finished: ((_ videoPath: URL) -> Swift.Void)? = nil) {
+    @objc public func record(forDuration duration: TimeInterval, _ finished: ((_ videoPath: URL) -> Swift.Void)? = nil) {
         writerQueue.sync {
             if self.enableAudio && micStatus == .unknown {
                 self.requestMicrophonePermission { _ in
@@ -399,7 +409,7 @@ fileprivate var renderer:RenderAR!
                         }
                     }
                 }
-            }else{
+            } else {
                 self.recordingWithLimit = true
                 self.isRecording = true
                 self.status = .recording
@@ -422,8 +432,8 @@ fileprivate var renderer:RenderAR!
             onlyRenderWhileRec = false
             isRecording = false
             adjustPausedTime = true
-        }else{
-            logAR.message("NOT PERMITTED: The [ pause() ] method CAN NOT be used while using [ record(forDuration duration:TimeInterval) ]")
+        } else {
+            logAR.message("NOT PERMITTED: The [ pause() ] method CAN NOT be used while using [ record(forDuration duration: TimeInterval) ]")
         }
     }
     /**
@@ -442,7 +452,7 @@ fileprivate var renderer:RenderAR!
         `exported`
         A boolean that returns `true` when a video is successfully exported to the Photo Library. Otherwise, it returns `false`.
      */
-    @objc public func stopAndExport(_ finished: ((_ videoPath: URL, _ permissionStatus:PHAuthorizationStatus, _ exported:Bool) -> Swift.Void)? = nil) {
+    @objc public func stopAndExport(_ finished: ((_ videoPath: URL, _ permissionStatus: PHAuthorizationStatus, _ exported: Bool) -> Swift.Void)? = nil) {
         writerQueue.sync {
             self.isRecording = false
             self.adjustPausedTime = false
@@ -459,7 +469,7 @@ fileprivate var renderer:RenderAR!
                     }
                     self.delegate?.recorder(didEndRecording: path, with: true)
                     self.status = .readyToRecord
-                }else{
+                } else {
                     finished?(self.currentVideoPath!, .notDetermined, false)
                     self.status = .readyToRecord
                     self.delegate?.recorder(didFailRecording: errSecDecode as? Error, and: "An error occured while stopping your video.")
@@ -494,7 +504,7 @@ fileprivate var renderer:RenderAR!
                         finished?(path)
                         self.delegate?.recorder(didEndRecording: path, with: true)
                         self.status = .readyToRecord
-                    }else{
+                    } else {
                         self.status = .readyToRecord
                         self.delegate?.recorder(didFailRecording: errSecDecode as? Error, and: "An error occured while stopping your video.")
                     }
@@ -584,7 +594,7 @@ fileprivate var renderer:RenderAR!
     /**
      A method that exports a `PHLivePhotoPlus` 🎇 object to the Photo Library 📲💾.
      
-     - parameter photo: A `PHLivePhotoPlus` object that can be set to the returned `PHLivePhotoPlus` object in the `livePhoto(export:Bool, _ finished:{})` method.
+     - parameter photo: A `PHLivePhotoPlus` object that can be set to the returned `PHLivePhotoPlus` object in the `livePhoto(export: Bool, _ finished:{})` method.
      
      - parameter finished: A block that will be called when the export process is complete.
      
@@ -597,8 +607,14 @@ fileprivate var renderer:RenderAR!
      A `PHAuthorizationStatus` object that returns the current application's status for exporting media to the Photo Library.
      */
     @objc public func export(live photo: PHLivePhotoPlus, _ finished: ((_ exported: Bool, _ permissionStatus: PHAuthorizationStatus) -> Void)? = nil) {
-        guard let keyPhotoPath = photo.keyPhotoPath else{logAR.message("An error occurred while exporting a live photo"); return}
-        guard let videoPath = photo.pairedVideoPath else{logAR.message("An error occurred while exporting a live photo"); return}
+        guard let keyPhotoPath = photo.keyPhotoPath else {
+            logAR.message("An error occurred while exporting a live photo")
+            return
+        }
+        guard let videoPath = photo.pairedVideoPath else {
+            logAR.message("An error occurred while exporting a live photo")
+            return
+        }
         
         let status = PHPhotoLibrary.authorizationStatus()
         if status == .notDetermined {
@@ -643,7 +659,7 @@ fileprivate var renderer:RenderAR!
             finished?(permitted)
             if permitted {
                 self.micStatus = .enabled
-            }else{
+            } else {
                 self.micStatus = .disabled
             }
         })
@@ -659,7 +675,7 @@ fileprivate var renderer:RenderAR!
      Recommended to use in the `UIViewController`'s method `func viewWillAppear(_ animated: Bool)`
      - parameter configuration: An object that defines motion and scene tracking behaviors for the session.
     */
-    @objc public func prepare(_ configuration:ARConfiguration?=nil) {
+    @objc public func prepare(_ configuration: ARConfiguration? = nil) {
         ARcontentMode = contentMode
         onlyRenderWhileRec = onlyRenderWhileRecording
         if let view = view as? ARSCNView {
@@ -667,14 +683,14 @@ fileprivate var renderer:RenderAR!
             ViewAR.orientation = .portrait
             
             //try resetting anchors for the initial landscape orientation issue.
-            guard let config = configuration else {return}
+            guard let config = configuration else { return }
             view.session.run(config)
-        }else if let view = view as? ARSKView {
+        } else if let view = view as? ARSKView {
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
             ViewAR.orientation = .portrait
-            guard let config = configuration else {return}
+            guard let config = configuration else { return }
             view.session.run(config)
-        }else if let _ = view as? SCNView {
+        } else if let _ = view as? SCNView {
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
             ViewAR.orientation = .portrait
         }
@@ -689,20 +705,26 @@ fileprivate var renderer:RenderAR!
     }
 }
 
-//MARK: - Internal AR Video Frames Rendering
+//MARK: - AR Video Frames Rendering
 @available(iOS 11.0, *)
-internal extension RecordAR {
-    @objc internal func renderFrame() {
+extension RecordAR {
+    @objc func renderFrame() {
         //frame rendering
-        if self.onlyRenderWhileRec && !isRecording && !isRecordingGIF {return}
+        if self.onlyRenderWhileRec && !isRecording && !isRecordingGIF { return }
 
-        guard let buffer = renderer.buffer else{return}
-        guard let rawBuffer = renderer.rawBuffer else{logAR.message("ERROR:- An error occurred while rendering the camera's main buffers.");return}
-        guard let size = renderer.bufferSize else{logAR.message("ERROR:- An error occurred while rendering the camera buffer.");return}
+        guard let buffer = renderer.buffer else { return }
+        guard let rawBuffer = renderer.rawBuffer else {
+            logAR.message("ERROR:- An error occurred while rendering the camera's main buffers.")
+            return
+        }
+        guard let size = renderer.bufferSize else {
+            logAR.message("ERROR:- An error occurred while rendering the camera buffer.")
+            return
+        }
         renderer.ARcontentMode = contentMode
 
         self.writerQueue.sync {
-            var time:CMTime {return CMTimeMakeWithSeconds(renderer.time, 1000000);}
+            var time: CMTime { return CMTimeMakeWithSeconds(renderer.time, 1000000) }
             
             self.renderAR?.frame(didRender: buffer, with: time, using: rawBuffer)
 
@@ -716,22 +738,22 @@ internal extension RecordAR {
             //frame writing
             if self.isRecording {
                 if let frameWriter = self.writer {
-                    var finalFrameTime:CMTime?
+                    var finalFrameTime: CMTime?
                     if self.backFromPause {
                         if self.resumeFrameTime == nil {
                             self.resumeFrameTime = time
                         }
                         //Formula: (currentTime - (timeWhenResume - timeWhenPaused))
-                        guard let resumeTime = self.resumeFrameTime else {return}
-                        guard let pausedTime = self.pausedFrameTime else {return}
+                        guard let resumeTime = self.resumeFrameTime,
+                            let pausedTime = self.pausedFrameTime else { return }
                         finalFrameTime = self.adjustTime(current: time, resume: resumeTime, pause: pausedTime)
-                    }else{
+                    } else {
                         finalFrameTime = time
                     }
                     
                     frameWriter.insert(pixel: buffer, with: finalFrameTime!)
                     
-                    guard let isWriting = frameWriter.isWritingWithoutError else {return}
+                    guard let isWriting = frameWriter.isWritingWithoutError else { return }
                     if !isWriting {
                         self.isRecording = false
                         
@@ -739,21 +761,21 @@ internal extension RecordAR {
                         self.delegate?.recorder(didFailRecording: errSecDecode as? Error, and: "An error occured while recording your video.")
                         self.delegate?.recorder(didEndRecording: self.currentVideoPath!, with: false)
                     }
-                }else{
+                } else {
                     self.currentVideoPath = self.newVideoPath
                     
                     self.writer = WritAR(output: self.currentVideoPath!, width: Int(size.width), height: Int(size.height), adjustForSharing: self.adjustVideoForSharing, audioEnabled: self.enableAudio, orientaions: self.inputViewOrientations, queue: self.writerQueue, allowMix: self.enableMixWithOthers)
                     self.writer?.videoInputOrientation = self.videoOrientation
                     self.writer?.delegate = self.delegate
                 }
-            }else if !self.isRecording && self.adjustPausedTime {
+            } else if !self.isRecording && self.adjustPausedTime {
                 writer?.pause()
 
                 self.adjustPausedTime = false
                 
                 if self.pausedFrameTime != nil {
                     self.pausedFrameTime = self.adjustTime(current: time, resume: self.resumeFrameTime!, pause: self.pausedFrameTime!)
-                }else{
+                } else {
                     self.pausedFrameTime = time
                 }
                 

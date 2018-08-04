@@ -8,14 +8,15 @@
 
 import AVFoundation
 import Photos
+
 @available(iOS 11.0, *)
-internal extension RecordAR {
+extension RecordAR {
     
-    internal func adjustTime(current:CMTime, resume:CMTime, pause:CMTime) -> CMTime {
+    func adjustTime(current: CMTime, resume: CMTime, pause: CMTime) -> CMTime {
         return CMTimeSubtract(current, CMTimeSubtract(resume, pause))
     }
     
-    internal func imageFromBuffer(buffer:CVPixelBuffer) -> UIImage {
+    func imageFromBuffer(buffer: CVPixelBuffer) -> UIImage {
         let coreImg = CIImage(cvPixelBuffer: buffer)
         let context = CIContext()
         let cgImg = context.createCGImage(coreImg, from: coreImg.extent)
@@ -29,8 +30,8 @@ internal extension RecordAR {
             return false
         }
         
-        var recentAngle:CGFloat = 0
-        var rotationAngle:CGFloat = 0
+        var recentAngle: CGFloat = 0
+        var rotationAngle: CGFloat = 0
         switch UIDevice.current.orientation {
         case .landscapeLeft:
             rotationAngle = -90
@@ -53,8 +54,7 @@ internal extension RecordAR {
         case .alwaysPortrait:
             rotationAngle = 0
         case .alwaysLandscape:
-            if rotationAngle == 90 || rotationAngle == -90 {
-            }else{
+            if rotationAngle != 90 || rotationAngle != -90 {
                 rotationAngle = -90
             }
         default:
@@ -64,7 +64,7 @@ internal extension RecordAR {
         return UIImage(cgImage: cgImg!).rotate(by: rotationAngle, flip: false)
     }
     
-    @objc internal func appWillEnterBackground() {
+    @objc func appWillEnterBackground() {
         delegate?.recorder(willEnterBackground: status)
     }
 }

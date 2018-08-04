@@ -13,6 +13,7 @@
     /// Recommended for iPhone X
     case aspectFill
 }
+
 /// Allows specifying the video rendering frame per second `FPS` rate.
 @objc public enum ARVideoFrameRate: Int {
     /// The framework automatically sets the most appropriate `FPS` based on the device support.
@@ -22,6 +23,7 @@
     /// Sets the `FPS` to 60 frames per second.
     case fps60 = 60
 }
+
 /// Allows specifying the final video orientation.
 @objc public enum ARVideoOrientation: Int {
     /// The framework automatically sets the video orientation based on the active `ARInputViewOrientation` orientations.
@@ -31,6 +33,7 @@
     /// Sets the video orientation to always landscape.
     case alwaysLandscape
 }
+
 /// Allows specifying when to request Microphone access.
 @objc public enum RecordARMicrophonePermission: Int {
     /// The framework automatically requests Microphone access when needed.
@@ -38,6 +41,7 @@
     /// Allows manual permission request.
     case manual
 }
+
 /// An object that returns the AR recorder current status.
 @objc public enum RecordARStatus: Int {
     /// The current status of the recorder is unknown.
@@ -49,6 +53,7 @@
     /// The current recorder is paused.
     case paused
 }
+
 /// An object that returns the current Microphone status.
 @objc public enum RecordARMicrophoneStatus: Int {
     // The current status of the Microphone access is unknown.
