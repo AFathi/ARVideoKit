@@ -1,4 +1,4 @@
-> An update for Swift 4.2 is coming soon :) -Ahmed
+## Swift 4.2 Branch
 
 ![intro image](http://www.ahmedbekhit.com/projects/repo-header-arvideokit.png)
 
