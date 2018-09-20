@@ -1,3 +1,5 @@
+> An update for Swift 4.2 is coming soon :) -Ahmed
+
 ![intro image](http://www.ahmedbekhit.com/projects/repo-header-arvideokit.png)
 
 An iOS Framework that enables developers to capture videos 📹, photos 🌄, Live Photos 🎇, and GIFs 🎆 with ARKit content.
