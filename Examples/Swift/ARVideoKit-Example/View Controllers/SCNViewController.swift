@@ -115,7 +115,7 @@ class SCNViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, 
         }else if status == .denied || status == .restricted || status == .notDetermined {
             let errorView = UIAlertController(title: "😅", message: "Please allow access to the photo library in order to save this media file.", preferredStyle: .alert)
             let settingsBtn = UIAlertAction(title: "Open Settings", style: .cancel) { (_) -> Void in
-                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                     return
                 }
                 if UIApplication.shared.canOpenURL(settingsUrl) {
@@ -123,11 +123,11 @@ class SCNViewController: UIViewController, ARSCNViewDelegate, RenderARDelegate, 
                         UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
                         })
                     } else {
-                        UIApplication.shared.openURL(URL(string:UIApplicationOpenSettingsURLString)!)
+                        UIApplication.shared.openURL(URL(string:UIApplication.openSettingsURLString)!)
                     }
                 }
             }
-            errorView.addAction(UIAlertAction(title: "Later", style: UIAlertActionStyle.default, handler: {
+            errorView.addAction(UIAlertAction(title: "Later", style: UIAlertAction.Style.default, handler: {
                 (UIAlertAction)in
             }))
             errorView.addAction(settingsBtn)
