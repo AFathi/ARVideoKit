@@ -268,7 +268,7 @@ private var renderer: RenderAR!
         
         renderer = RenderAR(view, renderer: renderEngine, contentMode: contentMode)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterBackground), name: UIApplication.willResignActiveNotification, object: nil)
     }
     
     
@@ -724,7 +724,8 @@ extension RecordAR {
         renderer.ARcontentMode = contentMode
 
         self.writerQueue.sync {
-            var time: CMTime { return CMTimeMakeWithSeconds(renderer.time, 1000000) }
+            
+            var time: CMTime { return CMTime(seconds: renderer.time, preferredTimescale: 1000000) }
             
             self.renderAR?.frame(didRender: buffer, with: time, using: rawBuffer)
 

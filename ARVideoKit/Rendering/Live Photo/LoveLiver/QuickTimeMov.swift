@@ -16,7 +16,7 @@ class QuickTimeMov {
     private let kKeyStillImageTime = "com.apple.quicktime.still-image-time"
     private let kKeySpaceQuickTimeMetadata = "mdta"
     private let path: String
-    private let dummyTimeRange = CMTimeRangeMake(CMTimeMake(0, 1000), CMTimeMake(200, 3000))
+    private let dummyTimeRange = CMTimeRange(start: CMTime(value: 0, timescale: 1000), duration: CMTime(value: 200, timescale: 3000))
 
     private lazy var asset: AVURLAsset = {
         let url = URL(fileURLWithPath: self.path)
@@ -44,7 +44,7 @@ class QuickTimeMov {
 
             while true {
                 guard let buffer = output.copyNextSampleBuffer() else { return nil }
-                if CMSampleBufferGetNumSamples(buffer) > 0 {
+                if buffer.sampleCount > 0 {
                     let group = AVTimedMetadataGroup(sampleBuffer: buffer)
                     for item in group?.items ?? [] {
                         if item.key as? String == kKeyStillImageTime &&
@@ -128,7 +128,7 @@ class QuickTimeMov {
             // --------------------------------------------------
             writer.startWriting()
             reader.startReading()
-            writer.startSession(atSourceTime: kCMTimeZero)
+            writer.startSession(atSourceTime: CMTime.zero)
             
             // write metadata track
             adapter.append(AVTimedMetadataGroup(items: [metadataForStillImageTime()],
@@ -148,7 +148,7 @@ class QuickTimeMov {
                         input.markAsFinished()
                         if reader.status == .completed && aAudioAsset.tracks.count > 1 {
                             audioReader?.startReading()
-                            writer.startSession(atSourceTime: kCMTimeZero)
+                            writer.startSession(atSourceTime: CMTime.zero)
                             let media_queue = DispatchQueue(label: "assetAudioWriterQueue", attributes: [])
                             audioWriterInput?.requestMediaDataWhenReady(on: media_queue) {
                                 while (audioWriterInput?.isReadyForMoreMediaData)! {
@@ -218,7 +218,7 @@ class QuickTimeMov {
             "com.apple.metadata.datatype.int8"            ]
 
         var desc: CMFormatDescription? = nil
-        CMMetadataFormatDescriptionCreateWithMetadataSpecifications(kCFAllocatorDefault, kCMMetadataFormatType_Boxed, [spec] as CFArray, &desc)
+        CMFormatDescription.createForMetadata(allocator: kCFAllocatorDefault, metadataType: kCMMetadataFormatType_Boxed, metadataSpecifications: [spec] as CFArray, formatDescriptionOut: &desc)
         let input = AVAssetWriterInput(mediaType: AVMediaType.metadata,
             outputSettings: nil, sourceFormatHint: desc)
         return AVAssetWriterInputMetadataAdaptor(assetWriterInput: input)
