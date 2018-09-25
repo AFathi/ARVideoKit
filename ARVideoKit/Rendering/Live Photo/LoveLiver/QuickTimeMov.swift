@@ -44,7 +44,7 @@ class QuickTimeMov {
 
             while true {
                 guard let buffer = output.copyNextSampleBuffer() else { return nil }
-                if buffer.sampleCount > 0 {
+                if CMSampleBufferGetNumSamples(buffer) > 0 {
                     let group = AVTimedMetadataGroup(sampleBuffer: buffer)
                     for item in group?.items ?? [] {
                         if item.key as? String == kKeyStillImageTime &&
@@ -218,7 +218,9 @@ class QuickTimeMov {
             "com.apple.metadata.datatype.int8"            ]
 
         var desc: CMFormatDescription? = nil
-        CMFormatDescription.createForMetadata(allocator: kCFAllocatorDefault, metadataType: kCMMetadataFormatType_Boxed, metadataSpecifications: [spec] as CFArray, formatDescriptionOut: &desc)
+        CMMetadataFormatDescriptionCreateWithMetadataSpecifications(allocator: kCFAllocatorDefault, metadataType: kCMMetadataFormatType_Boxed, metadataSpecifications: [spec] as CFArray, formatDescriptionOut: &desc)
+
+//        CMFormatDescription.createForMetadata(allocator: kCFAllocatorDefault, metadataType: kCMMetadataFormatType_Boxed, metadataSpecifications: [spec] as CFArray, formatDescriptionOut: &desc)
         let input = AVAssetWriterInput(mediaType: AVMediaType.metadata,
             outputSettings: nil, sourceFormatHint: desc)
         return AVAssetWriterInputMetadataAdaptor(assetWriterInput: input)

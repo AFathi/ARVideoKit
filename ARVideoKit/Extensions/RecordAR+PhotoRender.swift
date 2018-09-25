@@ -13,7 +13,7 @@ import Photos
 extension RecordAR {
     
     func adjustTime(current: CMTime, resume: CMTime, pause: CMTime) -> CMTime {
-        return current.subtract(resume.subtract(pause))
+        return CMTimeSubtract(resume, pause)
     }
     
     func imageFromBuffer(buffer: CVPixelBuffer) -> UIImage {

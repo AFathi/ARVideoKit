@@ -223,7 +223,7 @@ private var renderer: RenderAR!
             
             gpuLoop = CADisplayLink(target: self, selector: #selector(renderFrame))
             gpuLoop.preferredFramesPerSecond = fps.rawValue
-            gpuLoop.add(to: .main, forMode: .commonModes)
+            gpuLoop.add(to: .main, forMode: .common)
             
             status = .readyToRecord
         } else if let view = view as? ARSKView {
@@ -246,7 +246,7 @@ private var renderer: RenderAR!
             
             gpuLoop = CADisplayLink(target: self, selector: #selector(renderFrame))
             gpuLoop.preferredFramesPerSecond = fps.rawValue
-            gpuLoop.add(to: .main, forMode: .commonModes)
+            gpuLoop.add(to: .main, forMode: .common)
             
             status = .readyToRecord
         } else if let view = view as? SCNView {
@@ -259,7 +259,7 @@ private var renderer: RenderAR!
             
             gpuLoop = CADisplayLink(target: self, selector: #selector(renderFrame))
             gpuLoop.preferredFramesPerSecond = fps.rawValue
-            gpuLoop.add(to: .main, forMode: .commonModes)
+            gpuLoop.add(to: .main, forMode: .common)
             
             status = .readyToRecord
         }
