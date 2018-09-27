@@ -1,4 +1,4 @@
-## Swift 4.2 Branch
+# Swift 4.2 Branch
 
 ![intro image](http://www.ahmedbekhit.com/projects/repo-header-arvideokit.png)
 
