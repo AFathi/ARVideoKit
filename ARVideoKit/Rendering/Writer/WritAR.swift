@@ -64,7 +64,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         videoInput = AVAssetWriterInput(mediaType: .video, outputSettings: videoOutputSettings)
 
         videoInput.expectsMediaDataInRealTime = true
-        pixelBufferInput = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: videoInput, sourcePixelBufferAttributes: attributes)
+        pixelBufferInput = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: videoInput, sourcePixelBufferAttributes: nil)
         
         var angleEnabled: Bool {
             for v in orientaions {
