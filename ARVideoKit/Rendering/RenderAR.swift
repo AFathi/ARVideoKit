@@ -93,7 +93,9 @@ struct RenderAR {
             } else {
                 renderedFrame = renderEngine.snapshot(atTime: time, with: size, antialiasingMode: .none)
             }
+            
             guard let buffer = renderedFrame!.buffer else { return nil }
+            
             return buffer
         } else if view is ARSKView {
             guard let size = bufferSize else { return nil }

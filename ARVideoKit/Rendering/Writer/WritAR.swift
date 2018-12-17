@@ -33,9 +33,9 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         do {
             assetWriter = try AVAssetWriter(outputURL: output, fileType: AVFileType.mp4)
         } catch {
-            // FIXME: handle when failed to allocate AVAssetWriter.
-            return
+            fatalError("An error occurred while intializing an AVAssetWriter")
         }
+        
         if audioEnabled {
             if allowMix {
                 let audioOptions: AVAudioSessionCategoryOptions = [.mixWithOthers , .allowBluetooth, .defaultToSpeaker, .interruptSpokenAudioAndMixWithOthers]
@@ -65,7 +65,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 
         videoInput.expectsMediaDataInRealTime = true
         pixelBufferInput = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: videoInput, sourcePixelBufferAttributes: attributes)
-        
+
         var angleEnabled: Bool {
             for v in orientaions {
                 if UIDevice.current.orientation.rawValue == v.rawValue {
@@ -141,6 +141,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         if session.canAddInput(audioDeviceInput!) {
             session.addInput(audioDeviceInput!)
         }
+        
         if session.canAddOutput(audioDataOutput) {
             session.addOutput(audioDataOutput)
         }
