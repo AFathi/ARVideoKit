@@ -1,4 +1,4 @@
-> An update for Swift 4.2 is coming soon :) -Ahmed
+> Use [swift_4_2](https://github.com/AFathi/ARVideoKit/tree/swift_4_2) branch for projects written in Swift 4.2
 
 ![intro image](http://www.ahmedbekhit.com/projects/repo-header-arvideokit.png)
 
