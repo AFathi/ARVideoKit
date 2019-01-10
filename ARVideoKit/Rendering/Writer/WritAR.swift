@@ -237,13 +237,22 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         isRecording = false
     }
     
-    func end(writing finished: @escaping () -> Void){
+    func end(writing finished: @escaping () -> Void) {
         if let session = session {
             if session.isRunning {
                 session.stopRunning()
             }
         }
         assetWriter.finishWriting(completionHandler: finished)
+    }
+    
+    func cancel() {
+        if let session = session {
+            if session.isRunning {
+                session.stopRunning()
+            }
+        }
+        assetWriter.cancelWriting()
     }
 }
 

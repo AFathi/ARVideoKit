@@ -513,6 +513,39 @@ private var renderer: RenderAR!
             }
         }
     }
+    
+    /**
+     A method that cancel ⏹ recording a video 📹.
+     
+     - parameter finished: A block that will be called when the specified `duration` has ended.
+     
+     */
+    @objc public func cancel() {
+        writerQueue.sync {
+            isRecording = false
+            adjustPausedTime = false
+            backFromPause = false
+            recordingWithLimit = false
+            
+            pausedFrameTime = nil
+            resumeFrameTime = nil
+            
+            DispatchQueue.main.async {
+                self.writer?.cancel()
+                if let path = self.currentVideoPath {
+                    logAR.remove(from: path)
+                    self.delegate?.recorder(didCancelRecording: "Recording was cancelled manually.")
+                    self.status = .readyToRecord
+                } else {
+                    self.status = .readyToRecord
+                    self.delegate?.recorder(didFailRecording: errSecDecode as? Error, and: "An error occured while stopping your video.")
+                }
+                self.writer = nil
+            }
+        }
+    }
+    
+    
     /**
      A method that exports a video 📹 file path to the Photo Library 📲💾.
      
