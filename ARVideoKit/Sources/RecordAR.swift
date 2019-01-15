@@ -515,7 +515,7 @@ private var renderer: RenderAR!
     }
     
     /**
-     A method that cancel ⏹ recording a video 📹.
+     A method that cancels ⏹ recording a video 📹.
      
      - parameter finished: A block that will be called when the specified `duration` has ended.
      
