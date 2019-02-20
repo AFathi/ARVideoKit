@@ -72,7 +72,7 @@ $ carthage update
 ```
 
 ### ~Manual~ _Deprecated_
-**If you're currently using the `.framework` file, I recommend to re-install the framework using the other installation options.**
+**If you're currently using the `.framework` file, I recommend to re-install the framework using one of the other installation options.**
 
 
 ~Drag the `ARVideoKit.framework` file as an embedded binary of your project targets. `ARVideoKit.framework` can be found in the `/Framework Build/` folder of this repository.~
