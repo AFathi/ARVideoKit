@@ -71,11 +71,15 @@ github "AFathi/ARVideoKit" ~> 1.31
 $ carthage update
 ```
 
-### Manual
-Drag the `ARVideoKit.framework` file as an embedded binary of your project targets. `ARVideoKit.framework` can be found in the `/Framework Build/` folder of this repository.
+### ~Manual~ _Deprecated_
+**If you're currently using the `.framework` file, I recommend to re-install the framework using the other installation options.**
+
+
+~Drag the `ARVideoKit.framework` file as an embedded binary of your project targets. `ARVideoKit.framework` can be found in the `/Framework Build/` folder of this repository.~
 ![Tutorial](http://www.ahmedbekhit.com/arvideokit_install_new.gif)
 
-Or you may drag `ARVideoKit.xcodeproj` into your project and click the **+** button in the embedded binaries section of your project's target.
+### Manual (Supported)
+Drag `ARVideoKit.xcodeproj` into your project and click the **+** button in the embedded binaries section of your project's target.
 ![example embed framework](http://www.ahmedbekhit.com/embeddedBinary.png)
 ## Implementation
 ### Swift
