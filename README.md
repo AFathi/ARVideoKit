@@ -1,5 +1,5 @@
 > Use [swift_4_2](https://github.com/AFathi/ARVideoKit/tree/swift_4_2) branch for projects written in Swift 4.2
-
+> **Note**: I'll be setting the `swift_4_2` (Swift 4.2) repository as the master repository in the upcoming weeks.
 ![intro image](http://www.ahmedbekhit.com/projects/repo-header-arvideokit.png)
 
 An iOS Framework that enables developers to capture videos 📹, photos 🌄, Live Photos 🎇, and GIFs 🎆 with ARKit content.
