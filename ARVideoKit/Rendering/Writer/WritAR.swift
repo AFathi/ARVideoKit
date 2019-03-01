@@ -201,7 +201,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
             currentDuration = time.seconds - startingVideoTime!.seconds
             isRecording = true
             isWritingWithoutError = true
-            delegate?.recorder(didUpdateRecording: currentDuration)
+            delegate?.recorder?(didUpdateRecording: currentDuration)
         }
     }
 

@@ -40,7 +40,7 @@ import ARKit
      A protocol method that is triggered when a recorder is modified.
      - parameter duration: A double that returns the duration of current recording
      */
-    func recorder(didUpdateRecording duration: TimeInterval)
+    @objc optional func recorder(didUpdateRecording duration: TimeInterval)
 
     /**
      A protocol method that is triggered when the application will resign active.
