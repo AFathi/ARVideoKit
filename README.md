@@ -1,4 +1,4 @@
-# Swift 4.2 Branch
+> Use [master](https://github.com/AFathi/ARVideoKit/tree/master) branch for projects written in Swift 4.0
 
 ![intro image](http://www.ahmedbekhit.com/projects/repo-header-arvideokit.png)
 
