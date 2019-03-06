@@ -1,7 +1,7 @@
 # Swift 4.0 Branch
 > Use [swift_4_2](https://github.com/AFathi/ARVideoKit/tree/swift_4_2) branch for projects written in Swift 4.2
 
-> [swift_4_2](https://github.com/AFathi/ARVideoKit/tree/swift_4_2) branch has been set as default branch for `ARVideoKit` as of March 6th, 2019.
+> [swift_4_2](https://github.com/AFathi/ARVideoKit/tree/swift_4_2) branch has been set as the default branch for `ARVideoKit` as of March 6th, 2019.
 
 ![intro image](http://www.ahmedbekhit.com/projects/repo-header-arvideokit.png)
 
