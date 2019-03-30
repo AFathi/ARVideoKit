@@ -716,7 +716,7 @@ import PhotosUI
      Recommended to use in the `UIViewController`'s method `func viewWillAppear(_ animated: Bool)`
      - parameter configuration: An object that defines motion and scene tracking behaviors for the session.
     */
-    @objc public func prepare(_ configuration: ARConfiguration? = nil) {
+    @objc func prepare(_ configuration: ARConfiguration? = nil) {
         ARcontentMode = contentMode
         onlyRenderWhileRec = onlyRenderWhileRecording
         if let view = view as? ARSCNView {
@@ -741,7 +741,7 @@ import PhotosUI
      
      Recommended to use in the `UIViewController`'s method `func viewWillDisappear(_ animated: Bool)`.
     */
-    @objc public func rest() {
+    @objc func rest() {
         ViewAR.orientation = UIInterfaceOrientationMask(ViewAR.orientations)
     }
 }
