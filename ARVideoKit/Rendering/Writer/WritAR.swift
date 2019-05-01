@@ -25,7 +25,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 
     private var isRecording: Bool = false
     
-    var delegate: RecordARDelegate?
+    weak var delegate: RecordARDelegate?
     var videoInputOrientation: ARVideoOrientation = .auto
 
     init(output: URL, width: Int, height: Int, adjustForSharing: Bool, audioEnabled: Bool, orientaions:[ARInputViewOrientation], queue: DispatchQueue, allowMix: Bool) {
