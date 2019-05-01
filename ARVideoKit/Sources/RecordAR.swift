@@ -12,13 +12,6 @@ import ARKit
 import Photos
 import PhotosUI
 
-private var view: Any?
-private var renderEngine: SCNRenderer!
-private var gpuLoop: CADisplayLink!
-private var isResting = false
-private var ARcontentMode: ARFrameMode!
-@available(iOS 11.0, *)
-private var renderer: RenderAR!
 /**
  This class renders the `ARSCNView` or `ARSKView` content with the device's camera stream to generate a video 📹, photo 🌄, live photo 🎇 or GIF 🎆.
 
@@ -162,6 +155,13 @@ private var renderer: RenderAR!
     let audioSessionQueue = DispatchQueue(label: "com.ahmedbekhit.AudioSessionQueue", attributes: .concurrent)
     
     //MARK: - Objects
+    private var view: Any?
+    private var renderEngine: SCNRenderer!
+    private var gpuLoop: CADisplayLink!
+    private var isResting = false
+    private var ARcontentMode: ARFrameMode!
+    private var renderer: RenderAR!
+
     private var scnView: SCNView!
     private var fileCount = 0
     
