@@ -148,6 +148,11 @@ import PhotosUI
         view = SceneKit
         setup()
     }
+
+    //MARK: - Deinit
+    deinit {
+        gpuLoop.invalidate()
+    }
     
     //MARK: - threads
     let writerQueue = DispatchQueue(label:"com.ahmedbekhit.WriterQueue")
@@ -220,8 +225,9 @@ import PhotosUI
             }
             renderEngine = SCNRenderer(device: mtlDevice, options: nil)
             renderEngine.scene = view.scene
-            
-            gpuLoop = CADisplayLink(target: self, selector: #selector(renderFrame))
+
+            gpuLoop = CADisplayLink(target: WeakProxy(target: self),
+                                    selector: #selector(renderFrame))
             gpuLoop.preferredFramesPerSecond = fps.rawValue
             gpuLoop.add(to: .main, forMode: .common)
             
@@ -243,8 +249,9 @@ import PhotosUI
             
             renderEngine = SCNRenderer(device: mtlDevice, options: nil)
             renderEngine.scene = scnView.scene
-            
-            gpuLoop = CADisplayLink(target: self, selector: #selector(renderFrame))
+
+            gpuLoop = CADisplayLink(target: WeakProxy(target: self),
+                                    selector: #selector(renderFrame))
             gpuLoop.preferredFramesPerSecond = fps.rawValue
             gpuLoop.add(to: .main, forMode: .common)
             
@@ -256,8 +263,9 @@ import PhotosUI
             }
             renderEngine = SCNRenderer(device: mtlDevice, options: nil)
             renderEngine.scene = view.scene
-            
-            gpuLoop = CADisplayLink(target: self, selector: #selector(renderFrame))
+
+            gpuLoop = CADisplayLink(target: WeakProxy(target: self),
+                                    selector: #selector(renderFrame))
             gpuLoop.preferredFramesPerSecond = fps.rawValue
             gpuLoop.add(to: .main, forMode: .common)
             
