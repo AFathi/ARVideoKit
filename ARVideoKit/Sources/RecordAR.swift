@@ -782,8 +782,10 @@ extension RecordAR {
 
                 self.adjustPausedTime = false
                 
-                if self.pausedFrameTime != nil {
-                    self.pausedFrameTime = self.adjustTime(current: time, resume: self.resumeFrameTime!, pause: self.pausedFrameTime!)
+                if self.pausedFrameTime != nil && self.resumeFrameTime != nil {
+                    self.pausedFrameTime = self.adjustTime(current: time,
+                                                           resume: self.resumeFrameTime!,
+                                                           pause: self.pausedFrameTime!)
                 } else {
                     self.pausedFrameTime = time
                 }
