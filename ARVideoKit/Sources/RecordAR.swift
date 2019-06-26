@@ -542,7 +542,7 @@ import PhotosUI
                 self.writer?.cancel()
                 if let path = self.currentVideoPath {
                     logAR.remove(from: path)
-                    self.delegate?.recorder(didCancelRecording: "Recording was cancelled manually.")
+                    self.delegate?.recorder?(didCancelRecording: "Recording was cancelled manually.")
                     self.status = .readyToRecord
                 } else {
                     self.status = .readyToRecord
