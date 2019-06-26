@@ -1,4 +1,6 @@
-# Swift 4.2 Branch
+> Use [swift_5](https://github.com/AFathi/ARVideoKit/tree/swift_5) branch for projects written in Swift 5
+
+> Use [master](https://github.com/AFathi/ARVideoKit/tree/master) branch for projects written in Swift 4.0
 
 ![intro image](http://www.ahmedbekhit.com/projects/repo-header-arvideokit.png)
 

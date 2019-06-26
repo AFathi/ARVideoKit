@@ -20,7 +20,7 @@ import ARKit
  */
 @available(iOS 11.0, *)
 @objc public class ARView: NSObject {
-    private var parentVC: UIViewController?
+    private weak var parentVC: UIViewController?
     private var recentAngle = 0
     private var inputViewOrientation:[ARInputViewOrientation] = []
     

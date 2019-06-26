@@ -28,17 +28,25 @@ import ARKit
      - parameter noError: A boolean that returns true when the recorder ends without errors. Otherwise, it returns false.
      */
     func recorder(didEndRecording path: URL, with noError: Bool)
+    
     /**
      A protocol method that is triggered when a recorder fails recording.
      - parameter error: An `Error` object that returns the error value.
      - parameter status: A string that returns the reason of the recorder failure in a string literal format.
      */
     func recorder(didFailRecording error: Error?, and status: String)
+  
     /**
      A protocol method that is triggered when a recorder is cancelled.
      - parameter status: A string that returns the reason because the recorder was cancelled in a string literal format.
      */
     func recorder(didCancelRecording status: String)
+    
+    /**
+     A protocol method that is triggered when a recorder is modified.
+     - parameter duration: A double that returns the duration of current recording
+     */
+    @objc optional func recorder(didUpdateRecording duration: TimeInterval)
 
     /**
      A protocol method that is triggered when the application will resign active.
