@@ -35,6 +35,12 @@ import ARKit
      - parameter status: A string that returns the reason of the recorder failure in a string literal format.
      */
     func recorder(didFailRecording error: Error?, and status: String)
+  
+    /**
+     A protocol method that is triggered when a recorder is cancelled.
+     - parameter status: A string that returns the reason because the recorder was cancelled in a string literal format.
+     */
+    func recorder(didCancelRecording status: String)
     
     /**
      A protocol method that is triggered when a recorder is modified.
