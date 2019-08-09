@@ -23,12 +23,9 @@ import ARKit
      
      Recommended to return in the application delegate method `func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask`.
     */
-    @objc internal(set) public static var orientation: UIInterfaceOrientationMask {
-        get { return mask }
-        set { mask = newValue }
-    }
+    @objc internal(set) public static var orientation: UIInterfaceOrientationMask {get {return mask;}set {mask = newValue}}
     
-    static var orientations: [UIInterfaceOrientationMask] {
+    internal static var orientations:[UIInterfaceOrientationMask] {
         var all:[UIInterfaceOrientationMask] = []
         if let info = Bundle.main.infoDictionary {
             if let supportedOrientaions = info["UISupportedInterfaceOrientations"] as? NSArray {
@@ -36,11 +33,11 @@ import ARKit
                     if let o = orientation as? String {
                         if o == "UIInterfaceOrientationPortrait" {
                             all.append(.portrait)
-                        } else if o == "UIInterfaceOrientationPortraitUpsideDown" {
+                        }else if o == "UIInterfaceOrientationPortraitUpsideDown" {
                             all.append(.portraitUpsideDown)
-                        } else if o == "UIInterfaceOrientationLandscapeLeft" {
+                        }else if o == "UIInterfaceOrientationLandscapeLeft" {
                             all.append(.landscapeLeft)
-                        } else if o == "UIInterfaceOrientationLandscapeRight" {
+                        }else if o == "UIInterfaceOrientationLandscapeRight" {
                             all.append(.landscapeRight)
                         }
                     }
@@ -51,21 +48,9 @@ import ARKit
         return all
     }
     //returns the application's delegate to check if the current UIViewController contains an ARView
-    private static var delegate = UIApplication.shared.delegate
+    fileprivate static var delegate = UIApplication.shared.delegate
     //variable for the setter in `mask`
-    private static var m: UIInterfaceOrientationMask = .portrait
+    fileprivate static var m: UIInterfaceOrientationMask = .portrait
     //returns the most appropriate orientation based on the content of the UIViewController.
-    private static var mask: UIInterfaceOrientationMask {
-        get {
-            if let vc = delegate?.window??.inputViewController {
-                if vc.hasARView {
-                    return .portrait
-                } else {
-                    return UIInterfaceOrientationMask(orientations)
-                }
-            }
-            return m
-        }
-        set { m = newValue }
-    }
+    fileprivate static var mask: UIInterfaceOrientationMask {get {if let vc = delegate?.window??.inputViewController {if vc.hasARView {return .portrait}else{return UIInterfaceOrientationMask(orientations)}};return m;}set {m = newValue;}}
 }

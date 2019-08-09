@@ -8,33 +8,32 @@
 
 import AVFoundation
 import Photos
-
 @available(iOS 11.0, *)
-class LivePhotoGenerator {
-    private var keyPhotoPath: URL?
+internal class LivePhotoGenerator {
+    fileprivate var keyPhotoPath:URL?
 
-    private var finalKeyPhotoPath: URL?
-    private var finalPairedVideoPath: URL?
+    fileprivate var finalKeyPhotoPath:URL?
+    fileprivate var finalPairedVideoPath:URL?
     
-    let livePhotoQueue = DispatchQueue(label:"com.ahmedbekhit.livePhotoQueue", attributes: .concurrent)
+    internal let livePhotoQueue = DispatchQueue(label:"com.ahmedbekhit.livePhotoQueue", attributes: .concurrent)
     
-    func generate(livePhoto video: URL?, _ finished: ((_ status: Bool, _ photo: PHLivePhotoPlus?, _ pairedVideoPath: URL?, _ keyFramePath: URL?) -> Void)? = nil) {
+    internal func generate(livePhoto video:URL?, _ finished: ((_ status: Bool, _ photo: PHLivePhotoPlus?, _ pairedVideoPath:URL?, _ keyFramePath:URL?) -> Void)? = nil) {
         livePhotoQueue.async {
-            guard let liveFrames = video else { finished?(false, nil, nil, nil); return }
+            guard let liveFrames = video else{finished?(false, nil, nil, nil); return}
             let asset = AVURLAsset(url: video!)
             let generator = AVAssetImageGenerator(asset: asset)
             generator.appliesPreferredTrackTransform = true
             
             //retrieves the key photo frame from the middle of the video asset
             let time = NSValue(time: CMTimeMultiplyByFloat64(asset.duration, multiplier: 0.5))
-
+            
             //generates the key photo CGImage asynchronously
-            generator.generateCGImagesAsynchronously(forTimes: [time], completionHandler: { _, image, _, _, _ in
+            generator.generateCGImagesAsynchronously(forTimes: [time], completionHandler:{_,image,_,_,_ in
                 if let cgImg = image, let imgData = UIImage(cgImage: cgImg).pngData() {
                     do {
                         self.keyPhotoPath = self.newPath(for: true, and: false)
                         try imgData.write(to: self.keyPhotoPath!, options: [.atomic])
-                    } catch let error {
+                    }catch let error {
                         self.keyPhotoPath = nil
                         logAR.message("An error occurred while capturing a live photo: \(error)")
                         finished?(false, nil, nil, nil)
@@ -43,9 +42,9 @@ class LivePhotoGenerator {
                     self.finalKeyPhotoPath = self.newPath(for: true, and: true)
                     self.finalPairedVideoPath = self.newPath(for: false, and: true)
                     
-                    guard let keyFrame = self.keyPhotoPath else { finished?(false, nil, nil, nil); return }
-                    guard let keyLiveFrame = self.finalKeyPhotoPath else { finished?(false, nil, nil, nil); return }
-                    guard let keyLiveFrames = self.finalPairedVideoPath else { finished?(false, nil, nil, nil); return }
+                    guard let keyFrame = self.keyPhotoPath else{finished?(false, nil, nil, nil); return}
+                    guard let keyLiveFrame = self.finalKeyPhotoPath else{finished?(false, nil, nil, nil); return}
+                    guard let keyLiveFrames = self.finalPairedVideoPath else{finished?(false, nil, nil, nil); return}
 
                     let assetIdentifier = UUID().uuidString
            
@@ -62,7 +61,7 @@ class LivePhotoGenerator {
                             finalPhoto.pairedVideoPath = keyLiveFrames
                             finished?(true, finalPhoto, finalPhoto.pairedVideoPath, finalPhoto.keyPhotoPath)
                             return
-                        } else {
+                        }else{
                             let finalPhoto = PHLivePhotoPlus(photo: photo!)
                             finalPhoto.keyPhotoPath = keyLiveFrame
                             finalPhoto.pairedVideoPath = keyLiveFrames
@@ -75,7 +74,7 @@ class LivePhotoGenerator {
         }
     }
     
-    func newPath(for JPEG: Bool, and live: Bool) -> URL {
+    func newPath(for JPEG:Bool, and live:Bool) -> URL {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
         
@@ -97,9 +96,9 @@ class LivePhotoGenerator {
         
         if JPEG && live {
             return URL(fileURLWithPath: "\(livePhotosFolder)/\(formatter.string(from: date))AR.jpg", isDirectory: false)
-        } else if JPEG && !live {
+        }else if JPEG && !live {
             return URL(fileURLWithPath: "\(documentsDirectory)/\(formatter.string(from: date))AR.jpg", isDirectory: false)
-        } else {
+        }else{
             return URL(fileURLWithPath: "\(livePhotosFolder)/\(formatter.string(from: date))AR.mov", isDirectory: false)
         }
     }

@@ -8,9 +8,8 @@
 
 import UIKit
 import ARKit
-
 @available(iOS 11.0, *)
-extension UIScreen {
+internal extension UIScreen {
     /**
      `isiPhone10` is a boolean that returns if the device is iPhone X or not.
      */
@@ -19,7 +18,7 @@ extension UIScreen {
     }
 }
 @available(iOS 11.0, *)
-extension UIView {
+internal extension UIView {
     var parent: UIViewController? {
         var responder: UIResponder? = self
         while responder != nil {
@@ -32,10 +31,20 @@ extension UIView {
     }
     
     var isButton: Bool {
-        return (self is UIButton)
+        if let _ = self as? UIButton {
+            return true
+        }else{
+            return false
+        }
     }
     
     var isARView: Bool {
-        return (self is ARSCNView) || (self is ARSKView)
+        if let _ = self as? ARSCNView {
+            return true
+        }else if let _ = self as? ARSKView {
+            return true
+        }else {
+            return false
+        }
     }
 }
