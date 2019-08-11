@@ -11,10 +11,10 @@ import AVFoundation
 import ImageIO
 import MobileCoreServices
 
-class GIFGenerator {
-    let gifQueue = DispatchQueue(label:"com.ahmedbekhit.GIFQueue", attributes: .concurrent)
-    private var currentGIFPath: URL?
-    private var newGIFPath: URL {
+internal class GIFGenerator {
+    internal let gifQueue = DispatchQueue(label:"com.arvideokit.GIFQueue", attributes: .concurrent)
+    fileprivate var currentGIFPath: URL?
+    fileprivate var newGIFPath: URL {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
         
@@ -29,7 +29,7 @@ class GIFGenerator {
         return URL(fileURLWithPath: gifPath, isDirectory: false)
     }
     
-    func generate(gif images:[UIImage], with delay: Float, loop count: Int = 0, adjust: Bool, _ finished: ((_ status: Bool, _ path: URL?) -> Void)? = nil) {
+    internal func generate(gif images:[UIImage], with delay:Float, loop count:Int = 0, adjust:Bool, _ finished: ((_ status: Bool, _ path: URL?) -> Void)? = nil) {
         currentGIFPath = newGIFPath
         gifQueue.async {
             let gifSettings = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFLoopCount as String: count]]
@@ -45,16 +45,20 @@ class GIFGenerator {
             for image in images {
                 if let imageRef = image.cgImage {
                     var ratio: Float = 0.0
-                    if adjust { ratio = 0.5 } else { ratio = 1.0 }
+                    if adjust {
+                        ratio = 0.5
+                    } else {
+                        ratio = 1.0
+                    }
                     CGImageDestinationAddImage(destination, imageRef.resize(with: ratio)!, imageSettings as CFDictionary)
                 }
             }
             
-            if !CGImageDestinationFinalize(destination){
-                finished?(false, nil)
+            if !CGImageDestinationFinalize(destination) {
+                finished?(false, nil);
                 return
-            } else {
-                finished?(true, path)
+            }else{
+                finished?(true, path);
             }
         }
     }
