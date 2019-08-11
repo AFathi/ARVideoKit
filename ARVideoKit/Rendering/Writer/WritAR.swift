@@ -20,7 +20,7 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     fileprivate var videoOutputSettings: Dictionary<String, AnyObject>!
     fileprivate var audioSettings: [String : Any]?
 
-    internal let audioBufferQueue = DispatchQueue(label: "com.ahmedbekhit.AudioBufferQueue")
+    internal let audioBufferQueue = DispatchQueue(label: "com.arvideokit.AudioBufferQueue")
 
     fileprivate var isRecording:Bool = false
     
@@ -32,6 +32,7 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         do {
             assetWriter = try AVAssetWriter(outputURL: output, fileType: AVFileType.mp4)
         }catch{
+            print("asset writer failed for outputURL: \(output)")
             return
         }
         if audioEnabled {
@@ -39,7 +40,9 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
                 do {
                     try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, mode: .videoRecording, options: [AVAudioSession.CategoryOptions.mixWithOthers , AVAudioSession.CategoryOptions.allowBluetooth, AVAudioSession.CategoryOptions.defaultToSpeaker, AVAudioSession.CategoryOptions.interruptSpokenAudioAndMixWithOthers])
                     try AVAudioSession.sharedInstance().setActive(true)
-                }catch{}
+                } catch {
+                    print("AVAudioSession.sharedInstance: .setCategory & setActive failed")
+                }
             }
             AVAudioSession.sharedInstance().requestRecordPermission({ permitted in
                 if permitted {
@@ -144,7 +147,6 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
             session.addOutput(audioDataOutput)
         }
         
-
         audioSettings = audioDataOutput.recommendedAudioSettingsForAssetWriter(writingTo: .m4v) as? [String : Any]
         
         audioInput = AVAssetWriterInput(mediaType: .audio, outputSettings: audioSettings)
@@ -162,8 +164,8 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     internal var startingVideoTime:CMTime?
     internal var isWritingWithoutError: Bool?
     
-    internal func insert(pixel buffer:CVPixelBuffer, with intervals:CFTimeInterval) {
-        var time:CMTime {return CMTimeMakeWithSeconds(intervals, preferredTimescale: 1000000);}
+    internal func insert(pixel buffer: CVPixelBuffer, with intervals: CFTimeInterval) {
+        var time:CMTime { return CMTimeMakeWithSeconds(intervals, preferredTimescale: 1000000); }
         if assetWriter.status == .unknown {
             if let _ = startingVideoTime {isWritingWithoutError = false; return}else{startingVideoTime = time}
             if assetWriter.startWriting() {
@@ -176,6 +178,7 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
                 isWritingWithoutError = false
             }
         }else if assetWriter.status == .failed {
+            print("insert-pixel with intervals: assetWriter status failed")
             delegate?.recorder(didFailRecording: assetWriter.error, and: "Video session failed while recording.")
             logAR.message("An error occurred while recording the video, status: \(assetWriter.status.rawValue), error: \(assetWriter.error!.localizedDescription)")
             isWritingWithoutError = false
@@ -188,6 +191,8 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     }
     
     internal func insert(pixel buffer:CVPixelBuffer, with time:CMTime) {
+//        print("assetWriter: \(String(describing: assetWriter))")
+        print("assetWriter.status: \(String(describing: assetWriter.status))")
         if assetWriter.status == .unknown {
             if let _ = startingVideoTime {isWritingWithoutError = false; return}else{startingVideoTime = time}
             if assetWriter.startWriting() {
@@ -200,6 +205,7 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
                 isWritingWithoutError = false
             }
         }else if assetWriter.status == .failed {
+            print("insert-pixel with time: assetWriter status failed")
             delegate?.recorder(didFailRecording: assetWriter.error, and: "Video session failed while recording.")
             logAR.message("An error occurred while recording the video, status: \(assetWriter.status.rawValue), error: \(assetWriter.error!.localizedDescription)")
             isRecording = false
@@ -239,6 +245,7 @@ internal class WritAR:NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 @available(iOS 11.0, *)
 fileprivate extension WritAR {
     func append(pixel buffer:CVPixelBuffer, with time: CMTime) {
+        print("appending to pixel buffer")
         pixelBufferInput.append(buffer, withPresentationTime: time)
     }
 }
