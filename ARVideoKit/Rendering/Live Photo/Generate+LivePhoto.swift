@@ -15,7 +15,7 @@ internal class LivePhotoGenerator {
     fileprivate var finalKeyPhotoPath:URL?
     fileprivate var finalPairedVideoPath:URL?
     
-    internal let livePhotoQueue = DispatchQueue(label:"com.ahmedbekhit.livePhotoQueue", attributes: .concurrent)
+    internal let livePhotoQueue = DispatchQueue(label:"com.arvideokit.livePhotoQueue", attributes: .concurrent)
     
     internal func generate(livePhoto video:URL?, _ finished: ((_ status: Bool, _ photo: PHLivePhotoPlus?, _ pairedVideoPath:URL?, _ keyFramePath:URL?) -> Void)? = nil) {
         livePhotoQueue.async {

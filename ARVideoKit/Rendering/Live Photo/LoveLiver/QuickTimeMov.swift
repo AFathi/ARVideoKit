@@ -62,6 +62,7 @@ internal class QuickTimeMov {
         var audioReader : AVAssetReader? = nil
         var audioWriterInput : AVAssetWriterInput? = nil
         var audioReaderOutput : AVAssetReaderOutput? = nil
+        
         do {
             // --------------------------------------------------
             // reader for source video
