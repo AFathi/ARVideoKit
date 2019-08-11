@@ -139,9 +139,9 @@ fileprivate var renderer:RenderAR!
     }
     
     //MARK: - Internal threads
-    internal let writerQueue = DispatchQueue(label:"com.ahmedbekhit.WriterQueue")
-    internal let gifWriterQueue = DispatchQueue(label: "com.ahmedbekhit.GIFWriterQueue", attributes: .concurrent)
-    internal let audioSessionQueue = DispatchQueue(label: "com.ahmedbekhit.AudioSessionQueue", attributes: .concurrent)
+    internal let writerQueue = DispatchQueue(label:"com.arvideokit.WriterQueue")
+    internal let gifWriterQueue = DispatchQueue(label: "com.arvideokit.GIFWriterQueue", attributes: .concurrent)
+    internal let audioSessionQueue = DispatchQueue(label: "com.arvideokit.AudioSessionQueue", attributes: .concurrent)
     
     //MARK: - Internal Objects
     fileprivate var scnView:SCNView!
@@ -189,7 +189,16 @@ fileprivate var renderer:RenderAR!
 
         let date = Date(timeIntervalSince1970: Date().timeIntervalSince1970)
         
-        let vidPath = "\(documentsDirectory)/\(formatter.string(from: date))ARVideo.mp4"
+        let vidPath = "\(documentsDirectory)/\(formatter.string(from: date))_ARVideo.mp4"
+        
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: vidPath) {
+            print("Found existing file, removing it now...")
+            do {
+                try fileManager.removeItem(atPath: vidPath)
+            } catch { }
+        }
+        
         return URL(fileURLWithPath: vidPath, isDirectory: false)
     }
     
