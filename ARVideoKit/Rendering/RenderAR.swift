@@ -18,7 +18,7 @@ internal struct RenderAR {
         renderEngine = renderer
         ARcontentMode = contentMode
     }
-    internal let pixelsQueue = DispatchQueue(label:"com.ahmedbekhit.PixelsQueue", attributes: .concurrent)
+    internal let pixelsQueue = DispatchQueue(label:"com.arvideokit.PixelsQueue", attributes: .concurrent)
     internal var time:CFTimeInterval {return CACurrentMediaTime()}
     internal var rawBuffer:CVPixelBuffer? {
         if let view = view as? ARSCNView {
