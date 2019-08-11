@@ -10,14 +10,14 @@ import UIKit
 import ARKit
 @available(iOS 11.0, *)
 internal extension UIViewController {
-    var hasARView: Bool {
+    var hasARView : Bool {
         let views = self.view.subviews
         for v in views {
             if let _ = v as? ARSCNView {
                 return true
-            }else if let _ = v as? ARSKView {
+            } else if let _ = v as? ARSKView {
                 return true
-            }else {
+            } else {
                 return false
             }
         }

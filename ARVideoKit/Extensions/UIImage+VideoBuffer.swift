@@ -10,7 +10,7 @@ import CoreVideo
 import UIKit
 internal extension UIImage
 {
-    func rotate(by degrees: CGFloat, flip:Bool?=nil) -> UIImage
+    func rotate(by degrees: CGFloat, flip: Bool? = nil) -> UIImage
     {
         let radians = CGFloat(degrees * (CGFloat.pi / 180.0))
         
@@ -26,10 +26,10 @@ internal extension UIImage
         if let isFlipped = flip {
             if !isFlipped {
                 bitmap?.scaleBy(x: 1.0, y: -1.0)
-            }else{
+            } else {
                 bitmap?.scaleBy(x: -1.0, y: -1.0)
             }
-        }else{
+        } else {
             bitmap?.scaleBy(x: -1.0, y: -1.0)
         }
         bitmap?.draw(self.cgImage!, in: CGRect(origin: CGPoint(x: -self.size.width / 2, y: -self.size.height / 2), size: self.size))
@@ -39,7 +39,7 @@ internal extension UIImage
         return finalBuffer!
     }
     
-    var buffer: CVPixelBuffer? {
+    var buffer : CVPixelBuffer? {
         let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
         var pixelBuffer : CVPixelBuffer?
         let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(self.size.width), Int(self.size.height), kCVPixelFormatType_32ARGB, attrs, &pixelBuffer)
