@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B466A8B82279E34C00BD7070 /* WeakProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B466A8B72279E34C00BD7070 /* WeakProxy.swift */; };
 		FB2E36891FAE29C00035B8D6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FB2E36881FAE29BF0035B8D6 /* LICENSE */; };
 		FB404FFE20D72A190056EA1D /* JPEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB404FFD20D72A190056EA1D /* JPEG.swift */; };
 		FBD604DF1FA969DD00EC9804 /* ARVideoKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FBD604DD1FA969DD00EC9804 /* ARVideoKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B466A8B72279E34C00BD7070 /* WeakProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakProxy.swift; sourceTree = "<group>"; };
 		FB2E36881FAE29BF0035B8D6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		FB404FFD20D72A190056EA1D /* JPEG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEG.swift; sourceTree = "<group>"; };
 		FBD604DA1FA969DD00EC9804 /* ARVideoKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ARVideoKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B466A8B62279E33800BD7070 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B466A8B72279E34C00BD7070 /* WeakProxy.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		FBA0AA0A1FAD9D9D006C481B /* Writer */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +109,7 @@
 		FBD604DC1FA969DD00EC9804 /* ARVideoKit */ = {
 			isa = PBXGroup;
 			children = (
+				B466A8B62279E33800BD7070 /* Utils */,
 				FBD604E51FA96ACD00EC9804 /* Assets */,
 				FBD604E61FA96AD400EC9804 /* Enumerations */,
 				FBD604E71FA96AE500EC9804 /* Extensions */,
@@ -291,6 +302,7 @@
 				FBD604F51FA96B3300EC9804 /* UIImage+VideoBuffer.swift in Sources */,
 				FBD605111FA96BA100EC9804 /* ARView.swift in Sources */,
 				FBD604F61FA96B3300EC9804 /* CGImage+Resize.swift in Sources */,
+				B466A8B82279E34C00BD7070 /* WeakProxy.swift in Sources */,
 				FBD604F91FA96B3300EC9804 /* UIViewController+hasType.swift in Sources */,
 				FBD605141FA96BA100EC9804 /* ViewAR.swift in Sources */,
 				FBD604EE1FA96B2700EC9804 /* ARVideoOptions.swift in Sources */,

@@ -12,13 +12,6 @@ import ARKit
 import Photos
 import PhotosUI
 
-private var view: Any?
-private var renderEngine: SCNRenderer!
-private var gpuLoop: CADisplayLink!
-private var isResting = false
-private var ARcontentMode: ARFrameMode!
-@available(iOS 11.0, *)
-private var renderer: RenderAR!
 /**
  This class renders the `ARSCNView` or `ARSKView` content with the device's camera stream to generate a video 📹, photo 🌄, live photo 🎇 or GIF 🎆.
 
@@ -155,6 +148,11 @@ private var renderer: RenderAR!
         view = SceneKit
         setup()
     }
+
+    //MARK: - Deinit
+    deinit {
+        gpuLoop.invalidate()
+    }
     
     //MARK: - threads
     let writerQueue = DispatchQueue(label:"com.ahmedbekhit.WriterQueue")
@@ -162,6 +160,13 @@ private var renderer: RenderAR!
     let audioSessionQueue = DispatchQueue(label: "com.ahmedbekhit.AudioSessionQueue", attributes: .concurrent)
     
     //MARK: - Objects
+    private var view: Any?
+    private var renderEngine: SCNRenderer!
+    private var gpuLoop: CADisplayLink!
+    private var isResting = false
+    private var ARcontentMode: ARFrameMode!
+    private var renderer: RenderAR!
+
     private var scnView: SCNView!
     private var fileCount = 0
     
@@ -220,8 +225,9 @@ private var renderer: RenderAR!
             }
             renderEngine = SCNRenderer(device: mtlDevice, options: nil)
             renderEngine.scene = view.scene
-            
-            gpuLoop = CADisplayLink(target: self, selector: #selector(renderFrame))
+
+            gpuLoop = CADisplayLink(target: WeakProxy(target: self),
+                                    selector: #selector(renderFrame))
             gpuLoop.preferredFramesPerSecond = fps.rawValue
             gpuLoop.add(to: .main, forMode: .common)
             
@@ -243,8 +249,9 @@ private var renderer: RenderAR!
             
             renderEngine = SCNRenderer(device: mtlDevice, options: nil)
             renderEngine.scene = scnView.scene
-            
-            gpuLoop = CADisplayLink(target: self, selector: #selector(renderFrame))
+
+            gpuLoop = CADisplayLink(target: WeakProxy(target: self),
+                                    selector: #selector(renderFrame))
             gpuLoop.preferredFramesPerSecond = fps.rawValue
             gpuLoop.add(to: .main, forMode: .common)
             
@@ -256,8 +263,9 @@ private var renderer: RenderAR!
             }
             renderEngine = SCNRenderer(device: mtlDevice, options: nil)
             renderEngine.scene = view.scene
-            
-            gpuLoop = CADisplayLink(target: self, selector: #selector(renderFrame))
+
+            gpuLoop = CADisplayLink(target: WeakProxy(target: self),
+                                    selector: #selector(renderFrame))
             gpuLoop.preferredFramesPerSecond = fps.rawValue
             gpuLoop.add(to: .main, forMode: .common)
             
@@ -513,6 +521,39 @@ private var renderer: RenderAR!
             }
         }
     }
+    
+    /**
+     A method that cancels ⏹ recording a video 📹.
+     
+     - parameter finished: A block that will be called when the specified `duration` has ended.
+     
+     */
+    @objc public func cancel() {
+        writerQueue.sync {
+            isRecording = false
+            adjustPausedTime = false
+            backFromPause = false
+            recordingWithLimit = false
+            
+            pausedFrameTime = nil
+            resumeFrameTime = nil
+            
+            DispatchQueue.main.async {
+                self.writer?.cancel()
+                if let path = self.currentVideoPath {
+                    logAR.remove(from: path)
+                    self.delegate?.recorder?(didCancelRecording: "Recording was cancelled manually.")
+                    self.status = .readyToRecord
+                } else {
+                    self.status = .readyToRecord
+                    self.delegate?.recorder(didFailRecording: errSecDecode as? Error, and: "An error occured while stopping your video.")
+                }
+                self.writer = nil
+            }
+        }
+    }
+    
+    
     /**
      A method that exports a video 📹 file path to the Photo Library 📲💾.
      
@@ -774,8 +815,10 @@ extension RecordAR {
 
                 self.adjustPausedTime = false
                 
-                if self.pausedFrameTime != nil {
-                    self.pausedFrameTime = self.adjustTime(current: time, resume: self.resumeFrameTime!, pause: self.pausedFrameTime!)
+                if self.pausedFrameTime != nil && self.resumeFrameTime != nil {
+                    self.pausedFrameTime = self.adjustTime(current: time,
+                                                           resume: self.resumeFrameTime!,
+                                                           pause: self.pausedFrameTime!)
                 } else {
                     self.pausedFrameTime = time
                 }

@@ -25,7 +25,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 
     private var isRecording: Bool = false
     
-    var delegate: RecordARDelegate?
+    weak var delegate: RecordARDelegate?
     var videoInputOrientation: ARVideoOrientation = .auto
 
     init(output: URL, width: Int, height: Int, adjustForSharing: Bool, audioEnabled: Bool, orientaions:[ARInputViewOrientation], queue: DispatchQueue, allowMix: Bool) {
@@ -219,7 +219,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         isRecording = false
     }
     
-    func end(writing finished: @escaping () -> Void){
+    func end(writing finished: @escaping () -> Void) {
         if let session = session {
             if session.isRunning {
                 session.stopRunning()
@@ -229,6 +229,15 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         if assetWriter.status == .writing {
             assetWriter.finishWriting(completionHandler: finished)
         }
+    }
+    
+    func cancel() {
+        if let session = session {
+            if session.isRunning {
+                session.stopRunning()
+            }
+        }
+        assetWriter.cancelWriting()
     }
 }
 

@@ -18,7 +18,7 @@ import Photos
  * [Email](mailto:me@ahmedbekhit.com)
  */
 @available(iOS 9.1, *)
-@objc public class PHLivePhotoPlus: PHLivePhoto {
+@objc public class PHLivePhotoPlus: NSObject {
     var pairedVideoPath: URL?
     var keyPhotoPath: URL?
     

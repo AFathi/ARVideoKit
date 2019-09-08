@@ -9,11 +9,10 @@
 import Foundation
 import ARKit
 
-private var view: Any?
-private var renderEngine: SCNRenderer!
-
 @available(iOS 11.0, *)
 struct RenderAR {
+    private var view: Any?
+    private var renderEngine: SCNRenderer!
     var ARcontentMode: ARFrameMode!
     
     init(_ ARview: Any?, renderer: SCNRenderer, contentMode: ARFrameMode) {
