@@ -118,9 +118,9 @@ import PhotosUI
                 guard let techniqueSupportingView = view as? SCNTechniqueSupport else {
                     return
                 }
-                renderEngine.technique = techniqueSupportingView.technique
+                renderEngine?.technique = techniqueSupportingView.technique
             } else {
-                renderEngine.technique = nil
+                renderEngine?.technique = nil
             }
         }
     }
