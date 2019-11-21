@@ -109,6 +109,21 @@ import PhotosUI
             }
         }
     }
+    /**
+     A boolean that indicates whether render engine should retain SCNTechnique used in the view. Default is `false`.
+     */
+    @objc public var retainTechnique: Bool = false {
+        didSet {
+            if retainTechnique {
+                guard let techniqueSupportingView = view as? SCNTechniqueSupport else {
+                    return
+                }
+                renderEngine?.technique = techniqueSupportingView.technique
+            } else {
+                renderEngine?.technique = nil
+            }
+        }
+    }
     
     //MARK: - Public initialization methods
     /**
