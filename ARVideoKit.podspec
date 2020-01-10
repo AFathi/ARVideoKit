@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "11.0"
 
   # ARVideoKit for Swift 4.0
-  s.source       = { :git => "https://github.com/AFathi/ARVideoKit.git", :tag => "1.5.1" }
+  s.source       = { :git => "https://github.com/AFathi/ARVideoKit.git", :tag => "1.5.11" }
   s.source_files  = "ARVideoKit", "ARVideoKit/**/*.{h,m,swift}"
   s.resources = "ARVideoKit/Assets/*.scnassets"
 end
