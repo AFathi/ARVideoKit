@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name         = "ARVideoKit - Swift 4.0"
-  s.version      = "1.5.1"
+  s.name         = "ARVideoKit"
+  s.version      = "1.5.11"
   s.summary      = "Capture & record ARKit videos 📹, photos 🌄, Live Photos 🎇, and GIFs 🎆."
   s.description  = "Enabling developers to capture videos 📹, photos 🌄, Live Photos 🎇, and GIFs 🎆 with augmented reality components."
   s.homepage     = "https://github.com/AFathi/ARVideoKit"
