@@ -1,4 +1,4 @@
-> Use [swift_5](https://github.com/AFathi/ARVideoKit/tree/swift_5) branch for projects written in Swift 5
+> Use [swift_4_2](https://github.com/AFathi/ARVideoKit/tree/swift_4_2) branch for projects written in Swift 4.2
 
 > Use [master](https://github.com/AFathi/ARVideoKit/tree/master) branch for projects written in Swift 4.0
 
@@ -54,9 +54,10 @@ To try the example project, simply clone this repository and open the `Examples`
 
 ## Installation
 ### Cocoapods
-1. Add this line to your project's `Podfile`
+1. Add this line to your project's `Podfile` (for Swift 5.0)
 ```
-pod 'ARVideoKit'
+pod 'ARVideoKit', '~> 1.5.51'
+
 ```
 2. Install the pod
 ```
@@ -74,10 +75,7 @@ $ carthage update
 ```
 
 ### Manual
-Drag the `ARVideoKit.framework` file as an embedded binary of your project targets. `ARVideoKit.framework` can be found in the `/Framework Build/` folder of this repository.
-![Tutorial](http://www.ahmedbekhit.com/arvideokit_install_new.gif)
-
-Or you may drag `ARVideoKit.xcodeproj` into your project and click the **+** button in the embedded binaries section of your project's target.
+Drag `ARVideoKit.xcodeproj` into your project and click the **+** button in the embedded binaries section of your project's target.
 ![example embed framework](http://www.ahmedbekhit.com/embeddedBinary.png)
 ## Implementation
 ### Swift
