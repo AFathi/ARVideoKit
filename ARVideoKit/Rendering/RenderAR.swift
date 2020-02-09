@@ -54,6 +54,13 @@ struct RenderAR {
             case .aspectFill:
                 width = Int(UIScreen.main.nativeBounds.width)
                 height = Int(UIScreen.main.nativeBounds.height)
+            case .viewAspectRatio where view is UIView:
+                let bufferWidth = CVPixelBufferGetWidth(raw)
+                let bufferHeight = CVPixelBufferGetHeight(raw)
+                let viewSize = (view as! UIView).bounds.size
+                let targetSize = AVMakeRect(aspectRatio: viewSize, insideRect: CGRect(x: 0, y: 0, width: bufferWidth, height: bufferHeight)).size
+                width = Int(targetSize.width)
+                height = Int(targetSize.height)
             default:
                 if UIScreen.main.isiPhone10 {
                     width = Int(UIScreen.main.nativeBounds.width)
