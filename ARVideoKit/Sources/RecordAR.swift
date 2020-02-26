@@ -27,11 +27,11 @@ import PhotosUI
     /**
      An object that passes the AR recorder errors and status in the protocol methods.
      */
-    @objc public var delegate: RecordARDelegate?
+    @objc weak public var delegate: RecordARDelegate?
     /**
      An object that passes the AR rendered content in the protocol method.
      */
-    @objc public var renderAR: RenderARDelegate?
+    @objc weak public var renderAR: RenderARDelegate?
     /**
      An object that returns the AR recorder current status.
      */
