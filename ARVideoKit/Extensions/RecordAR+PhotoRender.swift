@@ -8,6 +8,7 @@
 
 import AVFoundation
 import Photos
+import UIKit
 
 @available(iOS 11.0, *)
 extension RecordAR {

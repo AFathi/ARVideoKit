@@ -11,7 +11,6 @@
 		FB2E36891FAE29C00035B8D6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FB2E36881FAE29BF0035B8D6 /* LICENSE */; };
 		FB404FFE20D72A190056EA1D /* JPEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB404FFD20D72A190056EA1D /* JPEG.swift */; };
 		FBD604DF1FA969DD00EC9804 /* ARVideoKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FBD604DD1FA969DD00EC9804 /* ARVideoKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FBD604EB1FA96B1C00EC9804 /* video.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD604EA1FA96B1C00EC9804 /* video.scnassets */; };
 		FBD604EE1FA96B2700EC9804 /* ARVideoOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD604EC1FA96B2700EC9804 /* ARVideoOptions.swift */; };
 		FBD604EF1FA96B2700EC9804 /* ARInputViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD604ED1FA96B2700EC9804 /* ARInputViewOptions.swift */; };
 		FBD604F51FA96B3300EC9804 /* UIImage+VideoBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD604F01FA96B3300EC9804 /* UIImage+VideoBuffer.swift */; };
@@ -40,7 +39,6 @@
 		FBD604DA1FA969DD00EC9804 /* ARVideoKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ARVideoKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBD604DD1FA969DD00EC9804 /* ARVideoKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARVideoKit.h; sourceTree = "<group>"; };
 		FBD604DE1FA969DD00EC9804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FBD604EA1FA96B1C00EC9804 /* video.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = video.scnassets; sourceTree = "<group>"; };
 		FBD604EC1FA96B2700EC9804 /* ARVideoOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARVideoOptions.swift; sourceTree = "<group>"; };
 		FBD604ED1FA96B2700EC9804 /* ARInputViewOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARInputViewOptions.swift; sourceTree = "<group>"; };
 		FBD604F01FA96B3300EC9804 /* UIImage+VideoBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+VideoBuffer.swift"; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				B466A8B62279E33800BD7070 /* Utils */,
-				FBD604E51FA96ACD00EC9804 /* Assets */,
 				FBD604E61FA96AD400EC9804 /* Enumerations */,
 				FBD604E71FA96AE500EC9804 /* Extensions */,
 				FBD604E81FA96AEC00EC9804 /* Protocols */,
@@ -120,14 +117,6 @@
 				FBD604DE1FA969DD00EC9804 /* Info.plist */,
 			);
 			path = ARVideoKit;
-			sourceTree = "<group>";
-		};
-		FBD604E51FA96ACD00EC9804 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				FBD604EA1FA96B1C00EC9804 /* video.scnassets */,
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		FBD604E61FA96AD400EC9804 /* Enumerations */ = {
@@ -281,7 +270,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB2E36891FAE29C00035B8D6 /* LICENSE in Resources */,
-				FBD604EB1FA96B1C00EC9804 /* video.scnassets in Resources */,
 				FBD605071FA96B6B00EC9804 /* LoveLiver_LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

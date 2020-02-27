@@ -143,16 +143,9 @@ import PhotosUI
         view = ARSpriteKit
         scnView = SCNView(frame: UIScreen.main.bounds)
         
-        let bundle = Bundle(for: RecordAR.self)
-        let url = bundle.url(forResource: "video.scnassets/vid", withExtension: "scn")
-        
-        do {
-            let scene = try SCNScene(url: url!, options: nil)
-            scnView.scene = scene
-            setup()
-        }catch let error {
-            logAR.message("Error occurred while loading SK Video Assets : \(error). Please download \"video.scnassets\" from\nwww.ahmedbekhit.com/ARVideoKitAssets")
-        }
+        let scene = SCNScene()
+        scnView.scene = scene
+        setup()
     }
     
     /**

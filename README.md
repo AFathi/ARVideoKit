@@ -74,6 +74,11 @@ github "AFathi/ARVideoKit" ~> 1.31
 $ carthage update
 ```
 
+### Swift Package Manager (available Xcode 11.2 and forward)
+
+1. In Xcode, select File > Swift Packages > Add Package Dependency.
+2. Follow the prompts using the URL for this repository.
+
 ### Manual
 Drag `ARVideoKit.xcodeproj` into your project and click the **+** button in the embedded binaries section of your project's target.
 ![example embed framework](http://www.ahmedbekhit.com/embeddedBinary.png)
