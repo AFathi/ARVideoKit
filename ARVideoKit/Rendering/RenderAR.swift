@@ -44,7 +44,7 @@ struct RenderAR {
         if let contentMode = ARcontentMode {
             switch contentMode {
             case .auto:
-                if UIScreen.main.isiPhone10 {
+                if UIScreen.main.isNotch {
                     width = Int(UIScreen.main.nativeBounds.width)
                     height = Int(UIScreen.main.nativeBounds.height)
                 }
@@ -62,7 +62,7 @@ struct RenderAR {
                 width = Int(targetSize.width)
                 height = Int(targetSize.height)
             default:
-                if UIScreen.main.isiPhone10 {
+                if UIScreen.main.isNotch {
                     width = Int(UIScreen.main.nativeBounds.width)
                     height = Int(UIScreen.main.nativeBounds.height)
                 }

@@ -14,8 +14,9 @@ extension UIScreen {
     /**
      `isiPhone10` is a boolean that returns if the device is iPhone X or not.
      */
-    var isiPhone10: Bool {
-        return self.nativeBounds.size == CGSize(width: 1125, height: 2436) || self.nativeBounds.size == CGSize(width: 2436, height: 1125)
+    var isNotch: Bool {
+        let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        return bottom > 0
     }
 }
 @available(iOS 11.0, *)
