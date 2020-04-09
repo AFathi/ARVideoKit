@@ -15,8 +15,7 @@ extension UIScreen {
      `isiPhone10` is a boolean that returns if the device is iPhone X or not.
      */
     var isNotch: Bool {
-        let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
-        return bottom > 0
+      return UIApplication.shared.keyWindow?.safeAreaInsets != UIEdgeInsets.zero
     }
 }
 @available(iOS 11.0, *)
