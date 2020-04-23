@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ARVideoKit"
-  s.version      = "1.5.51"
+  s.version      = "1.6.0"
   s.summary      = "Capture & record ARKit videos 📹, photos 🌄, Live Photos 🎇, and GIFs 🎆."
   s.description  = "Enabling developers to capture videos 📹, photos 🌄, Live Photos 🎇, and GIFs 🎆 with augmented reality components."
   s.homepage     = "https://github.com/AFathi/ARVideoKit"
@@ -17,7 +17,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "11.0"
 
   # ARVideoKit for Swift 5.0
-  s.source       = { :git => "https://github.com/AFathi/ARVideoKit.git", :tag => "1.5.51" }
+  s.source       = { :git => "https://github.com/AFathi/ARVideoKit.git", :tag => "1.6.0" }
   s.source_files  = "ARVideoKit", "ARVideoKit/**/*.{h,m,swift}"
-  s.resources = "ARVideoKit/Assets/*.scnassets"
 end
