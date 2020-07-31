@@ -20,6 +20,7 @@ In other words, you **NO LONGER** have to ~screen record~/~screenshot~ to captur
 | [Implementation](#implementation) | Lists the [steps needed](#implementation) for Objective-C & Swift, [notes](#note), and [reference](#youre-all-set-) for more options  |
 | [Publishing to the App Store](#publishing-to-the-app-store) | Describes the steps **required** before submitting an application using `ARVideoKit` to the App Store. |
 |[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD) | [Donations](#donate) will support me to keep maintaining `ARVideoKit` ❤️|
+|[Sponsors](#sponsors) | Featuring the sponsors of this project |
 | [Contributions](#contributions) | Describes how you can contribute to this project |
 | [Apps using ARVideoKit](#apps-using-arvideokit) | A list of published applications using ARVideoKit |
 | [License](#license) | Describes `ARVideoKit` license |
@@ -147,6 +148,9 @@ Donations will support me to keep maintining **ARVideoKit Framework** ❤️
 
 [![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD)
 
+## Sponsors
+ <a href="https://tracking.gitads.io/?repo=ARVideoKit"><img src="https://images.gitads.io/ARVideoKit" alt="GitAds"/></a>
+ 
 ## Contributions
 If you have an idea for a new **ARVideoKit** feature/functionality and want to add it to this repository, feel free to fork the project and create a pull request!
 
