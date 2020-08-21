@@ -2,6 +2,16 @@
 
 > Use [master](https://github.com/AFathi/ARVideoKit/tree/master) branch for projects written in Swift 4.0
 
+## Sponsors
+[**Chemical Wedding**](https://www.chemicalwedding.tv)
+
+![Chemical Wedding](https://www.chemicalwedding.tv/imgs/general/logo-main.png)
+
+**GitAds**
+<a href="https://tracking.gitads.io/?repo=ARVideoKit"><img src="https://images.gitads.io/ARVideoKit" alt="GitAds"/></a>
+
+## ARVideoKit
+
 ![intro image](http://www.ahmedbekhit.com/projects/repo-header-arvideokit.png)
 
 An iOS Framework that enables developers to capture videos 📹, photos 🌄, Live Photos 🎇, and GIFs 🎆 with ARKit content.
@@ -147,9 +157,6 @@ To do so, follow those steps:
 Donations will support me to keep maintining **ARVideoKit Framework** ❤️
 
 [![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ahmedfbekhit@gmail.com&item_name=Support+ARVideoKit+Developer&item_number=ARVideoKit+Framework+Donations&amount=0%2e00&currency_code=USD)
-
-## Sponsors
- <a href="https://tracking.gitads.io/?repo=ARVideoKit"><img src="https://images.gitads.io/ARVideoKit" alt="GitAds"/></a>
  
 ## Contributions
 If you have an idea for a new **ARVideoKit** feature/functionality and want to add it to this repository, feel free to fork the project and create a pull request!
