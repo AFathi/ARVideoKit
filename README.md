@@ -168,6 +168,7 @@ Also, feel free to create an issue if you have any suggestions or need any help 
 | ------------------ |:------------------:|
 | [Our SolAR](https://itunes.apple.com/app/id1267675913) | An app that allows you to see our Solar System anywhere at all! |
 | [In The Walls](https://apps.apple.com/us/app/id1522257130) | Uses real time face tracking and AR to put your face in any real world wall! |
+| [ScribScrab](https://apps.apple.com/in/app/scribscrab/id1339432955) | ScribScrab is a tool for creativity. You’re only limited to your imagination and your battery life. |
 
 _Feel free to add your application to this list!_
 ## License
