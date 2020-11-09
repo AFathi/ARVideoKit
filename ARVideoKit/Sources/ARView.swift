@@ -52,10 +52,10 @@ import ARKit
     
     @objc init?(ARSceneKit: ARSCNView) {
         super.init()
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: UIDevice.orientationDidChangeNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: UIDevice.orientationDidChangeNotification, object: nil)
         
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
+//        let value = UIInterfaceOrientation.portrait.rawValue
+//        UIDevice.current.setValue(value, forKey: "orientation")
         
         ViewAR.orientation = .portrait
         
@@ -68,10 +68,10 @@ import ARKit
     
     @objc init?(ARSpriteKit: ARSKView) {
         super.init()
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: UIDevice.orientationDidChangeNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: UIDevice.orientationDidChangeNotification, object: nil)
         
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
+//        let value = UIInterfaceOrientation.portrait.rawValue
+//        UIDevice.current.setValue(value, forKey: "orientation")
         
         ViewAR.orientation = .portrait
         guard let vc = ARSpriteKit.parent else {
@@ -82,10 +82,10 @@ import ARKit
     
     @objc init?(SceneKit: SCNView) {
         super.init()
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: UIDevice.orientationDidChangeNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: UIDevice.orientationDidChangeNotification, object: nil)
         
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
+//        let value = UIInterfaceOrientation.portrait.rawValue
+//        UIDevice.current.setValue(value, forKey: "orientation")
         
         ViewAR.orientation = .portrait
         
@@ -96,54 +96,54 @@ import ARKit
         parentVC = vc
     }
     
-    @objc private func deviceDidRotate() {
-        guard var views = parentVC?.view.subviews else {
-            return
-        }
-        
-        var rotationAngle = 0
-        
-        switch inputViewOrientationMode {
-        case .auto:
-            views = views.filter { !$0.isARView && $0.isButton }
-        case .all:
-            views = views.filter { !$0.isARView }
-        case .manual(let subviews):
-            views = subviews.filter { !$0.isARView }
-        case .disabled:
-            views = []
-        }
-        var angleEnabled: Bool {
-            for v in inputViewOrientations {
-                if UIDevice.current.orientation.rawValue == v.rawValue {
-                    return true
-                }
-            }
-            return false
-        }
-        switch UIDevice.current.orientation {
-        case .landscapeLeft:
-            rotationAngle = 90
-            recentAngle = 90
-        case .landscapeRight:
-            rotationAngle = -90
-            recentAngle = -90
-        case .faceUp, .faceDown, .portraitUpsideDown:
-            rotationAngle = recentAngle
-        default:
-            rotationAngle = 0
-            recentAngle = 0
-        }
-
-        if !angleEnabled {
-            rotationAngle = 0
-        }
-        
-        for view in views {
-            UIView.animate(withDuration: 0.2, animations: {
-                view.transform = CGAffineTransform(rotationAngle: CGFloat(rotationAngle).degreesToRadians)
-            })
-        }
-        
-    }
+//    @objc private func deviceDidRotate() {
+//        guard var views = parentVC?.view.subviews else {
+//            return
+//        }
+//        
+//        var rotationAngle = 0
+//        
+//        switch inputViewOrientationMode {
+//        case .auto:
+//            views = views.filter { !$0.isARView && $0.isButton }
+//        case .all:
+//            views = views.filter { !$0.isARView }
+//        case .manual(let subviews):
+//            views = subviews.filter { !$0.isARView }
+//        case .disabled:
+//            views = []
+//        }
+//        var angleEnabled: Bool {
+//            for v in inputViewOrientations {
+//                if UIDevice.current.orientation.rawValue == v.rawValue {
+//                    return true
+//                }
+//            }
+//            return false
+//        }
+//        switch UIDevice.current.orientation {
+//        case .landscapeLeft:
+//            rotationAngle = 90
+//            recentAngle = 90
+//        case .landscapeRight:
+//            rotationAngle = -90
+//            recentAngle = -90
+//        case .faceUp, .faceDown, .portraitUpsideDown:
+//            rotationAngle = recentAngle
+//        default:
+//            rotationAngle = 0
+//            recentAngle = 0
+//        }
+//
+//        if !angleEnabled {
+//            rotationAngle = 0
+//        }
+//        
+//        for view in views {
+//            UIView.animate(withDuration: 0.2, animations: {
+//                view.transform = CGAffineTransform(rotationAngle: CGFloat(rotationAngle).degreesToRadians)
+//            })
+//        }
+//        
+//    }
 }
