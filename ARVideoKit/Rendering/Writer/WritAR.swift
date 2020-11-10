@@ -230,6 +230,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         }
         
         if assetWriter.status == .writing {
+            isRecording = false
             assetWriter.finishWriting(completionHandler: finished)
         }
     }
@@ -240,6 +241,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
                 session.stopRunning()
             }
         }
+        isRecording = false
         assetWriter.cancelWriting()
     }
 }
