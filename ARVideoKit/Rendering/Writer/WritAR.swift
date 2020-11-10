@@ -208,7 +208,10 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if let input = audioInput {
             audioBufferQueue.async { [weak self] in
-                if let isRecording = self?.isRecording, input.isReadyForMoreMediaData && isRecording {
+                if let isRecording = self?.isRecording,
+                    let session = self?.session,
+                    input.isReadyForMoreMediaData && isRecording
+                        && session.isRunning {
                     input.append(sampleBuffer)
                 }
             }
