@@ -7,9 +7,6 @@
 
 ![Chemical Wedding](https://www.chemicalwedding.tv/imgs/general/logo-main.png)
 
-**GitAds**
-<a href="https://tracking.gitads.io/?repo=ARVideoKit"><img src="https://images.gitads.io/ARVideoKit" alt="GitAds"/></a>
-
 ## ARVideoKit
 
 ![intro image](http://www.ahmedbekhit.com/projects/repo-header-arvideokit.png)
