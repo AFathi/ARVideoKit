@@ -152,7 +152,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         audioInput.expectsMediaDataInRealTime = true
         
         audioBufferQueue.async {
-            self.session.startRunning()
+            self.session?.startRunning()
         }
         
         if assetWriter.canAdd(audioInput) {
@@ -208,7 +208,10 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if let input = audioInput {
             audioBufferQueue.async { [weak self] in
-                if input.isReadyForMoreMediaData && (self?.isRecording)! {
+                if let isRecording = self?.isRecording,
+                    let session = self?.session,
+                    input.isReadyForMoreMediaData && isRecording
+                        && session.isRunning {
                     input.append(sampleBuffer)
                 }
             }
@@ -227,6 +230,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         }
         
         if assetWriter.status == .writing {
+            isRecording = false
             assetWriter.finishWriting(completionHandler: finished)
         }
     }
@@ -237,6 +241,7 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
                 session.stopRunning()
             }
         }
+        isRecording = false
         assetWriter.cancelWriting()
     }
 }
