@@ -57,14 +57,15 @@ class WritAR: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
             AVVideoHeightKey: height as AnyObject
         ]
         
-        let attributes: [String: Bool] = [
-            kCVPixelBufferCGImageCompatibilityKey as String: true,
-            kCVPixelBufferCGBitmapContextCompatibilityKey as String: true
+        let sourcePixelBufferAttributesDictionary: [String: Any] = [
+            kCVPixelBufferPixelFormatTypeKey as String : kCVPixelFormatType_32BGRA,
+            kCVPixelBufferWidthKey as String: width,
+            kCVPixelBufferHeightKey as String: height
         ]
         videoInput = AVAssetWriterInput(mediaType: .video, outputSettings: videoOutputSettings)
 
         videoInput.expectsMediaDataInRealTime = true
-        pixelBufferInput = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: videoInput, sourcePixelBufferAttributes: nil)
+        pixelBufferInput = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: videoInput, sourcePixelBufferAttributes: sourcePixelBufferAttributesDictionary)
         
         var angleEnabled: Bool {
             for v in orientaions {
